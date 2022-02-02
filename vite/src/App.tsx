@@ -1,5 +1,12 @@
+import React, { useReducer } from "react";
+import Reducer from "./use-reducer/Reducer";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <Reducer />
+    </>
+  );
 }
 
 export default App;
