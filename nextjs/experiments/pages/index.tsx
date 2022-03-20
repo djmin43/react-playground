@@ -1,7 +1,8 @@
-import type { NextPage } from "next";
+import React from "react";
+import Hello from "./hello.server";
 
-const Home: NextPage = () => {
-  return <div>this is home home</div>;
+const Home = () => {
+  return <div>Home</div>;
 };
 
 export default Home;
