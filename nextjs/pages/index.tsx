@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   return (
     <div>
-      <h1> git is so boring</h1>
+      <h1>git is so boring</h1>
     </div>
   );
 };
