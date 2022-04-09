@@ -8,7 +8,7 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <h1>git is so boring</h1>
+      <h1>hello world</h1>
     </div>
   );
 };
