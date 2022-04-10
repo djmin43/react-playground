@@ -1139,6 +1139,11 @@ micromatch@^4.0.4:
     braces "^3.0.2"
     picomatch "^2.3.1"
 
+mindongjoon-ds@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mindongjoon-ds/-/mindongjoon-ds-1.0.0.tgz#38ff2b30fe21b9be62e700fba7c85e94728c5f60"
+  integrity sha512-0FC9wdAoBIbG7+ykyoIxMpKSbbzg5XFFGASPgmP06/CD1vsEac8E+Zkjwd2s9kH4fupppt6YMPw36o6j8ueIWg==
+
 minimatch@^3.0.4, minimatch@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
