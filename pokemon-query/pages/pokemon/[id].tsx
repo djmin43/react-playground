@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { useQuery } from "react-query";
+import type { GetStaticProps, GetStaticPaths } from "next";
+import { useQuery, QueryClient, dehydrate } from "react-query";
 import { useRouter } from "next/router";
 import PokemonCard from "../../components/PokemonCard";
 
@@ -20,6 +21,7 @@ export default function Pokemon() {
     isError,
   } = useQuery(["getPokemon", pokemonID], () => fetchPokemon(pokemonID), {
     enabled: pokemonID.length > 0,
+    staleTime: Infinity,
   });
 
   if (isSuccess) {
@@ -43,7 +45,7 @@ export default function Pokemon() {
   if (isError) {
     return (
       <div className="center">
-        We could not find your pokemon
+        We could not find your pokemon{" "}
         <span role="img" aria-label="sad">
           😢
         </span>
@@ -53,3 +55,23 @@ export default function Pokemon() {
 
   return <></>;
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id as string;
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery(["getPokemon", id], () => fetchPokemon(id));
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+};
