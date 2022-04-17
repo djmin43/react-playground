@@ -29,6 +29,7 @@ const Home: NextPage = () => {
     }
     return <></>;
   };
+
   return (
     <div className="home">
       <h1>Search Your Pokemon</h1>
