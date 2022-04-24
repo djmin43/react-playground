@@ -1,11 +1,15 @@
 .mainPage {
-  width: 100vw;
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.count {
-  font-size: 24px;
+.lionBox {
+  text-align: center;
+  padding: 5rem;
+}
+
+.title {
+  font-size: 48px;
 }

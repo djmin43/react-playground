@@ -6,6 +6,14 @@
   background: #ffffff;
 }
 
+.select {
+  width: 200px;
+  height: 52px;
+  padding-left: 48px;
+  display: flex;
+  align-items: center;
+}
+
 .options {
   width: 100%;
   max-width: 520px;
@@ -24,7 +32,7 @@
   background: #eeeeee;
   display: flex;
   align-items: center;
-  padding-left: 68px;
+  padding-left: 48px;
 }
 
 .option:hover {

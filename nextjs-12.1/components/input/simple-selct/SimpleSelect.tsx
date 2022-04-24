@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./SimpleSelect.module.css";
 import { BsChevronUp } from "react-icons/bs";
 interface SimpleSelectProps {
-  value: number;
+  index: number;
   itemSelectList: ItemType[];
   onChange: (event: React.MouseEvent<HTMLSpanElement>) => void;
 }
@@ -13,7 +13,7 @@ interface ItemType {
 }
 
 const SimpleSelect = ({
-  value,
+  index,
   itemSelectList,
   onChange,
 }: SimpleSelectProps) => {
@@ -44,7 +44,9 @@ const SimpleSelect = ({
       onClick={handleSelectOpen}
       ref={selectRef}
     >
-      <div className={`${styles.select} `}></div>
+      <div className={`${styles.select}`}>
+        <span>{itemSelectList[index].label}</span>
+      </div>
       <div className={`${styles.arrow} ${isSelectOpen && styles.activeArrow}`}>
         <span>
           <BsChevronUp />
@@ -52,10 +54,10 @@ const SimpleSelect = ({
       </div>
       {isSelectOpen && (
         <div className={styles.options}>
-          {itemSelectList.map((item) => (
+          {itemSelectList.map((item, index) => (
             <div
               key={item.value}
-              data-value={item.value}
+              data-value={index}
               onClick={onChange}
               className={styles.option}
             >
