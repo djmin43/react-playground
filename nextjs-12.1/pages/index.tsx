@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import ContinaerBar from "../components/container-bar/ContinaerBar";
-import SimpleSelect from "../components/input/SimpleSelect";
+import SimpleSelect from "../components/input/simple-selct";
 import ConatinerFoo from "../components/container-foo";
 
 const Home: NextPage = () => {
@@ -18,14 +18,13 @@ const Home: NextPage = () => {
   function handleClick() {
     setCount((previousCount) => previousCount + 1);
   }
-  function handleOnChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    console.log(e.target.value);
-    setSelectValue(+e.target.value);
+  function handleOnChange(e: unknown) {
+    console.log(e);
   }
 
   return (
     <div>
-      <ConatinerFoo />
+      <SimpleSelect />
     </div>
   );
 };
