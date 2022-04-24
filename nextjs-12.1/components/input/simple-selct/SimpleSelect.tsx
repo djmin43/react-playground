@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./SimpleSelect.module.css";
-
+import { BsChevronUp } from "react-icons/bs";
 interface SimpleSelectProps {
   value: number;
   itemSelectList: ItemType[];
@@ -46,7 +46,9 @@ const SimpleSelect = ({
     >
       <div className={`${styles.select} `}></div>
       <div className={`${styles.arrow} ${isSelectOpen && styles.activeArrow}`}>
-        <span>^</span>
+        <span>
+          <BsChevronUp />
+        </span>
       </div>
       {isSelectOpen && (
         <div className={styles.options}>
