@@ -1,37 +1,52 @@
 .container {
   position: relative;
-  width: 10rem;
-  height: 3rem;
-  border: 1px solid black;
+  width: 200px;
+  height: 52px;
+  border: 1px solid #dbdbdb;
+  background: #ffffff;
 }
 
 .options {
-  width: 10rem;
-  height: 5rem;
+  width: 100%;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
   position: absolute;
-  bottom: 100;
+  top: 100%;
   background-color: white;
-  border: 1px solid black;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.option {
+  width: 200px;
+  height: 52px;
+  background: #eeeeee;
+  display: flex;
+  align-items: center;
+  padding-left: 68px;
 }
 
 .option:hover {
-  background-color: pink;
+  background-color: #81bdff;
 }
 
 .arrow {
   position: absolute;
   top: 0;
   right: 0;
-  transition: all 0.3s linear;
+  transition: all 0.1s linear;
+  width: 56px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .activeArrow {
   position: absolute;
   top: 0;
   right: 0;
-  transition: all 0.3s linear;
+  transition: all 0.1s linear;
   transform: rotateX(180deg);
 }

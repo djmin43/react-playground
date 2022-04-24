@@ -15,6 +15,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.mainPage}>
+      <p className={styles.count}>{count}</p>
       <SimpleSelect
         itemSelectList={itemList}
         value={count}
@@ -26,15 +27,15 @@ const Home: NextPage = () => {
 
 const itemList = [
   {
-    label: "one",
+    label: "1개씩 보기",
     value: 1,
   },
   {
-    label: "two",
+    label: "2개씩 보기",
     value: 2,
   },
   {
-    label: "three",
+    label: "3개씩 보기",
     value: 3,
   },
 ];

@@ -44,21 +44,21 @@ const SimpleSelect = ({
       onClick={handleSelectOpen}
       ref={selectRef}
     >
-      <div className={`${styles.select} `}>{value}</div>
-      <span className={`${styles.arrow} ${isSelectOpen && styles.activeArrow}`}>
-        arrow
-      </span>
+      <div className={`${styles.select} `}></div>
+      <div className={`${styles.arrow} ${isSelectOpen && styles.activeArrow}`}>
+        <span>^</span>
+      </div>
       {isSelectOpen && (
         <div className={styles.options}>
           {itemSelectList.map((item) => (
-            <span
+            <div
               key={item.value}
               data-value={item.value}
               onClick={onChange}
               className={styles.option}
             >
-              {item.label}
-            </span>
+              <span>{item.label}</span>
+            </div>
           ))}
         </div>
       )}
