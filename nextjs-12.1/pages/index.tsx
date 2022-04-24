@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import ContinaerBar from "../components/container-bar/ContinaerBar";
 import SimpleSelect from "../components/input/SimpleSelect";
+import ConatinerFoo from "../components/container-foo";
 
 const Home: NextPage = () => {
   const [count, setCount] = useState(10);
@@ -24,8 +25,7 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      {selectValue}
-      <SimpleSelect value={selectValue} onChange={handleOnChange} />
+      <ConatinerFoo />
     </div>
   );
 };
