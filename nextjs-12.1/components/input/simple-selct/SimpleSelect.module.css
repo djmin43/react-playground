@@ -9,7 +9,7 @@
 .select {
   width: 200px;
   height: 52px;
-  padding-left: 48px;
+  padding-left: 38px;
   display: flex;
   align-items: center;
 }
@@ -32,7 +32,7 @@
   background: #eeeeee;
   display: flex;
   align-items: center;
-  padding-left: 48px;
+  padding-left: 38px;
 }
 
 .option:hover {
