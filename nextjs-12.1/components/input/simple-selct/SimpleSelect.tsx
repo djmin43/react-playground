@@ -17,16 +17,32 @@ const SimpleSelect = ({
   itemSelectList,
   onChange,
 }: SimpleSelectProps) => {
+  const [isSelectOpen, setIsSelectOpen] = useState<boolean>(false);
+
+  function handleSelectOpen() {
+    setIsSelectOpen(!isSelectOpen);
+  }
+
   return (
-    <div className={styles.container}>
-      <div className={styles.select}>{value}</div>
-      <div className={styles.options}>
-        {itemSelectList.map((item) => (
-          <span key={item.value} data-value={item.value} onClick={onChange}>
-            {item.label}
-          </span>
-        ))}
-      </div>
+    <div className={styles.container} onClick={handleSelectOpen}>
+      <div className={`${styles.select} `}>{value}</div>
+      <span className={`${styles.arrow} ${isSelectOpen && styles.activeArrow}`}>
+        arrow
+      </span>
+      {isSelectOpen && (
+        <div className={styles.options}>
+          {itemSelectList.map((item) => (
+            <span
+              key={item.value}
+              data-value={item.value}
+              onClick={onChange}
+              className={styles.option}
+            >
+              {item.label}
+            </span>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

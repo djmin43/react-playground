@@ -1,3 +1,37 @@
-.test {
-  color: blue;
+.container {
+  position: relative;
+  width: 10rem;
+  height: 3rem;
+  border: 1px solid black;
+}
+
+.options {
+  width: 10rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  background-color: white;
+  border: 1px solid black;
+  overflow: scroll;
+}
+
+.option:hover {
+  background-color: pink;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.3s linear;
+}
+
+.activeArrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.3s linear;
+  transform: rotate(180deg);
 }

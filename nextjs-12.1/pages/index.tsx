@@ -3,16 +3,18 @@ import React, { MouseEventHandler, useEffect, useState } from "react";
 import ContinaerBar from "../components/container-bar/ContinaerBar";
 import SimpleSelect from "../components/input/simple-selct";
 import ConatinerFoo from "../components/container-foo";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<number>(1);
 
   function handleOnChange(event: React.MouseEvent<HTMLSpanElement>) {
-    console.log(event.currentTarget.dataset.value);
+    const value = event.currentTarget.dataset.value as string;
+    setCount(+value);
   }
 
   return (
-    <div>
+    <div className={styles.mainPage}>
       <SimpleSelect
         itemSelectList={itemList}
         value={count}
