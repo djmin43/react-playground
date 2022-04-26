@@ -22,9 +22,8 @@
   position: absolute;
   top: 100%;
   background-color: white;
-  /* overflow-y: scroll; */
   overflow-x: hidden;
-}
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;}
 
 .option {
   width: 200px;
