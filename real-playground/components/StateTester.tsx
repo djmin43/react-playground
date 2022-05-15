@@ -1,29 +1,34 @@
 import React, { useState, useEffect, useReducer } from "react";
 
 const StateTester = () => {
-  const [count, dispatch] = useReducer(countReducer, 0);
+  const [state, dispatch] = useReducer(countReducer, { value: 0 });
 
   useEffect(() => {
+    console.log(state.value, "before");
     dispatch({
       type: "add",
+      value: 3,
     });
+    console.log(state.value, "after");
   }, []);
 
-  return <div>{count}</div>;
+  return <div>{state.value}</div>;
 };
 
-function countReducer(count: any, action: any) {
+function countReducer(state: any, action: any) {
   switch (action.type) {
     case "add": {
-      console.log(count);
-      return 2;
+      console.log(state);
+      return {
+        value: 3,
+      };
     }
     case "subtract": {
       console.log("subtract");
-      return 3;
+      return state;
     }
     case "double": {
-      return 4;
+      return state;
     }
     default: {
       throw Error("Unknown action: " + action.type);
