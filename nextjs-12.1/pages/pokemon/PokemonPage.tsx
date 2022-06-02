@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 function PokemonPage() {
-  const { isLoading, isError, data, error } = usePokemon();
+  const { isLoading, isError, data } = usePokemonQuery();
 
   if (isLoading) {
     return <div>this is loading</div>;
@@ -16,7 +16,7 @@ function PokemonPage() {
   return <div>{data.name}</div>;
 }
 
-function usePokemon() {
+function usePokemonQuery() {
   return useQuery("pokemon", () =>
     axios
       .get("https://pokeapi.co/api/v2/pokemon-species/2")
