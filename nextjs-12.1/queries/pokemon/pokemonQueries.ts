@@ -3,10 +3,12 @@ import axios from "axios";
 
 async function fetchPokemon(pokeId: string): Promise<unknown> {
   const response = await axios.get(
-    `https://pokeapi.co/api/v2/pokemon-species/${pokeId}`
+    `https://pokeapi.co/api/v2/pokemon/${pokeId}`
   );
   return response.data;
 }
-export function usePokemonQuery(state: string) {
-  return useQuery(["pokemon", state], () => fetchPokemon(state));
+export function usePokemonQuery(pokeId: string) {
+  return useQuery(["pokemon", pokeId], () => fetchPokemon(pokeId), {
+    enabled: !!pokeId,
+  });
 }
