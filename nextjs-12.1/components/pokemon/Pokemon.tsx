@@ -11,7 +11,6 @@ function Pokemon(): JSX.Element {
     if (+newPokeId > 0) {
       setPokeId(newPokeId);
     }
-    return;
   }
 
   if (isLoading) return <div>Loading</div>;
