@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
 
-const Pokemon: any = () => {
+function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("1");
   const { data: currentPokemon, isLoading } = usePokemonQuery(pokeId);
 
@@ -11,7 +11,7 @@ const Pokemon: any = () => {
     setPokeId(newPokeId);
   }
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return <div>Loading</div>;
 
   return (
     <div>
@@ -25,6 +25,6 @@ const Pokemon: any = () => {
       />
     </div>
   );
-};
+}
 
 export default Pokemon;
