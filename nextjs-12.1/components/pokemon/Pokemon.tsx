@@ -8,21 +8,17 @@ function Pokemon(): JSX.Element {
 
   function handlePokeIdChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const newPokeId = e.target.value;
-    if (+newPokeId > 0) {
+    if (+newPokeId > 0 && +newPokeId < 152) {
       setPokeId(newPokeId);
     }
   }
 
   if (isLoading) return <div>Loading</div>;
 
-  if (isError) {
-    setPokeId("1");
-  }
-
   return (
     <div>
       <div>
-        <input type="number" onChange={handlePokeIdChange} value={+pokeId} />
+        <input type="tel" onChange={handlePokeIdChange} value={+pokeId} />
       </div>
       <div>
         <Image
