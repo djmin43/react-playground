@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SimpleSelect from "../../components/input/simple-selct";
 import styles from "../../styles/Home.module.css";
-import { itemList } from "./itemList";
+import { itemList } from "../../components/simple-select/itemList";
 
 const SimpleSelectPage = () => {
   const [selectIndex, setSelectIndex] = useState<number>(0);

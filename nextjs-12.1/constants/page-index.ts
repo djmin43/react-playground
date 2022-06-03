@@ -1,4 +1,4 @@
-export const pageIndex = [
+export const PAGE_INDEX = [
   {
     label: "pokemon",
     value: "pokemon",
