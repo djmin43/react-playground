@@ -4,13 +4,11 @@ import Image from "next/image";
 
 function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("1");
-  const { data: currentPokemon, isLoading, isError } = usePokemonQuery(pokeId);
+  const { data: currentPokemon, isLoading } = usePokemonQuery(pokeId);
 
   function handlePokeIdChange(e: React.ChangeEvent<HTMLInputElement>): void {
     const newPokeId = e.target.value;
-    if (+newPokeId > 0 && +newPokeId < 152) {
-      setPokeId(newPokeId);
-    }
+    setPokeId(newPokeId);
   }
 
   if (isLoading) return <div>Loading</div>;
