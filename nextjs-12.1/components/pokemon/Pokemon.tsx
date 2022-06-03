@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
 
-const Pokemon = () => {
+const Pokemon: any = () => {
   const [pokeId, setPokeId] = useState<string>("1");
   const { data: currentPokemon, isLoading } = usePokemonQuery(pokeId);
 
