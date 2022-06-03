@@ -1,13 +1,24 @@
 import type { NextPage } from "next";
-import StateTester from "../components/StateTester";
-import styles from "./home.module.css";
+import Card from "../components/Card";
+
+const tree = {
+  id: "1",
+  name: "project",
+  child: {
+    id: "2",
+    name: "first",
+    child: {
+      id: "3",
+      name: "second",
+    },
+  },
+};
 
 const Home: NextPage = () => {
   return (
-    <section class={""}}>
-      <div>some-container</div>
+    <section>
+      <Card tree={tree} />
       <p>hello world</p>
-      <StateTester />
     </section>
   );
 };
