@@ -4,14 +4,21 @@ import Image from "next/image";
 
 function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("1");
-  const { data: currentPokemon, isLoading } = usePokemonQuery(pokeId);
+  const { data: currentPokemon, isLoading, isError } = usePokemonQuery(pokeId);
 
   function handlePokeIdChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    const newPokeId = e.target.value.toString();
-    setPokeId(newPokeId);
+    const newPokeId = e.target.value;
+    if (+newPokeId > 0) {
+      setPokeId(newPokeId);
+    }
+    return;
   }
 
   if (isLoading) return <div>Loading</div>;
+
+  if (isError) {
+    setPokeId("1");
+  }
 
   return (
     <div>
