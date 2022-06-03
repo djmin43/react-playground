@@ -21,14 +21,18 @@ function Pokemon(): JSX.Element {
 
   return (
     <div>
-      {currentPokemon.name}
-      <input type="number" onChange={handlePokeIdChange} value={+pokeId} />
-      <Image
-        src={currentPokemon.sprites.front_default}
-        alt="Picture of the author"
-        width={500}
-        height={500}
-      />
+      <div>
+        <input type="number" onChange={handlePokeIdChange} value={+pokeId} />
+      </div>
+      <div>
+        <Image
+          src={currentPokemon.sprites.front_default}
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        />
+      </div>
+      <p>{currentPokemon.name}</p>
     </div>
   );
 }
