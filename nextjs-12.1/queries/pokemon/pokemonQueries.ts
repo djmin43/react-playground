@@ -8,7 +8,7 @@ async function fetchPokemon(pokeId: string): Promise<any> {
   return response.data;
 }
 export function usePokemonQuery(pokeId: string) {
-  return useQuery(["pokemon", pokeId], () => fetchPokemon(pokeId), {
+  return useQuery<any, any>(["pokemon", pokeId], () => fetchPokemon(pokeId), {
     enabled: !!pokeId,
     select: (data) => {
       return {
