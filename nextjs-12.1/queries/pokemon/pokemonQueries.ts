@@ -10,5 +10,11 @@ async function fetchPokemon(pokeId: string): Promise<any> {
 export function usePokemonQuery(pokeId: string) {
   return useQuery(["pokemon", pokeId], () => fetchPokemon(pokeId), {
     enabled: !!pokeId,
+    select: (data) => {
+      return {
+        id: data.id,
+        image: data.sprites.front_default,
+      };
+    },
   });
 }
