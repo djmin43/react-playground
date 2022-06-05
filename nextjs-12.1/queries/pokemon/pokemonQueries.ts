@@ -13,6 +13,7 @@ export function usePokemonQuery(pokeId: string) {
     select: (data) => {
       return {
         id: data.id,
+        name: data.name,
         image: data.sprites.front_default,
       };
     },

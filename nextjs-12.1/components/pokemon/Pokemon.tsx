@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
+import Card from "./Card";
 
 function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("1");
@@ -19,6 +20,8 @@ function Pokemon(): JSX.Element {
       <div>
         <input type="tel" onChange={handlePokeIdChange} value={+pokeId} />
       </div>
+      <Card />
+      {currentPokemon.name}
       {/*<div>*/}
       {/*  <Image*/}
       {/*    src={currentPokemon.sprites.front_default}*/}
