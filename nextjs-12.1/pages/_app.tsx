@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
+import "../styles/styles.css";
 
 const queryClient = new QueryClient();
 
