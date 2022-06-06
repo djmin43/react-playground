@@ -1,38 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
-import Card from "./Card";
+import { useFormikContext, Formik, Field, Form } from "formik";
+import * as Yup from "yup";
 
 function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("1");
   const { data: currentPokemon, isLoading } = usePokemonQuery(pokeId);
 
-  function handlePokeIdChange(e: React.ChangeEvent<HTMLInputElement>): void {
-    const newPokeId = e.target.value;
-    setPokeId(newPokeId);
-    console.log(currentPokemon);
-  }
-
   if (isLoading) return <div>Loading</div>;
 
   return (
     <div>
+      <Formik
+        initialValues={{ pokeId: "1" }}
+        validationSchema={Yup.object({
+          pokeId: Yup.string()
+            .max(15, "Must be 15 characters or less")
+            .required("Required"),
+        })}
+        onSubmit={(values) => {
+          console.log("hello!", values);
+          console.log(values.pokeId);
+          setPokeId(values.pokeId);
+        }}
+      >
+        <Form>
+          <AutoSubmitToken />
+          <label htmlFor="pokeId">Poke Id</label>
+          <Field name="pokeId" type="text" />
+        </Form>
+      </Formik>
       <div>
-        <input type="tel" onChange={handlePokeIdChange} value={+pokeId} />
+        <Image
+          src={currentPokemon?.sprites.other["official-artwork"].front_default}
+          alt="Picture of the author"
+          width={300}
+          height={300}
+        />
       </div>
-      <Card />
-      {currentPokemon.name}
-      {/*<div>*/}
-      {/*  <Image*/}
-      {/*    src={currentPokemon.sprites.front_default}*/}
-      {/*    alt="Picture of the author"*/}
-      {/*    width={500}*/}
-      {/*    height={500}*/}
-      {/*  />*/}
-      {/*</div>*/}
-      {/*<p>{currentPokemon.name}</p>*/}
+      <p>{currentPokemon.name}</p>
     </div>
   );
+}
+
+function AutoSubmitToken() {
+  const { values, submitForm }: any = useFormikContext();
+  useEffect(() => {
+    const pokeId = +values.pokeId;
+    if (pokeId > 0 && pokeId < 200) {
+      submitForm();
+    }
+  }, [values, submitForm]);
+  return null;
 }
 
 export default Pokemon;

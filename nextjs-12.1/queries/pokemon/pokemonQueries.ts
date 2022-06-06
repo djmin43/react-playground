@@ -1,6 +1,13 @@
 import { useQuery } from "react-query";
 import axios from "axios";
 
+enum PokeImage {
+  FRONT_DEFAULT = "front_default",
+  FRONT_SHINY = "front_shiny",
+  BACK_DEFAULT = "back_default",
+  BACK_SHINY = "back_shiny",
+}
+
 async function fetchPokemon(pokeId: string): Promise<any> {
   const response = await axios.get(
     `https://pokeapi.co/api/v2/pokemon/${pokeId}`
@@ -14,7 +21,7 @@ export function usePokemonQuery(pokeId: string) {
       return {
         id: data.id,
         name: data.name,
-        image: data.sprites.front_default,
+        sprites: data.sprites,
       };
     },
   });
