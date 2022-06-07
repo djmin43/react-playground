@@ -1,6 +1,10 @@
 import React from "react";
 import { MainPageLayout } from "../../styles/pokemon/pokemon-styles";
-import { Field, Form, Formik, FormikProps, useField } from "formik";
+import { Form, Formik, useField } from "formik";
+
+interface Values {
+  id: string;
+}
 
 const MyTextInput = ({ label, ...props }: any) => {
   const [field, meta, helpers] = useField(props);
