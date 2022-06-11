@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyledErrorMessage } from "../../../styles/pokemon/pokemon-styles";
 import { usePokemonQuery } from "../../../queries/pokemon/pokemonQueries";
-import { clearInterval } from "timers";
 
 interface PokeCardProps {
   pokeId: string;
@@ -13,7 +12,7 @@ function Card({ pokeId }: PokeCardProps) {
   if (isLoading)
     return (
       <div>
-        Loading data <LoadingDots item="1" maximumItems={4} interval={100} />
+        Loading data <LoadingDots />
       </div>
     );
 
@@ -30,17 +29,17 @@ function Card({ pokeId }: PokeCardProps) {
   return <div>{pokemon.name}</div>;
 }
 
-function LoadingDots({ item, maximumItems, interval }: any) {
-  const [items, setItems] = useState<string>("");
+function LoadingDots({ item = ".", maximumItems = 3, interval = 1000 }: any) {
+  const [items, setItems] = useState<string[]>([item]);
 
   useEffect(() => {
     const dotInterval = setInterval(() => {
-      console.log("hello");
+      console.log();
     }, interval);
     return () => window.clearInterval(dotInterval);
   }, [interval]);
 
-  return <div>dots</div>;
+  return <div>{items.join(" ")}</div>;
 }
 
 export default Card;
