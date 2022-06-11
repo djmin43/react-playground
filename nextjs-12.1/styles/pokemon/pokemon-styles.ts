@@ -31,7 +31,7 @@ export const MainPageLayout = styled.section`
 `;
 
 export const StyledSearchButton = styled.button`
-  background-color: ${palette.owl.red};
+  background-color: ${palette.owl.blue};
   color: ${palette.white};
   border-radius: 0.25rem;
   margin: 0.25rem;
@@ -42,4 +42,8 @@ export const StyledSearchInput = styled.input`
   padding: 0.5rem;
   margin: 0.25rem;
   border-radius: 0.25rem;
+`;
+
+export const StyledErrorMessage = styled.p`
+  color: ${palette.owl.red};
 `;

@@ -16,7 +16,7 @@ async function fetchPokemon(pokeId: string): Promise<any> {
 }
 export function usePokemonQuery(pokeId: string) {
   return useQuery<any, any>(["pokemon", pokeId], () => fetchPokemon(pokeId), {
-    enabled: !!pokeId && +pokeId > 0 && +pokeId < 152,
+    // enabled: !!pokeId && +pokeId > 0 && +pokeId < 352,
     select: (data) => {
       return {
         id: data.id,
