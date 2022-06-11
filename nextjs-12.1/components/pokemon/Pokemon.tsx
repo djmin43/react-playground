@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { MainPageLayout } from "../../styles/pokemon/pokemon-styles";
 import { Form, Formik, useField } from "formik";
 
@@ -20,6 +20,8 @@ const MyTextInput = ({ label, ...props }: any) => {
 };
 
 function Pokemon(): JSX.Element {
+  const [pokeId, setPokeId] = useState<string>("1");
+
   return (
     <MainPageLayout>
       <h1>hello</h1>
