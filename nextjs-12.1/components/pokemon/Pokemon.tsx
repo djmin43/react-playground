@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MainPageLayout } from "../../styles/pokemon/pokemon-styles";
-import { Form, Formik, useField } from "formik";
+import { Form, Formik, useField, useFormikContext } from "formik";
 
 interface Values {
   id: string;
 }
 
-const MyTextInput = ({ label, ...props }: any) => {
-  const [field, meta, helpers] = useField(props);
+const IdInput = ({ label, ...props }: any) => {
+  const [field, meta] = useField(props);
+
   return (
     <>
-      <label htmlFor={props.id || props.name}>{label}</label>
+      <label htmlFor={props.name}>{label}</label>
       <input className="text-input" {...field} {...props} />
+      {/*  this is error message*/}
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}
@@ -20,7 +22,7 @@ const MyTextInput = ({ label, ...props }: any) => {
 };
 
 function Pokemon(): JSX.Element {
-  const [pokeId, setPokeId] = useState<string>("1");
+  const [pokeId, setPokeId] = useState<string>("");
 
   return (
     <MainPageLayout>
@@ -34,7 +36,7 @@ function Pokemon(): JSX.Element {
         }}
       >
         <Form>
-          <MyTextInput label="id" name="id" type="text" placeholder="id" />
+          <IdInput label="id" name="id" type="text" placeholder="id" />
         </Form>
       </Formik>
     </MainPageLayout>
