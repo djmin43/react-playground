@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import axios from "axios";
 
 enum PokeImage {
@@ -16,7 +16,7 @@ async function fetchPokemon(pokeId: string): Promise<any> {
 }
 export function usePokemonQuery(pokeId: string) {
   return useQuery<any, any>(["pokemon", pokeId], () => fetchPokemon(pokeId), {
-    enabled: !!pokeId,
+    enabled: !!pokeId && +pokeId > 0 && +pokeId < 152,
     select: (data) => {
       return {
         id: data.id,

@@ -8,11 +8,15 @@ h2,
 h3,
 h4,
 h5{
-  padding: 0;
-  margin: 0;
   font-family: -apple-system, Rubik, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-weight: 400;
+}
+
+button, input {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -20,7 +24,10 @@ a {
   text-decoration: none;
 }
 
+
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
