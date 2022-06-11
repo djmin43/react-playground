@@ -47,3 +47,15 @@ export const StyledSearchInput = styled.input`
 export const StyledErrorMessage = styled.p`
   color: ${palette.owl.red};
 `;
+
+export const LoadingMessageLayout = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > .loading {
+    position: relative;
+    & > .dots {
+      position: absolute;
+    }
+  }
+`;
