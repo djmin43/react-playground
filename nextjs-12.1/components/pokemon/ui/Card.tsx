@@ -3,6 +3,7 @@ import {
   StyledErrorMessage,
   LoadingMessageLayout,
   CardLayout,
+  CenterContainer,
 } from "../../../styles/pokemon/pokemon-styles";
 import { usePokemonQuery } from "../../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
@@ -26,17 +27,18 @@ function Card({ pokeId }: PokeCardProps) {
 
   if (error)
     return (
-      <StyledErrorMessage>
-        sorry man, <br />
-        you sure you got the right pokemon id?
-      </StyledErrorMessage>
+      <CenterContainer>
+        <StyledErrorMessage>
+          sorry man, <br />
+          you sure you got the right pokemon id?
+        </StyledErrorMessage>
+      </CenterContainer>
     );
 
   if (pokemon?.id)
     return (
       <CardLayout>
-        <p>pokemon id: {pokemon.id}</p>
-        <p>{pokemon.name}</p>
+        <p className="pokemon-id">#{pokemon.id}</p>
         <div>
           <Image
             src={pokemon.sprites?.other["official-artwork"].front_default}
@@ -45,6 +47,7 @@ function Card({ pokeId }: PokeCardProps) {
             height={200}
           />
         </div>
+        <p className="pokemon-name">{pokemon.name}</p>
       </CardLayout>
     );
   return null;

@@ -23,6 +23,7 @@ const palette = {
 export const MainPageLayout = styled.section`
   width: 100vw;
   height: 100vh;
+  padding: 5rem 0;
   background: ${palette.owl.yellow};
 `;
 
@@ -48,15 +49,10 @@ export const PokeIdLayout = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  padding-top: 30vh;
+  flex-direction: column;
+  margin: auto;
   & > .error {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 100%;
+    height: 1.5rem;
   }
 `;
 
@@ -66,6 +62,12 @@ export const CardLayout = styled.section`
   align-items: center;
   flex-direction: column;
   margin: 1rem;
+  & > .pokemon-id {
+    font-size: 16px;
+  }
+  & > .pokemon-name {
+    font-size: 32px;
+  }
 `;
 
 export const LoadingMessageLayout = styled.div`
@@ -78,4 +80,10 @@ export const LoadingMessageLayout = styled.div`
       position: absolute;
     }
   }
+`;
+
+export const CenterContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

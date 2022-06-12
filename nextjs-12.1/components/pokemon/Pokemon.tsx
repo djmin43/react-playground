@@ -19,14 +19,16 @@ const PokeIdInput = ({ label, ...props }: any) => {
 
   return (
     <PokeIdLayout>
-      <label htmlFor={props.name}>{label}: </label>
-      <StyledSearchInput className="text-input" {...field} {...props} />
-      <SearchButton type="submit" />
-      {meta.touched && meta.error ? (
-        <div className="error">
+      <div className="error">
+        {meta.touched && meta.error ? (
           <StyledErrorMessage>{meta.error}</StyledErrorMessage>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
+      <div className="input">
+        <label htmlFor={props.name}>{label}: </label>
+        <StyledSearchInput className="text-input" {...field} {...props} />
+        <SearchButton type="submit" />
+      </div>
     </PokeIdLayout>
   );
 };
