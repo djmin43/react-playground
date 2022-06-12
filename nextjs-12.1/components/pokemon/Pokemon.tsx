@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
-import { MainPageLayout } from "../../styles/pokemon/pokemon-styles";
-import { Form, Formik, useField, useFormikContext } from "formik";
-import { StyledSearchInput } from "../../styles/pokemon/pokemon-styles";
+import React, { useState } from "react";
+import {
+  MainPageLayout,
+  PokeIdLayout,
+  StyledErrorMessage,
+  StyledSearchInput,
+} from "../../styles/pokemon/pokemon-styles";
+import { Form, Formik, useField } from "formik";
 import SearchButton from "./ui/SearchButton";
 import Card from "./ui/Card";
+import * as Yup from "yup";
 
 interface Values {
   id: string;
@@ -14,15 +18,16 @@ const PokeIdInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
 
   return (
-    <>
-      <label htmlFor={props.name}>{label}</label>
+    <PokeIdLayout>
+      <label htmlFor={props.name}>{label}: </label>
       <StyledSearchInput className="text-input" {...field} {...props} />
-      {/*  this is error message*/}
-      {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
-      ) : null}
       <SearchButton type="submit" />
-    </>
+      {meta.touched && meta.error ? (
+        <div className="error">
+          <StyledErrorMessage>{meta.error}</StyledErrorMessage>
+        </div>
+      ) : null}
+    </PokeIdLayout>
   );
 };
 
@@ -39,6 +44,9 @@ function Pokemon(): JSX.Element {
         initialValues={{
           id: "",
         }}
+        validationSchema={Yup.object({
+          id: Yup.number().typeError("please enter poke id"),
+        })}
         onSubmit={(values) => {
           handlePokeIdSearch(values.id);
         }}

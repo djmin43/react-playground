@@ -21,13 +21,10 @@ const palette = {
 } as const;
 
 export const MainPageLayout = styled.section`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background: ${palette.owl.yellow};
+  padding-top: 40%;
 `;
 
 export const StyledSearchButton = styled.button`
@@ -46,6 +43,29 @@ export const StyledSearchInput = styled.input`
 
 export const StyledErrorMessage = styled.p`
   color: ${palette.owl.red};
+`;
+
+export const PokeIdLayout = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  & > .error {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 100%;
+  }
+`;
+
+export const CardLayout = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1rem;
 `;
 
 export const LoadingMessageLayout = styled.div`

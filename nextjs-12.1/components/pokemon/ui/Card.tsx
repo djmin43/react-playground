@@ -2,8 +2,10 @@ import React, { useEffect, useReducer } from "react";
 import {
   StyledErrorMessage,
   LoadingMessageLayout,
+  CardLayout,
 } from "../../../styles/pokemon/pokemon-styles";
 import { usePokemonQuery } from "../../../queries/pokemon/pokemonQueries";
+import Image from "next/image";
 
 interface PokeCardProps {
   pokeId: string;
@@ -30,9 +32,22 @@ function Card({ pokeId }: PokeCardProps) {
       </StyledErrorMessage>
     );
 
-  if (!pokemon) return null;
-
-  return <div>{pokemon.name}</div>;
+  if (pokemon?.id)
+    return (
+      <CardLayout>
+        <p>pokemon id: {pokemon.id}</p>
+        <p>{pokemon.name}</p>
+        <div>
+          <Image
+            src={pokemon.sprites?.other["official-artwork"].front_default}
+            alt="Picture of the author"
+            width={200}
+            height={200}
+          />
+        </div>
+      </CardLayout>
+    );
+  return null;
 }
 
 function initialState<T>(item: T): T[] {
