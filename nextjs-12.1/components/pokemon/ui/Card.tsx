@@ -15,13 +15,12 @@ interface PokeCardProps {
 function Card({ pokeId }: PokeCardProps) {
   const { data: pokemon, isLoading, error, isError } = usePokemonQuery(pokeId);
 
+  const dots = useDots();
+
   if (isLoading)
     return (
       <LoadingMessageLayout>
-        <p className="loading">
-          Loading data
-          <LoadingDots />
-        </p>
+        <p className="loading">Loading data{dots}</p>
       </LoadingMessageLayout>
     );
 
@@ -59,7 +58,7 @@ function initialState<T>(item: T): T[] {
   return [item];
 }
 
-function LoadingDots({ item = ".", maximumItems = 5, interval = 1000 }: any) {
+function useDots(item = ".", maximumItems = 5, interval = 800) {
   const [state, dispatch] = useReducer(reducer, initialState<string>(item));
 
   useEffect(() => {
@@ -75,7 +74,7 @@ function LoadingDots({ item = ".", maximumItems = 5, interval = 1000 }: any) {
     return () => window.clearInterval(dotInterval);
   });
 
-  return <span className="dots">{state}</span>;
+  return state;
 }
 
 // get types for reducer
