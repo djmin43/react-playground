@@ -27,6 +27,10 @@ export const MainPageLayout = styled.section`
   background: ${palette.owl.yellow};
 `;
 
+export const StyledPokemonTitle = styled.h1`
+  text-align: center;
+`;
+
 export const StyledSearchButton = styled.button`
   background-color: ${palette.owl.blue};
   color: ${palette.white};
@@ -52,7 +56,7 @@ export const PokeIdLayout = styled.div`
   flex-direction: column;
   margin: auto;
   padding-top: 1rem;
-  m & > .error {
+  & > .error {
     height: 1.5rem;
     margin: 0.5rem;
   }

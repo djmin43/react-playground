@@ -4,6 +4,7 @@ import {
   PokeIdLayout,
   StyledErrorMessage,
   StyledSearchInput,
+  StyledPokemonTitle,
 } from "../../styles/pokemon/pokemon-styles";
 import { Form, Formik, useField } from "formik";
 import SearchButton from "./ui/SearchButton";
@@ -42,7 +43,7 @@ function Pokemon(): JSX.Element {
 
   return (
     <MainPageLayout>
-      <h1>search your pokemon</h1>
+      <StyledPokemonTitle>search your pokemon</StyledPokemonTitle>
       <Formik
         initialValues={{
           id: "",
