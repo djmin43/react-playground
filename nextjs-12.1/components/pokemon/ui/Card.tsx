@@ -29,6 +29,8 @@ function Card({ pokeId }: PokeCardProps) {
     return (
       <CenterContainer>
         <StyledErrorMessage>
+          ERROR!
+          <br />
           sorry man, <br />
           you sure you got the right pokemon id?
         </StyledErrorMessage>

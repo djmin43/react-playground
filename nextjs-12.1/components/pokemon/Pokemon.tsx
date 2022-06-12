@@ -19,15 +19,15 @@ const PokeIdInput = ({ label, ...props }: any) => {
 
   return (
     <PokeIdLayout>
-      <div className="error">
-        {meta.touched && meta.error ? (
-          <StyledErrorMessage>{meta.error}</StyledErrorMessage>
-        ) : null}
-      </div>
       <div className="input">
         <label htmlFor={props.name}>{label}: </label>
         <StyledSearchInput className="text-input" {...field} {...props} />
         <SearchButton type="submit" />
+      </div>
+      <div className="error">
+        {meta.touched && meta.error ? (
+          <StyledErrorMessage>{meta.error}</StyledErrorMessage>
+        ) : null}
       </div>
     </PokeIdLayout>
   );
@@ -42,6 +42,7 @@ function Pokemon(): JSX.Element {
 
   return (
     <MainPageLayout>
+      <h1>search your pokemon</h1>
       <Formik
         initialValues={{
           id: "",

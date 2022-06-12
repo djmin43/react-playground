@@ -51,8 +51,10 @@ export const PokeIdLayout = styled.div`
   align-items: center;
   flex-direction: column;
   margin: auto;
-  & > .error {
+  padding-top: 1rem;
+  m & > .error {
     height: 1.5rem;
+    margin: 0.5rem;
   }
 `;
 
