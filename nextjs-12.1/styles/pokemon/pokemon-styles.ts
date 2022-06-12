@@ -24,7 +24,6 @@ export const MainPageLayout = styled.section`
   width: 100vw;
   height: 100vh;
   background: ${palette.owl.yellow};
-  padding-top: 40%;
 `;
 
 export const StyledSearchButton = styled.button`
@@ -51,6 +50,7 @@ export const PokeIdLayout = styled.div`
   align-items: center;
   flex-wrap: wrap;
   position: relative;
+  padding-top: 30vh;
   & > .error {
     width: 100%;
     display: flex;
