@@ -78,7 +78,15 @@ function useDots(item = ".", maximumItems = 5, interval = 800) {
 }
 
 // get types for reducer
-function reducer(state: any, action: any) {
+interface Action<T> {
+  type: string;
+  payload: {
+    item: T;
+    maximumItems: number;
+  };
+}
+
+function reducer<T>(state: T[], action: Action<T>) {
   const { type, payload } = action;
   switch (type) {
     case "INCREMENT":
