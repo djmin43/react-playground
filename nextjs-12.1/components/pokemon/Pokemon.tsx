@@ -20,15 +20,6 @@ interface Values {
 const PokeIdInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
 
-  useEffect(() => {
-    console.log(pokeListKr);
-    const test = pokeListKr.map((poke) => {
-      return poke.name;
-    });
-
-    console.log(test);
-  }, []);
-
   return (
     <PokeIdLayout>
       <div className="input">

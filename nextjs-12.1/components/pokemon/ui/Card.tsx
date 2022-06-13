@@ -56,12 +56,15 @@ function Card({ pokeId }: PokeCardProps) {
   return null;
 }
 
-function initialState(item: string): string[] {
-  return [item];
+function initialState(item: string): any {
+  return {
+    count: [item],
+  };
 }
 
 function useDots(item = ".", maximumItems = 5, interval = 800) {
   const [state, dispatch] = useReducer(reducer, initialState(item));
+  const { count } = state;
 
   useEffect(() => {
     const dotInterval = setInterval(() => {
@@ -73,29 +76,35 @@ function useDots(item = ".", maximumItems = 5, interval = 800) {
         },
       });
     }, interval);
+    console.log(count);
     return () => window.clearInterval(dotInterval);
   });
 
-  return state;
+  return count;
 }
 
 // get types for reducer
-interface Action<T> {
+interface Action {
   type: string;
   payload: {
-    item: T;
+    item: string;
     maximumItems: number;
   };
 }
 
-function reducer<T>(state: T[], action: Action<T>) {
+function reducer(state: any, action: Action) {
   const { type, payload } = action;
+  const { count } = state;
   switch (type) {
     case "INCREMENT":
-      if (state.length > payload.maximumItems) {
-        return [payload.item];
+      if (count.length > payload.maximumItems) {
+        return {
+          count: [payload.item],
+        };
       }
-      return state.concat(payload.item);
+      return {
+        count: count.concat(payload.item),
+      };
     default:
       return state;
   }
