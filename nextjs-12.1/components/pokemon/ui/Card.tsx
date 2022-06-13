@@ -15,14 +15,12 @@ interface PokeCardProps {
 function Card({ pokeId }: PokeCardProps) {
   const { data: pokemon, isLoading, error } = usePokemonQuery(pokeId);
 
-  const dots = useDots();
+  // const dots = useDots();
 
   if (isLoading)
     return (
       <LoadingMessageLayout>
-        <p className="loading">
-          Loading data<>{dots}</>
-        </p>
+        <p className="loading">Loading data</p>
       </LoadingMessageLayout>
     );
 
