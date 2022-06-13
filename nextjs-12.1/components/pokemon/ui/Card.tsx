@@ -13,14 +13,16 @@ interface PokeCardProps {
 }
 
 function Card({ pokeId }: PokeCardProps) {
-  const { data: pokemon, isLoading, error, isError } = usePokemonQuery(pokeId);
+  const { data: pokemon, isLoading, error } = usePokemonQuery(pokeId);
 
   const dots = useDots();
 
   if (isLoading)
     return (
       <LoadingMessageLayout>
-        <p className="loading">Loading data{dots}</p>
+        <p className="loading">
+          Loading data<>{dots}</>
+        </p>
       </LoadingMessageLayout>
     );
 
@@ -54,12 +56,12 @@ function Card({ pokeId }: PokeCardProps) {
   return null;
 }
 
-function initialState<T>(item: T): T[] {
+function initialState(item: string): string[] {
   return [item];
 }
 
 function useDots(item = ".", maximumItems = 5, interval = 800) {
-  const [state, dispatch] = useReducer(reducer, initialState<string>(item));
+  const [state, dispatch] = useReducer(reducer, initialState(item));
 
   useEffect(() => {
     const dotInterval = setInterval(() => {
