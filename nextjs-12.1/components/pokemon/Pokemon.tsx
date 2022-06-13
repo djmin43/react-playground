@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainPageLayout,
   PokeIdLayout,
@@ -11,12 +11,23 @@ import SearchButton from "./ui/SearchButton";
 import Card from "./ui/Card";
 import * as Yup from "yup";
 
+import { pokeListKr } from "../../constants/pokemon/pokemon-kr";
+
 interface Values {
   id: string;
 }
 
 const PokeIdInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
+
+  useEffect(() => {
+    console.log(pokeListKr);
+    const test = pokeListKr.map((poke) => {
+      return poke.name;
+    });
+
+    console.log(test);
+  }, []);
 
   return (
     <PokeIdLayout>
