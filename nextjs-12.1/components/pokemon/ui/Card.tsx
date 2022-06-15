@@ -1,10 +1,7 @@
 import React from "react";
 import Loading from "./Loading";
-import {
-  StyledErrorMessage,
-  CardLayout,
-  CenterContainer,
-} from "../../../styles/pokemon/pokemon-styles";
+import Error from "./Error";
+import { CardLayout } from "../../../styles/pokemon/pokemon-styles";
 import { usePokemonQuery } from "../../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
 
@@ -17,17 +14,7 @@ function Card({ pokeId }: PokeCardProps) {
 
   if (isLoading) return <Loading />;
 
-  if (error)
-    return (
-      <CenterContainer>
-        <StyledErrorMessage>
-          ERROR!
-          <br />
-          sorry man, <br />
-          you sure you got the right pokemon id?
-        </StyledErrorMessage>
-      </CenterContainer>
-    );
+  if (error) return <Error />;
 
   if (pokemon?.id)
     return (
