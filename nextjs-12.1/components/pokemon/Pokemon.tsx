@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MainPageLayout,
   PokeIdLayout,
@@ -19,9 +19,19 @@ interface Values {
 
 const PokeIdInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
+  const [testValue, setTestValue] = useState(1);
+
+  useEffect(() => {
+    setTestValue((prevState) => {
+      console.log("prevstate", prevState);
+      return 2;
+    });
+    console.log(testValue);
+  }, []);
 
   return (
     <PokeIdLayout>
+      {testValue}
       <div className="input">
         <label htmlFor={props.name}>{label}: </label>
         <StyledSearchInput className="text-input" {...field} {...props} />
