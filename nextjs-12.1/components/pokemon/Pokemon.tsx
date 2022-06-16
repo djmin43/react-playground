@@ -13,12 +13,9 @@ import * as Yup from "yup";
 
 import { pokeListKr } from "../../constants/pokemon/pokemon-kr";
 
-interface Values {
-  id: string;
-}
-
 const PokeIdInput = ({ label, ...props }: any) => {
   const [field, meta] = useField(props);
+  console.log(field);
 
   return (
     <PokeIdLayout>
