@@ -13,7 +13,7 @@ import * as Yup from "yup";
 
 import { pokeListKr } from "../../constants/pokemon/pokemon-kr";
 
-const PokeIdInput = ({ label, ...props }: any) => {
+function PokeIdInput({ label, ...props }: any) {
   const [field, meta] = useField(props);
   console.log(field);
 
@@ -31,7 +31,7 @@ const PokeIdInput = ({ label, ...props }: any) => {
       </div>
     </PokeIdLayout>
   );
-};
+}
 
 function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("");
