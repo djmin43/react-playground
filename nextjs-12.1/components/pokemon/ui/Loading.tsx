@@ -46,7 +46,11 @@ interface Action {
   };
 }
 
-function reducer(state: any, action: Action) {
+interface State {
+  count: string[];
+}
+
+function reducer(state: State, action: Action) {
   const { type, payload } = action;
   const { count } = state;
   switch (type) {
