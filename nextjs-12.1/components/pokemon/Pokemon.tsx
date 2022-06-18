@@ -39,6 +39,16 @@ const PokeIdInput = ({ label, ...props }: any) => {
 function Pokemon(): JSX.Element {
   const [pokeId, setPokeId] = useState<string>("");
 
+  useEffect(() => {
+    const key = "피";
+    const search = pokeListKr.reduce((memo: string[], pokemon) => {
+      if (pokemon.name.includes(key)) {
+        memo.push(pokemon.id);
+      }
+      return memo;
+    }, []);
+  }, []);
+
   function handlePokeIdSearch(id: string) {
     setPokeId(id);
   }
@@ -50,9 +60,6 @@ function Pokemon(): JSX.Element {
         initialValues={{
           id: "",
         }}
-        validationSchema={Yup.object({
-          id: Yup.number().typeError("please enter poke id"),
-        })}
         onSubmit={(values) => {
           handlePokeIdSearch(values.id);
         }}
