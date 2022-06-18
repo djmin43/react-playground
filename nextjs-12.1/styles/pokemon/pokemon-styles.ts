@@ -22,7 +22,7 @@ const palette = {
 
 export const MainPageLayout = styled.section`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 5rem 0;
   background: ${palette.owl.yellow};
 `;

@@ -17,7 +17,7 @@ function PokemonPage(): JSX.Element {
           content="search your favourite pokemon with poke id"
         />
       </Head>
-      <Pokemon />;
+      <Pokemon />
     </>
   );
 }

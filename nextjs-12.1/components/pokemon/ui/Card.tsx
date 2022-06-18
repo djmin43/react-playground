@@ -1,21 +1,12 @@
-import React from "react";
-import Loading from "./Loading";
-import Error from "./Error";
+import React, { useEffect } from "react";
 import { CardLayout } from "../../../styles/pokemon/pokemon-styles";
-import { usePokemonQuery } from "../../../queries/pokemon/pokemonQueries";
 import Image from "next/image";
 
 interface PokeCardProps {
-  pokeId: string;
+  pokemon: any;
 }
 
-function Card({ pokeId }: PokeCardProps) {
-  const { data: pokemon, isLoading, error } = usePokemonQuery(pokeId);
-
-  if (isLoading) return <Loading />;
-
-  if (error) return <Error />;
-
+function Card({ pokemon }: PokeCardProps) {
   if (pokemon?.id)
     return (
       <CardLayout>

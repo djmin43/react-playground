@@ -12,10 +12,10 @@ import Card from "./ui/Card";
 import * as Yup from "yup";
 
 import { pokeListKr } from "../../constants/pokemon/pokemon-kr";
+import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
 
 function PokeIdInput({ label, ...props }: any) {
   const [field, meta] = useField(props);
-  console.log(field);
 
   return (
     <PokeIdLayout>
@@ -34,20 +34,17 @@ function PokeIdInput({ label, ...props }: any) {
 }
 
 function Pokemon(): JSX.Element {
-  const [pokeId, setPokeId] = useState<string>("");
+  const [pokeIds, setPokeIds] = useState<string[]>([""]);
 
-  useEffect(() => {
-    const key = "피";
-    const search = pokeListKr.reduce((memo: string[], pokemon) => {
-      if (pokemon.name.includes(key)) {
-        memo.push(pokemon.id);
-      }
-      return memo;
-    }, []);
-  }, []);
+  const pokemonList = usePokemonQuery(pokeIds);
 
+  // TODO: translate this to useReducer
   function handlePokeIdSearch(id: string) {
-    setPokeId(id);
+    if (isNaN(+id)) {
+      setPokeIds(pokeIdFinder(id));
+      return;
+    }
+    setPokeIds([id]);
   }
 
   return (
@@ -65,9 +62,20 @@ function Pokemon(): JSX.Element {
           <PokeIdInput label="id" name="id" type="text" placeholder="id" />
         </Form>
       </Formik>
-      <Card pokeId={pokeId} />
+      {pokemonList.map((pokemon: any, index) => (
+        <Card key={index} pokemon={pokemon.data} />
+      ))}
     </MainPageLayout>
   );
+}
+
+function pokeIdFinder(key: string) {
+  return pokeListKr.reduce((memo: string[], pokemon) => {
+    if (pokemon.name.includes(key)) {
+      memo.push(pokemon.id);
+    }
+    return memo;
+  }, []);
 }
 
 export default Pokemon;

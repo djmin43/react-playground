@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQueries, useQuery } from "react-query";
 import axios from "axios";
 
 enum PokeImage {
@@ -14,15 +14,20 @@ async function fetchPokemon(pokeId: string): Promise<any> {
   );
   return response.data;
 }
-export function usePokemonQuery(pokeId: string) {
-  return useQuery<any, any>(["pokemon", pokeId], () => fetchPokemon(pokeId), {
-    enabled: !!pokeId,
-    select: (data) => {
+export function usePokemonQuery(pokeIds: string[]) {
+  return useQueries(
+    pokeIds.map((pokeId) => {
       return {
-        id: data.id,
-        name: data.name,
-        sprites: data.sprites,
+        queryKey: ["pokeId", pokeId],
+        queryFn: () => fetchPokemon(pokeId),
+        select: (data: any) => {
+          return {
+            id: data.id,
+            name: data.name,
+            sprites: data.sprites,
+          };
+        },
       };
-    },
-  });
+    })
+  );
 }
