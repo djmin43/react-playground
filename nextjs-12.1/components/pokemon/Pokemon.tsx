@@ -9,10 +9,11 @@ import {
 import { Form, Formik, useField } from "formik";
 import SearchButton from "./ui/SearchButton";
 import Card from "./ui/Card";
-import * as Yup from "yup";
 
 import { pokeListKr } from "../../constants/pokemon/pokemon-kr";
 import { usePokemonQuery } from "../../queries/pokemon/pokemonQueries";
+import Loading from "./ui/Loading";
+import Error from "./ui/Error";
 
 function PokeIdInput({ label, ...props }: any) {
   const [field, meta] = useField(props);
@@ -47,6 +48,8 @@ function Pokemon(): JSX.Element {
     setPokeIds([id]);
   }
 
+  useEffect(() => console.log("pokemonlist", pokemonList), [pokeIds]);
+
   return (
     <MainPageLayout>
       <StyledPokemonTitle>search your pokemon</StyledPokemonTitle>
@@ -59,12 +62,19 @@ function Pokemon(): JSX.Element {
         }}
       >
         <Form>
-          <PokeIdInput label="id" name="id" type="text" placeholder="id" />
+          <PokeIdInput
+            label="포디몬이름 또는 번호"
+            name="id"
+            type="text"
+            placeholder="id"
+          />
         </Form>
       </Formik>
-      {pokemonList.map((pokemon: any, index) => (
-        <Card key={index} pokemon={pokemon.data} />
-      ))}
+      {pokemonList.map((pokemon: any, index) => {
+        if (pokemon.isLoading) return <Loading key={index} />;
+        if (pokemon.error) return <Error key={index} />;
+        return <Card key={index} pokemon={pokemon.data} />;
+      })}
     </MainPageLayout>
   );
 }
