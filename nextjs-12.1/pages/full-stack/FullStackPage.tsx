@@ -1,7 +1,15 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function FullStackPage() {
-  return <div>full stack page!</div>;
+  const queryClient = new QueryClient();
+  return (
+    <QueryClientProvider client={queryClient}>
+      hello world
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default FullStackPage;
