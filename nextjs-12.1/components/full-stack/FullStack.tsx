@@ -5,12 +5,15 @@ import axios from "axios";
 function FullStack() {
   const { data } = useQuery("test", () => fetchTest);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const fetchTest = async (): Promise<any> => {
-    return await axios.get("/api/full-stack/test");
+    const response = await axios.get("/api/full-stack/test");
+    console.log(response);
+    return response.data;
+  };
+  const hello = async () => {
+    const response = await axios.get("/api/hello");
+    console.log(response);
+    return response.data;
   };
 
   return (
