@@ -5,17 +5,20 @@ import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
-    <ul>
-      {PAGE_INDEX.map((page) => {
-        return (
-          <li key={page.value}>
-            <Link href={`/${page.value}`}>
-              <a>{page.value}</a>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <section>
+      <h1>my playground</h1>
+      <ul>
+        {PAGE_INDEX.map((page) => {
+          return (
+            <li key={page.value}>
+              <Link href={`/${page.value}`}>
+                <a>{page.value}</a>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 };
 
