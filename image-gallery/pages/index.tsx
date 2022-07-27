@@ -2,33 +2,59 @@ import { useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-  process.env.SUPABASE_SERVICE_ROLE_KEY || ""
-);
+export async function getStaticProps() {
+  const supabaseAdmin = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    process.env.SUPABASE_SERVICE_ROLE_KEY || ""
+  );
+
+  const { data } = await supabaseAdmin
+    .from("sample-data")
+    .select("*")
+    .order("id");
+  return {
+    props: {
+      images: data,
+    },
+  };
+}
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Gallery() {
+type Image = {
+  id: number;
+  href: string;
+  imageSrc: string;
+  name: string;
+  username: string;
+};
+
+interface GalleryProps {
+  images: Image[];
+}
+
+export default function Gallery({ images }: GalleryProps) {
   return (
     <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="grid gird-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        <BlurImage />
+        {images.map((image) => (
+          <BlurImage key={image.id} image={image} />
+        ))}
       </div>
     </div>
   );
 }
 
-function BlurImage() {
+function BlurImage({ image }: { image: Image }) {
   const [isLoading, setLoading] = useState(true);
 
   return (
-    <a href="#" className="group">
+    <a href={image.href} className="group">
       <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200">
         <Image
-          src="https://bit.ly/placeholder-img"
+          src={image.imageSrc}
           alt=""
           layout="fill"
           objectFit="cover"
