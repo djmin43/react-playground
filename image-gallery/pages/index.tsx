@@ -2,7 +2,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { createClient } from "@supabase/supabase-js";
 
-export async function getServerSideProps() {
+export async function getStaticProps(context) {
+  console.log(context);
   const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL || "",
     process.env.SUPABASE_SERVICE_ROLE_KEY || ""
@@ -11,7 +12,7 @@ export async function getServerSideProps() {
   const { data } = await supabaseAdmin
     .from("sample-data")
     .select("*")
-    .order("id");
+    .order("name");
   return {
     props: {
       images: data,
@@ -67,8 +68,8 @@ function BlurImage({ image }: { image: Image }) {
           onLoadingComplete={() => setLoading(false)}
         />
       </div>
-      <h3 className="mt-4 text-sm text-gray-700">Jay Min</h3>
-      <p className="mt-1 text-lg font-medium text-gray-900">@djmin43</p>
+      <h3 className="mt-4 text-sm text-gray-700">{image.id}</h3>
+      <p className="mt-1 text-lg font-medium text-gray-900">{image.name}</p>
     </a>
   );
 }
