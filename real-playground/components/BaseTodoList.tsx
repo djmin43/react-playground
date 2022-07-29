@@ -1,24 +1,14 @@
 import React from "react";
-
-const TODOS: TodoItemType[] = [
-  { id: "1", task: "Do this", completed: true },
-  { id: "2", task: "Do that", completed: false },
-];
-
-type TodoItemType = {
-  id: string;
-  task: string;
-  completed: boolean;
-};
+import { TodoItemType } from "../pages/todo-list";
 
 interface TodoItemProps {
   item: TodoItemType;
 }
 
-const TodoList = () => {
+const BaseTodoList = ({ data }: { data: TodoItemType[] }) => {
   return (
     <ul>
-      {TODOS.map((item) => (
+      {data.map((item) => (
         <TodoItem key={item.id} item={item} />
       ))}
     </ul>
@@ -33,4 +23,4 @@ const TodoItem = ({ item }: TodoItemProps) => {
   );
 };
 
-export default TodoList;
+export default BaseTodoList;
