@@ -1,0 +1,5 @@
+export const NEXT_PUBLIC_SUPABASE_URL =
+  "https://fnxzclgzszpelepeayvj.supabase.co";
+
+export const SUPABASE_SERVICE_ROLE_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZueHpjbGd6c3pwZWxlcGVheXZqIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY1ODkyMDg0OSwiZXhwIjoxOTc0NDk2ODQ5fQ.TYy2raSLBBTWIF6joyPSoV16wZH_7d9uqCKC0oiTXG4";

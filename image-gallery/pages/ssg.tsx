@@ -1,10 +1,14 @@
 import { createClient } from "@supabase/supabase-js";
 import BlurImage, { ImageType } from "../components/BlurImage";
+import {
+  NEXT_PUBLIC_SUPABASE_URL,
+  SUPABASE_SERVICE_ROLE_KEY,
+} from "../constants/supabase";
 
 export async function getStaticProps() {
   const supabaseAdmin = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-    process.env.SUPABASE_SERVICE_ROLE_KEY || ""
+    NEXT_PUBLIC_SUPABASE_URL || "",
+    SUPABASE_SERVICE_ROLE_KEY || ""
   );
 
   const { data } = await supabaseAdmin
