@@ -33,8 +33,8 @@ function BlurImage({ image }: { image: ImageType }) {
           onLoadingComplete={() => setLoading(false)}
         />
       </div>
-      <h3 className="mt-4 text-sm text-gray-700">Jay Min</h3>
-      <p className="mt-1 text-lg font-medium text-gray-900">@djmin43</p>
+      <h3 className="mt-4 text-sm text-gray-700">{image.id}</h3>
+      <p className="mt-1 text-lg font-medium text-gray-900">{image.name}</p>
     </a>
   );
 }
