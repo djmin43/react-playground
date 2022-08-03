@@ -1,0 +1,11 @@
+.portfolio {
+  text-align: center;
+}
+.portfolio > h2 {
+  font-size: 3em;
+  margin-top: 80px;
+}
+.portfolio > h3 {
+  font-size: 2em;
+  font-weight: 400;
+}
