@@ -1,5 +1,4 @@
 import * as React from "react";
-import type { HeadFC } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 
@@ -14,7 +13,7 @@ const IndexPage = () => {
   );
 };
 
-const Header = () => {
+export const Header = () => {
   const data = useStaticQuery(graphql`
     query {
       site {
