@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-example-workspaces",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "gatsby-config.js",
   "license": "MIT",
   "peerDependencies": {
     "gatsby": "^4.20.0",
