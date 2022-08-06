@@ -14,7 +14,7 @@ export const useProgrammerList = (): IProgrammer[] => {
           description
           mainLanguage
           image {
-            gatsbyImage(width: 200)
+            gatsbyImage(width: 200, height: 200)
           }
         }
       }

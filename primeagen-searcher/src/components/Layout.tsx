@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { styled } from "@stitches/react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -6,15 +7,19 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <main>
+    <MainLayout>
       <header>header</header>
       <nav>navbar</nav>
 
       {children}
 
       <footer>this is footer</footer>
-    </main>
+    </MainLayout>
   );
 };
+
+const MainLayout = styled("main", {
+  backgroundColor: "#edf0f2",
+});
 
 export default Layout;

@@ -5975,6 +5975,11 @@ gatsby-telemetry@^3.20.0:
     lodash "^4.17.21"
     node-fetch "^2.6.7"
 
+gatsby-theme-stitches@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-stitches/-/gatsby-theme-stitches-1.0.0.tgz#a44e3d28eddafb0447c455106e0d8493bea3e285"
+  integrity sha512-02Y0bvvxZGn8c5xdUpvg4wQ0Dvsn2DkC2K0WY2WtSej1oSBQtkAbGk6FJN6fJWUmyKuLHWddIeHxVboSqyW14g==
+
 gatsby-transformer-sharp@^4.20.0:
   version "4.20.0"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-4.20.0.tgz#e66657e2e59ecb0c9f911c7b1d96a60571d90bb8"

@@ -21,8 +21,12 @@ const Card = ({ programmerData }: CardProps) => {
 };
 
 const CardContainer = styled("div", {
-  border: "1px solid black",
   padding: "1rem",
+  margin: "0.25rem",
+  display: "flex",
+  flexDirection: "column",
+  textAlign: "center",
+  backgroundColor: "#fefefe",
 });
 
 export default Card;
