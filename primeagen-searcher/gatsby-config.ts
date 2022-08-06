@@ -1,5 +1,10 @@
 import type { GatsbyConfig } from "gatsby";
 
+
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `primeagen-searcher`,
@@ -12,8 +17,8 @@ const config: GatsbyConfig = {
   plugins: [{
     resolve: 'gatsby-source-contentful',
     options: {
-      "accessToken": "Vi6F1SL-hQKTCpvX59BgKX9RDMrYh5S8s6148ACZ9i0",
-      "spaceId": "avosu5u8t1wd"
+      "accessToken": process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
+      "spaceId": process.env.CONTENTFUL_SPACE_ID,
     }
   }, "gatsby-plugin-image", "gatsby-plugin-sitemap", "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
     resolve: 'gatsby-source-filesystem',
