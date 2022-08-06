@@ -83,11 +83,13 @@ exports.onRenderBody = onRenderBody;
 
 exports.components = {
   "component---cache-dev-404-page-js": () => __webpack_require__.e(/*! import() | component---cache-dev-404-page-js */ "component---cache-dev-404-page-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../dev-404-page.js?export=default */ "./.cache/dev-404-page.js?export=default")),
-  "component---src-pages-index-jsx": () => __webpack_require__.e(/*! import() | component---src-pages-index-jsx */ "component---src-pages-index-jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.jsx?export=default */ "./src/pages/index.jsx?export=default"))
+  "component---gatsby-theme-example-workspaces-src-pages-theme-page-js": () => __webpack_require__.e(/*! import() | component---gatsby-theme-example-workspaces-src-pages-theme-page-js */ "component---gatsby-theme-example-workspaces-src-pages-theme-page-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../../gatsby-theme-example-workspaces/src/pages/theme-page.js?export=default */ "../gatsby-theme-example-workspaces/src/pages/theme-page.js?export=default")),
+  "component---src-pages-index-js": () => __webpack_require__.e(/*! import() | component---src-pages-index-js */ "component---src-pages-index-js").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.js?export=default */ "./src/pages/index.js?export=default"))
 };
 exports.head = {
   "component---cache-dev-404-page-js": () => __webpack_require__.e(/*! import() | component---cache-dev-404-page-jshead */ "component---cache-dev-404-page-jshead").then(__webpack_require__.bind(__webpack_require__, /*! ./../../dev-404-page.js?export=head */ "./.cache/dev-404-page.js?export=head")),
-  "component---src-pages-index-jsx": () => __webpack_require__.e(/*! import() | component---src-pages-index-jsxhead */ "component---src-pages-index-jsxhead").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.jsx?export=head */ "./src/pages/index.jsx?export=head"))
+  "component---gatsby-theme-example-workspaces-src-pages-theme-page-js": () => __webpack_require__.e(/*! import() | component---gatsby-theme-example-workspaces-src-pages-theme-page-jshead */ "component---gatsby-theme-example-workspaces-src-pages-theme-page-jshead").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../../gatsby-theme-example-workspaces/src/pages/theme-page.js?export=head */ "../gatsby-theme-example-workspaces/src/pages/theme-page.js?export=head")),
+  "component---src-pages-index-js": () => __webpack_require__.e(/*! import() | component---src-pages-index-jshead */ "component---src-pages-index-jshead").then(__webpack_require__.bind(__webpack_require__, /*! ./../../../src/pages/index.js?export=head */ "./src/pages/index.js?export=head"))
 };
 
 /***/ }),
