@@ -1,10 +1,17 @@
 import * as React from "react";
 import Layout from "../components/Layout";
 import { useProgrammerList } from "../hooks/useProgrammerList";
+import Card from "../components/common/Card";
 
 const IndexPage = () => {
   const programmersList = useProgrammerList();
-  return <Layout>this will have list of programmers</Layout>;
+  return (
+    <Layout>
+      {programmersList.map((programmer) => (
+        <Card programmerData={programmer} />
+      ))}
+    </Layout>
+  );
 };
 
 export default IndexPage;
