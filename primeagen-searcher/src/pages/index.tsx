@@ -8,7 +8,7 @@ const IndexPage = () => {
   return (
     <Layout>
       {programmersList.map((programmer) => (
-        <Card programmerData={programmer} />
+        <Card key={programmer.id} programmerData={programmer} />
       ))}
     </Layout>
   );

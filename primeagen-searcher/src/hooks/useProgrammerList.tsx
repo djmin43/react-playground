@@ -9,14 +9,13 @@ export const useProgrammerList = (): IProgrammer[] => {
       allContentfulPage {
         nodes {
           id
-          image {
-            file {
-              url
-            }
-          }
-          url
           name
+          url
           description
+          mainLanguage
+          image {
+            gatsbyImage(width: 200)
+          }
         }
       }
     }
