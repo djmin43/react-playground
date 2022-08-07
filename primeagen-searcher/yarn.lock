@@ -1077,6 +1077,11 @@
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-15.12.1.tgz#3b131f03fc55b6001f6eb5f5615aefb22678b3d3"
   integrity sha512-WQJic0fnAbTa8xzO3Z+aVqDmA5+JMNQlATQMVJ40GoOrnM8YoJZsKGf6xX/O6Y6Eq10T1LrpxIOslODFI9qFgg==
 
+"@djmin43/gatsby-theme-example-workspaces@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@djmin43/gatsby-theme-example-workspaces/-/gatsby-theme-example-workspaces-1.0.0.tgz#7bf483ba1a36deb39c5d3314d02274cbfb005d89"
+  integrity sha512-arI4ldLXeDvtaWGzO2wnk26NDqhNYjE2rQSen3HDZXnHJWo8G7kOmP2/eEHO+v+wT85aJ6tw8vPuGv5TztMupg==
+
 "@endemolshinegroup/cosmiconfig-typescript-loader@3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@endemolshinegroup/cosmiconfig-typescript-loader/-/cosmiconfig-typescript-loader-3.0.2.tgz#eea4635828dde372838b0909693ebd9aafeec22d"

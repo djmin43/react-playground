@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
+    "@djmin43/gatsby-theme-example-workspaces": "1.0.0",
     "gatsby": "^4.20.0",
     "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-sharp": "^4.20.0",

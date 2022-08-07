@@ -23,6 +23,7 @@ const config: GatsbyConfig = {
     },
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
+    "@djmin43/gatsby-theme-example-workspaces",
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
