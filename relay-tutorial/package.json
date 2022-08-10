@@ -22,7 +22,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "relay": "yarn run relay-compiler"
+  },
+  "relay": {
+    "src": "./src/",
+    "schema": "./schema.graphql",
+    "language": "javascript"
   },
   "eslintConfig": {
     "extends": [
