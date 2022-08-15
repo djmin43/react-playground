@@ -14,7 +14,7 @@ interface IQueryKeys {
   keyword: string;
   resultType: "xml" | "json";
 }
-const jusoEndpoint = "https://www.juso.go.kr/addrlink/addrLinkApiJsonp.do";
+const jusoEndpoint = "https://business.juso.go.kr/addrlink/addrLinkApiJsonp.do";
 
 function JusoQuery({
   children,
