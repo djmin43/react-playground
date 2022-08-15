@@ -14,7 +14,6 @@ interface IQueryKeys {
   keyword: string;
   resultType: "xml" | "json";
 }
-const jusoEndpoint = "https://business.juso.go.kr/addrlink/addrLinkApiJsonp.do";
 
 function JusoQuery({
   children,
@@ -39,7 +38,7 @@ function useJusoQuery(keys: IQueryKeys) {
 function getJuso(keys: IQueryKeys) {
   try {
     const res = axios.get(
-      `https://www.juso.go.kr/addrlink/addrLinkApi.do?$confmKey=${keys.confmKey}&currentPage=${keys.currentPage}&countPerPage=${keys.countPerPage}&keyword=${keys.keyword}&resultType=${keys.resultType}`
+      `https://business.juso.go.kr/addrlink/addrLinkApi.do?$confmKey=${keys.confmKey}&currentPage=${keys.currentPage}&countPerPage=${keys.countPerPage}&keyword=${keys.keyword}&resultType=${keys.resultType}`
     );
     return res;
   } catch (error) {
