@@ -1,5 +1,12 @@
+import React from "react";
+import JoosoQuery from "./hook/JoosoQuery";
+
 function App() {
-  return <div></div>;
+  return (
+    <JoosoQuery>
+      <>ihela</>
+    </JoosoQuery>
+  );
 }
 
 export default App;
