@@ -62,12 +62,7 @@ function Pokemon(): JSX.Element {
         }}
       >
         <Form>
-          <PokeIdInput
-            label="포디몬이름 또는 번호"
-            name="id"
-            type="text"
-            placeholder="id"
-          />
+          <PokeIdInput label="poke-id" name="id" type="text" placeholder="id" />
         </Form>
       </Formik>
       {pokemonList.map((pokemon: any, index) => {
