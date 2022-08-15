@@ -19,8 +19,7 @@ const jusoEndpoint = "https://www.juso.go.kr/addrlink/addrLinkApiJsonp.do";
 function JusoQuery({
   children,
   keys = {
-    confmKey:
-      import.meta.env.VITE_JOOSO_API_KEY ?? import.meta.env.JUSO_API_KEY,
+    confmKey: "devU01TX0FVVEgyMDIyMDgxNTE3NTIwNDExMjg4MjY=",
     currentPage: 1,
     countPerPage: 5,
     keyword: "운양동",
@@ -28,8 +27,6 @@ function JusoQuery({
   },
 }: IJusoQueryProps) {
   const data = useJusoQuery(keys);
-  console.log("vite", import.meta.env.VITE_JOOSO_API_KEY);
-  console.log("no-vite", import.meta.env.JUSO_API_KEY);
   console.log(data);
   return children;
 }
