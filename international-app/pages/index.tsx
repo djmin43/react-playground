@@ -4,7 +4,14 @@ import fetchGraphQL from "../src/fetchGraphQL";
 
 const Home: NextPage = () => {
   useEffect(() => {
-    fetchGraphQL();
+    const query = `
+      {
+        blogPostCollection {
+          total
+        }
+      }
+    `;
+    const res = fetchGraphQL(query);
   }, []);
 
   return <div>hello world</div>;
