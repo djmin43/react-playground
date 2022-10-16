@@ -9,7 +9,7 @@ const Home: NextPage = () => {
     const newCanvas = new fabric.Canvas("canvas", {
       height: 800,
       width: 800,
-      backgroundColor: "pink",
+      backgroundColor: "blue",
     });
     console.log(newCanvas);
     // setCanvas(newCanvas);
