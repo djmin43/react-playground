@@ -161,6 +161,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@types/fabric@^4.5.12":
+  version "4.5.12"
+  resolved "https://registry.yarnpkg.com/@types/fabric/-/fabric-4.5.12.tgz#9c340075e166710c9da5e92afa157e5e171d9b12"
+  integrity sha512-rhRMpy+LMrRyxsDEjD78N48Qo+v7t1GEQvaEz8sm5efNsV+p4CHQCnN2wvgIyqPAIkiAGPPwSfVIBgluQP89Aw==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
