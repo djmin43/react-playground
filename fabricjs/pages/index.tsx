@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       fireRightClick: true,
       fireMiddleClick: true,
       stopContextMenu: true,
-      backgroundColor: undefined,
+      backgroundColor: "green",
       backgroundImage: undefined,
       selection: true,
     });
