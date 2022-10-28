@@ -1,4 +1,4 @@
-import { router } from "next/client";
+import router from "next/router";
 import React, { useEffect } from "react";
 
 const code = "imp10391932";
