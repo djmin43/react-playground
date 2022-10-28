@@ -4,6 +4,7 @@ const code = "imp10391932";
 
 function ValidateUserPage() {
   useEffect(() => {
+    // @ts-ignore
     const IMP = window.IMP;
     const container = IMP.init(code);
     IMP.certification(
