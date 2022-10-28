@@ -18,7 +18,7 @@ function ValidateUserPage() {
         // 모바일환경에서 popup:false(기본값) 인 경우 필수
         m_redirect_url: "https://naver.com",
         // PC환경에서는 popup 파라메터가 무시되고 항상 true 로 적용됨
-        popup: true,
+        popup: false,
       },
       // @ts-ignore
       (rsp) => {
