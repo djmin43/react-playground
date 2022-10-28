@@ -19,6 +19,7 @@ function ValidateUserPage() {
         // PC환경에서는 popup 파라메터가 무시되고 항상 true 로 적용됨
         popup: false,
       },
+      // @ts-ignore
       (rsp) => {
         // callback
         if (rsp.success) {
