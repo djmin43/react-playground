@@ -34,6 +34,8 @@ function ValidateUserPage() {
       }
     );
   }, []);
+
+  return <div>hello world</div>;
 }
 
 export default ValidateUserPage;

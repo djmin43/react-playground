@@ -6,9 +6,7 @@ export default function Home() {
   const router = useRouter();
   return (
     <div>
-      <button onClick={() => router.push("/validate-user")}>
-        인증하러가기!
-      </button>
+      <button onClick={() => router.push("/validate")}>인증하러가기!</button>
     </div>
   );
 }
