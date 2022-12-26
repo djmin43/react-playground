@@ -23,6 +23,7 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@types/fabric": "^4.5.14",
     "prettier": "2.8.1"
   }
 }
