@@ -11,6 +11,7 @@ export default function Home() {
       fill: "red",
       width: 20,
       height: 20,
+      angle: 45,
     });
     canvas.add(rect);
   }, []);
