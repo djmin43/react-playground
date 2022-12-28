@@ -8,9 +8,16 @@ export default function Home() {
   useEffect(() => {
     if (canvasEl.current && !canvas.current) {
       canvas.current = new fabric.Canvas(canvasEl.current);
-      canvas.current.isDrawingMode = true;
-      canvas.current.freeDrawingBrush.color = "red";
-      canvas.current.freeDrawingBrush.width = 1;
+        const rect = new fabric.Rect({
+            left: 100,
+            top: 100,
+            fill: 'red',
+            width: 20,
+            height: 20,
+            angle: 45
+        });
+
+        canvas.current.add(rect);
     }
   }, []);
 
