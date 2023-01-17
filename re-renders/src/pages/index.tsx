@@ -6,7 +6,7 @@ const ParentComponentMemo = React.memo(ParentComponent);
 export default function Home() {
   return (
     <CountProvider>
-      {/*<ParentComponentMemo />*/}
+      <ParentComponentMemo />
       <ParentComponent />
     </CountProvider>
   );
