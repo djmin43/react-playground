@@ -1,13 +1,12 @@
-import ParentComponent from "@/components/ParentComponent";
-import { CountProvider } from "@/context/CountProvider";
 import React from "react";
+import Link from "next/link";
 
-const ParentComponentMemo = React.memo(ParentComponent);
 export default function Home() {
   return (
-    <CountProvider>
-      <ParentComponentMemo />
-      <ParentComponent />
-    </CountProvider>
+    <div>
+      <Link href={"/csr"}>csr</Link>
+      <Link href={"/ssr"}>ssr</Link>
+      <Link href={"/ssg"}>ssg</Link>
+    </div>
   );
 }
