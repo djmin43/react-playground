@@ -1,11 +1,16 @@
-import { Inter } from "next/font/google";
-import styles from "./page.module.css";
-import Counter from "@/app/counter";
+const fetchDescription = () =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve("Product information ready for SEO"), 100)
+  );
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <Counter />
-    </main>
+    <>
+      <header>Header</header>
+      <h2>Product Description</h2>
+      <p>{description}</p>
+
+      <footer>Footer</footer>
+    </>
   );
 }
