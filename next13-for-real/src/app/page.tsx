@@ -1,5 +1,5 @@
 import Comments from "@/app/comments";
-import React from "react";
+import React, { Suspense } from "react";
 
 const fetchDescription = () =>
   new Promise<string>((resolve) =>
@@ -14,8 +14,10 @@ export default async function Home() {
       <header>Header</header>
       <h2>Product Description</h2>
       <p>{description}</p>
-      {/*  @ts-expect-error Async Server Component */}
-      <Comments />
+      <Suspense fallback={<div>loading...</div>}>
+        {/*  @ts-expect-error Async Server Component */}
+        <Comments />
+      </Suspense>
 
       <footer>Footer</footer>
     </>

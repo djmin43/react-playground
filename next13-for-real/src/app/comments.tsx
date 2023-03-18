@@ -1,4 +1,4 @@
-import React from "react";
+import EditableComments from "@/app/editable-comments";
 
 const commentsFetch = () =>
   new Promise((resolve) =>
@@ -8,13 +8,7 @@ const commentsFetch = () =>
 const Comments = async () => {
   const comments = (await commentsFetch()) as string[];
 
-  return (
-    <div>
-      {comments.map((comment) => (
-        <li key={comment}>{comment}</li>
-      ))}
-    </div>
-  );
+  return <EditableComments comments={comments} />;
 };
 
 export default Comments;
