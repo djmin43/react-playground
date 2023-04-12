@@ -2,19 +2,35 @@
   "name": "hook-lib-fabric",
   "version": "1.0.0",
   "description": "this is a hook library for fabricjs",
-  "main": "index.js",
+  "type": "module",
+  "main": "./dist/bundle.js",
   "author": "min dongjoon",
   "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw"
+  },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.4",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
     "@rollup/plugin-typescript": "^11.1.0",
     "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "prettier": "^2.8.7",
     "react": "^18.2.0",
     "rollup": "^3.20.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.5.0",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react-dom": "^18.2.0"
   }
 }
