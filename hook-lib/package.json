@@ -1,9 +1,10 @@
 {
   "name": "hook-lib-fabric",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "this is a hook library for fabricjs",
   "type": "module",
   "main": "./dist/bundle.js",
+  "types": "./dist/index.d.ts",
   "author": "min dongjoon",
   "license": "MIT",
   "scripts": {
@@ -29,6 +30,7 @@
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   },
+  "files": ["/dist"],
   "dependencies": {},
   "peerDependencies": {
     "react-dom": "^18.2.0"
