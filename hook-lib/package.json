@@ -1,0 +1,8 @@
+{
+  "name": "hook-lib-fabric",
+  "version": "1.0.0",
+  "description": "this is a hook library for fabricjs",
+  "main": "index.js",
+  "author": "min dongjoon",
+  "license": "MIT"
+}
