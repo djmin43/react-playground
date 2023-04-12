@@ -11,7 +11,7 @@ export default {
   plugins: [
     // 바벨 트랜스파일러 설정
     babel({
-      babelHelpers: "runtime",
+      babelHelpers: "bundled",
       presets: [
         "@babel/preset-env",
         "@babel/preset-react",

@@ -1,1 +1,1 @@
-{"version":3,"file":"bundle.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"bundle.js","sources":["../src/components/test.tsx"],"sourcesContent":["import React from \"react\";\n\nexport const Test = () => {\n  return <div>hello</div>;\n};\n"],"names":["Test","React"],"mappings":";;IAEaA,IAAI,GAAG,SAAPA,IAAIA,GAAG;EAClB,oBAAOC,yCAAgB,CAAA;AACzB;;;;"}
