@@ -8,6 +8,7 @@ const config =  {
     },
     external: [/@babel\/runtime/],
     plugins: [babel({babelHelpers: 'runtime'})]
+
 }
 
 export default config;
