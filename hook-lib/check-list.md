@@ -6,4 +6,6 @@
 
 2. Types
    1. what is 'types' in package.json
+      - if 'files' are declared, no need to add 'types' to package.json
+      - it will look for index.d.ts in files folder
    2. don't need @types at the moment 

@@ -4,7 +4,9 @@
   "description": "this is a hook library for fabricjs",
   "type": "module",
   "main": "./dist/bundle.js",
-  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "author": "min dongjoon",
   "license": "MIT",
   "scripts": {
@@ -32,9 +34,7 @@
     "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   },
-  "files": [
-    "/dist"
-  ],
+
   "dependencies": {},
   "peerDependencies": {
     "fabric": "^5.3.0",
