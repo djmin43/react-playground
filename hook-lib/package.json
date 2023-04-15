@@ -1,6 +1,6 @@
 {
   "name": "hook-lib-fabric",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "this is a hook library for fabricjs",
   "type": "module",
   "main": "./dist/bundle.js",
