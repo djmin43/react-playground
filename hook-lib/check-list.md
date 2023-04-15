@@ -1,0 +1,9 @@
+## Things to check and study
+
+1. Do I ever need 'dependency' for library? 
+   1. 'dev dependency' for development of the library
+   2. 'peer depedency' for the library user
+
+2. Types
+   1. what is 'types' in package.json
+   2. don't need @types at the moment 
