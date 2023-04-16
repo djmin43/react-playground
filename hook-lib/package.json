@@ -7,6 +7,7 @@
   "files": [
     "/dist"
   ],
+  "types": "./dist/types",
   "author": "min dongjoon",
   "license": "MIT",
   "scripts": {
