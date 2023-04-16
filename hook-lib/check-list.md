@@ -15,3 +15,5 @@
    - Should learn about roll up plugins
      - how babel plugin works
      - how typescript plugin works
+
+4. How tree-shaking works with rollup?
