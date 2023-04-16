@@ -1,4 +1,4 @@
-import { Test } from "hook-lib-fabric/dist/types";
+import { Test } from "hook-lib-fabric/dist";
 
 export default function Home() {
   return (
