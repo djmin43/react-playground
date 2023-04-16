@@ -1,6 +1,6 @@
 {
   "name": "hook-lib-fabric",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "this is a hook library for fabricjs",
   "type": "module",
   "main": "./dist/bundle.js",
@@ -12,7 +12,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -cw"
+    "watch": "rollup -cw",
+    "publish": "rollup -c && npm publish"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
