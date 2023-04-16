@@ -9,4 +9,9 @@
       - if 'files' are declared, no need to add 'types' to package.json
       - it will look for index.d.ts in files folder
       - still good practice to have 'types' in package.json
-   2. don't need @types at the moment 
+   2. don't need @types at the moment
+
+3. Plugins
+   - Should learn about roll up plugins
+     - how babel plugin works
+     - how typescript plugin works
