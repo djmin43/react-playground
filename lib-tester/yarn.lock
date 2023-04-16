@@ -1256,10 +1256,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hook-lib-fabric@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/hook-lib-fabric/-/hook-lib-fabric-1.0.5.tgz#0b6a0e57033a4a015b3e66d856ef319cd058b7a4"
-  integrity sha512-8ikP2QOT3Va2cCwkTBA4Js21cjbEw/uHQNWkTKs3s13JKN3TlfoUofVMUDFp8v1px9iSR4vwjuLbsz1iHVk5pA==
+hook-lib-fabric@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/hook-lib-fabric/-/hook-lib-fabric-1.0.7.tgz#4749aa2afc913927320d5aeefd96bbdbaef0618a"
+  integrity sha512-vzkcjNcMg9ebZ0h1cmV8GUvLaZglO7KtGxUHposZ5NUOtOEiWD4/HLasNq7yWLTxrF7hezBOoZLBNJ8QzjNImA==
 
 ignore@^5.2.0:
   version "5.2.4"
