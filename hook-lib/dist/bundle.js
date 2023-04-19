@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 var Test = function Test() {
-  return /*#__PURE__*/React.createElement("div", null, "hello");
+  return /*#__PURE__*/React.createElement("div", null, "heddllo");
 };
 
 var useCount = function useCount() {
@@ -13,7 +13,7 @@ var useCount = function useCount() {
   }, []);
   var add = function add() {
     setCount(function (prev) {
-      return prev + 1;
+      return prev + 5;
     });
   };
   var subtract = function subtract() {

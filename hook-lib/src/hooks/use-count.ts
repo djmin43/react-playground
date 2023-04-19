@@ -8,7 +8,7 @@ export const useCount = () => {
   }, []);
 
   const add = () => {
-    setCount((prev) => prev + 1);
+    setCount((prev) => prev + 5);
   };
 
   const subtract = () => {
