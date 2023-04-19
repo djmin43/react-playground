@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import { useCount } from "hook-lib-fabric";
+import { Test, useCount } from "hook-lib-fabric";
 
 const Tester = () => {
   const c = useCount();
   return (
     <div>
+      <Test />
       <div>
         <p>count: {c.count}</p>
       </div>
