@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 var Test = function Test() {
-  return /*#__PURE__*/React.createElement("div", null, "heddllo");
+  return /*#__PURE__*/React.createElement("div", null, "heddsllo");
 };
 
 var useCount = function useCount() {
