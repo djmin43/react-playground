@@ -13,24 +13,30 @@ import { convertOpacityToHex } from "../utils/convert-opacity-to-hex";
 import { ColorStop, studioColors } from "../constants/studio-colors";
 
 // NOTE: (James) should revisit this type
-// export interface SelectedObject extends Object {
-//   fontWeight: "bold" | "normal";
-//   fontStyle: "italic" | "normal";
-//   underline: boolean;
-//   linethrough: boolean;
-//   isInverse: boolean;
-//   textAlign: "left" | "center" | "right" | "justify";
-//   fontFamily: string;
-// }
+export interface SelectedObject extends Object {
+  fontWeight: "bold" | "normal";
+  fontStyle: "italic" | "normal";
+  underline: boolean;
+  linethrough: boolean;
+  isInverse: boolean;
+  textAlign: "left" | "center" | "right" | "justify";
+  fontFamily: string;
+}
 
-export const useFabric = () => {
+const dimension = {
+  longWidth: 970,
+  shortHeight: 616,
+  shortWidth: 392,
+  longHeight: 616,
+};
+
+type FabricProps = {
+  canvasHeight: number;
+  canvasWidth: number;
+};
+
+export const useFabric = ({ canvasHeight, canvasWidth }: FabricProps) => {
   // TODO: (James) change dimension for bigger canvas. also try 'scale' feature for responsiveness
-  const dimension = {
-    longWidth: 970,
-    shortHeight: 616,
-    shortWidth: 392,
-    longHeight: 616,
-  };
   const canvas = useRef<fabric.Canvas>(new window.fabric.Canvas(""));
   const [history, setHistory] = useState<unknown[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -40,6 +46,8 @@ export const useFabric = () => {
     canvas.current = new window.fabric.Canvas(canvasElement, {
       selection: true,
       backgroundColor: studioColors.white + "FF",
+      width: canvasWidth,
+      height: canvasHeight,
     });
   };
 
