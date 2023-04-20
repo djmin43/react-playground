@@ -5,15 +5,12 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  ColorStop,
-  studioColors,
-} from "@components/admin/my-card/card-studio/constants/studio-colors";
 import { getGradientCoords } from "../utils/get-gradient-coords";
 import { fabric } from "fabric";
 import { Gradient, IEvent } from "fabric/fabric-impl";
 import { convertBase64ToFile } from "../utils/convert-base64-to-file";
 import { convertOpacityToHex } from "../utils/convert-opacity-to-hex";
+import { ColorStop, studioColors } from "../constants/studio-colors";
 
 // NOTE: (James) should revisit this type
 // export interface SelectedObject extends Object {
@@ -25,6 +22,7 @@ import { convertOpacityToHex } from "../utils/convert-opacity-to-hex";
 //   textAlign: "left" | "center" | "right" | "justify";
 //   fontFamily: string;
 // }
+
 export const useFabric = () => {
   // TODO: (James) change dimension for bigger canvas. also try 'scale' feature for responsiveness
   const dimension = {
