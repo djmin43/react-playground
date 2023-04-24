@@ -232,11 +232,12 @@ export const useFabric = () => {
   };
 
   const getCanvasImageFile = async (
-    canvas: MutableRefObject<fabric.Canvas>
+    canvas: MutableRefObject<fabric.Canvas>,
+    maximumSizeInMb: number = 1
   ) => {
     const format = "png";
     let multiplier = 1;
-    let sizeInMb = 1;
+    let sizeInMb = maximumSizeInMb;
     let canvasUrl;
     while (sizeInMb >= 1) {
       canvasUrl = convertToUrl(format, canvas, multiplier);
@@ -278,15 +279,12 @@ export const useFabric = () => {
     });
   };
 
-  const changeBackgroundColor = useCallback(
-    (backgroundColor: string | Gradient) => {
-      canvas.current.setBackgroundColor(backgroundColor, () => {
-        addHistory(JSON.stringify(canvas.current), currentIndex);
-        canvas.current.requestRenderAll();
-      });
-    },
-    [currentIndex]
-  );
+  const changeBackgroundColor = (backgroundColor: string | Gradient) => {
+    canvas.current.setBackgroundColor(backgroundColor, () => {
+      addHistory(JSON.stringify(canvas.current), currentIndex);
+      canvas.current.requestRenderAll();
+    });
+  };
 
   const setBackgroundColor = (backgroundColor: string | Gradient) => {
     changeBackgroundColor(backgroundColor);
