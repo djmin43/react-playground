@@ -7,7 +7,7 @@ import {
 } from "react";
 import { getGradientCoords } from "../utils/get-gradient-coords";
 import { fabric } from "fabric";
-import { Gradient, IEvent } from "fabric/fabric-impl";
+import { Gradient, ICanvasOptions, IEvent } from "fabric/fabric-impl";
 import { convertBase64ToFile } from "../utils/convert-base64-to-file";
 import { convertOpacityToHex } from "../utils/convert-opacity-to-hex";
 import { ColorStop, studioColors } from "../constants/studio-colors";
@@ -30,26 +30,20 @@ const dimension = {
   longHeight: 616,
 };
 
-type FabricProps = {
-  canvasHeight: number;
-  canvasWidth: number;
+export type BrushSettingType = {
+  type: BrushType;
+  color: string;
+  width: number;
+  webPaintOpacity?: number;
 };
 
-export const useFabric = ({ canvasHeight, canvasWidth }: FabricProps) => {
+export const useFabric = () => {
   // TODO: (James) change dimension for bigger canvas. also try 'scale' feature for responsiveness
   const canvas = useRef<fabric.Canvas>(new window.fabric.Canvas(""));
   const [history, setHistory] = useState<unknown[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isObjectSelected, setIsObjectSelected] = useState<boolean>(false);
   const [selectedObjects, setSelectedObjects] = useState<fabric.Object[]>([]);
-  const setCanvas = (canvasElement: HTMLCanvasElement) => {
-    canvas.current = new window.fabric.Canvas(canvasElement, {
-      selection: true,
-      backgroundColor: studioColors.white + "FF",
-      width: canvasWidth,
-      height: canvasHeight,
-    });
-  };
 
   useEffect(() => {
     const addObjectHistory = () => {
@@ -83,8 +77,20 @@ export const useFabric = ({ canvasHeight, canvasWidth }: FabricProps) => {
     };
   }, [currentIndex]);
 
-  const reset = () => {
-    canvas.current.setBackgroundColor(studioColors.white + "FF", () =>
+  const setCanvas = (
+    element: HTMLCanvasElement,
+    canvasOptions: ICanvasOptions = {
+      selection: true,
+      backgroundColor: studioColors.white + "FF",
+      width: 500,
+      height: 500,
+    }
+  ) => {
+    canvas.current = new window.fabric.Canvas(element, canvasOptions);
+  };
+
+  const reset = (backgroundColor: string = studioColors.white + "FF") => {
+    canvas.current.setBackgroundColor(backgroundColor, () =>
       canvas.current.requestRenderAll()
     );
     canvas.current
@@ -101,13 +107,18 @@ export const useFabric = ({ canvasHeight, canvasWidth }: FabricProps) => {
     canvas.current.isDrawingMode = false;
   };
 
-  const setBrush = (type: BrushType, color: string, width: number) => {
+  const setBrush = ({
+    type,
+    color,
+    width,
+    webPaintOpacity = 0.5,
+  }: BrushSettingType) => {
     const brush = canvas.current.freeDrawingBrush;
     brush.color = color;
     brush.shadow = "";
     brush.width = width;
     if (type === "wet-paint") {
-      brush.color = color + convertOpacityToHex(0.5);
+      brush.color = color + convertOpacityToHex(webPaintOpacity);
     }
     if (type === "highlight") {
       brush.color = studioColors.white;
