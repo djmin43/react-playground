@@ -23,6 +23,7 @@ export interface SelectedObject extends Object {
   fontFamily: string;
 }
 
+// does this go to the host library?
 const dimension = {
   longWidth: 970,
   shortHeight: 616,
@@ -30,11 +31,17 @@ const dimension = {
   longHeight: 616,
 };
 
-export type BrushSettingType = {
+type BrushSettingType = {
   type: BrushType;
   color: string;
   width: number;
   webPaintOpacity?: number;
+};
+
+type ImageLayoutSetting = {
+  scale: number;
+  left: number;
+  top: number;
 };
 
 export const useFabric = () => {
@@ -132,13 +139,23 @@ export const useFabric = () => {
     }
   };
 
-  const addImage = (imageUrl: string) => {
+  const addImage = (
+    imageUrl: string,
+    imageLayout: ImageLayoutSetting = {
+      scale: 300,
+      top: 0,
+      left: 100,
+    }
+  ) => {
     window.fabric.Image.fromURL(
       imageUrl,
       function (oImg: fabric.Image) {
-        const image = oImg.set({ left: 100, top: 0 });
-        image.scaleToWidth(300);
-        image.scaleToHeight(300);
+        const image = oImg.set({
+          left: imageLayout.left,
+          top: imageLayout.top,
+        });
+        image.scaleToWidth(imageLayout.scale);
+        image.scaleToHeight(imageLayout.scale);
         canvas.current.add(image);
         addHistory(JSON.stringify(canvas.current), currentIndex);
         canvas.current.requestRenderAll();

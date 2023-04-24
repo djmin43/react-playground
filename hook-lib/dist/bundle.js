@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 var Test = function Test() {
-  return /*#__PURE__*/ React.createElement("div", null, "this is test");
+  return /*#__PURE__*/React.createElement("div", null, "this is test");
 };
 
 var useCount = function useCount() {
@@ -24,7 +24,7 @@ var useCount = function useCount() {
   return {
     count: count,
     add: add,
-    subtract: subtract,
+    subtract: subtract
   };
 };
 
