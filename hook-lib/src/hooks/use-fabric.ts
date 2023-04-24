@@ -7,7 +7,12 @@ import {
 } from "react";
 import { getGradientCoords } from "../utils/get-gradient-coords";
 import { fabric } from "fabric";
-import { Gradient, ICanvasOptions, IEvent } from "fabric/fabric-impl";
+import {
+  Gradient,
+  ICanvasOptions,
+  IEvent,
+  ITextboxOptions,
+} from "fabric/fabric-impl";
 import { convertBase64ToFile } from "../utils/convert-base64-to-file";
 import { convertOpacityToHex } from "../utils/convert-opacity-to-hex";
 import { ColorStop, studioColors } from "../constants/studio-colors";
@@ -166,12 +171,20 @@ export const useFabric = () => {
     );
   };
 
-  const addText = () => {
-    const text = new window.fabric.Textbox("내용을 입력해주세요", {
+  const addText = (
+    placeholder: string = "내용을 입력해주세요",
+    options: ITextboxOptions = {
       width: 100,
       left: 100,
       top: 50,
       fontSize: 16,
+    }
+  ) => {
+    const text = new window.fabric.Textbox(placeholder, {
+      width: options.width,
+      left: options.left,
+      top: options.top,
+      fontSize: options.fontSize,
     });
     canvas.current.add(text);
     canvas.current.setActiveObject(text);
