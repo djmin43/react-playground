@@ -1,10 +1,12 @@
 ## Things to check and study
 
-1. Do I ever need 'dependency' for library? 
+1. Do I ever need 'dependency' for library?
+
    1. 'dev dependency' for development of the library
    2. 'peer dependency' for the library user
 
 2. Types
+
    1. what is 'types' in package.json
       - if 'files' are declared, no need to add 'types' to package.json
       - it will look for index.d.ts in files folder
@@ -12,6 +14,7 @@
    2. don't need @types at the moment
 
 3. Plugins
+
    - Should learn about roll up plugins
      - how babel plugin works
      - how typescript plugin works

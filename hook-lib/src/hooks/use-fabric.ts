@@ -5,45 +5,57 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  ColorStop,
-  studioColors,
-} from "@components/admin/my-card/card-studio/constants/studio-colors";
 import { getGradientCoords } from "../utils/get-gradient-coords";
 import { fabric } from "fabric";
-import { Gradient, IEvent } from "fabric/fabric-impl";
+import {
+  Gradient,
+  ICanvasOptions,
+  IEvent,
+  ITextboxOptions,
+} from "fabric/fabric-impl";
 import { convertBase64ToFile } from "../utils/convert-base64-to-file";
 import { convertOpacityToHex } from "../utils/convert-opacity-to-hex";
+import { ColorStop, studioColors } from "../constants/studio-colors";
 
 // NOTE: (James) should revisit this type
-// export interface SelectedObject extends Object {
-//   fontWeight: "bold" | "normal";
-//   fontStyle: "italic" | "normal";
-//   underline: boolean;
-//   linethrough: boolean;
-//   isInverse: boolean;
-//   textAlign: "left" | "center" | "right" | "justify";
-//   fontFamily: string;
-// }
+export interface SelectedObject extends Object {
+  fontWeight: "bold" | "normal";
+  fontStyle: "italic" | "normal";
+  underline: boolean;
+  linethrough: boolean;
+  isInverse: boolean;
+  textAlign: "left" | "center" | "right" | "justify";
+  fontFamily: string;
+}
+
+// does this go to the host library?
+const dimension = {
+  longWidth: 970,
+  shortHeight: 616,
+  shortWidth: 392,
+  longHeight: 616,
+};
+
+type BrushSettingType = {
+  type: BrushType;
+  color: string;
+  width: number;
+  webPaintOpacity?: number;
+};
+
+type ImageLayoutSetting = {
+  scale: number;
+  left: number;
+  top: number;
+};
+
 export const useFabric = () => {
   // TODO: (James) change dimension for bigger canvas. also try 'scale' feature for responsiveness
-  const dimension = {
-    longWidth: 970,
-    shortHeight: 616,
-    shortWidth: 392,
-    longHeight: 616,
-  };
   const canvas = useRef<fabric.Canvas>(new window.fabric.Canvas(""));
   const [history, setHistory] = useState<unknown[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isObjectSelected, setIsObjectSelected] = useState<boolean>(false);
   const [selectedObjects, setSelectedObjects] = useState<fabric.Object[]>([]);
-  const setCanvas = (canvasElement: HTMLCanvasElement) => {
-    canvas.current = new window.fabric.Canvas(canvasElement, {
-      selection: true,
-      backgroundColor: studioColors.white + "FF",
-    });
-  };
 
   useEffect(() => {
     const addObjectHistory = () => {
@@ -77,8 +89,20 @@ export const useFabric = () => {
     };
   }, [currentIndex]);
 
-  const reset = () => {
-    canvas.current.setBackgroundColor(studioColors.white + "FF", () =>
+  const setCanvas = (
+    element: HTMLCanvasElement,
+    canvasOptions: ICanvasOptions = {
+      selection: true,
+      backgroundColor: studioColors.white + "FF",
+      width: 500,
+      height: 500,
+    }
+  ) => {
+    canvas.current = new window.fabric.Canvas(element, canvasOptions);
+  };
+
+  const reset = (backgroundColor: string = studioColors.white + "FF") => {
+    canvas.current.setBackgroundColor(backgroundColor, () =>
       canvas.current.requestRenderAll()
     );
     canvas.current
@@ -95,13 +119,18 @@ export const useFabric = () => {
     canvas.current.isDrawingMode = false;
   };
 
-  const setBrush = (type: BrushType, color: string, width: number) => {
+  const setBrush = ({
+    type,
+    color,
+    width,
+    webPaintOpacity = 0.5,
+  }: BrushSettingType) => {
     const brush = canvas.current.freeDrawingBrush;
     brush.color = color;
     brush.shadow = "";
     brush.width = width;
     if (type === "wet-paint") {
-      brush.color = color + convertOpacityToHex(0.5);
+      brush.color = color + convertOpacityToHex(webPaintOpacity);
     }
     if (type === "highlight") {
       brush.color = studioColors.white;
@@ -115,13 +144,23 @@ export const useFabric = () => {
     }
   };
 
-  const addImage = (imageUrl: string) => {
+  const addImage = (
+    imageUrl: string,
+    imageLayout: ImageLayoutSetting = {
+      scale: 300,
+      top: 0,
+      left: 100,
+    }
+  ) => {
     window.fabric.Image.fromURL(
       imageUrl,
       function (oImg: fabric.Image) {
-        const image = oImg.set({ left: 100, top: 0 });
-        image.scaleToWidth(300);
-        image.scaleToHeight(300);
+        const image = oImg.set({
+          left: imageLayout.left,
+          top: imageLayout.top,
+        });
+        image.scaleToWidth(imageLayout.scale);
+        image.scaleToHeight(imageLayout.scale);
         canvas.current.add(image);
         addHistory(JSON.stringify(canvas.current), currentIndex);
         canvas.current.requestRenderAll();
@@ -132,12 +171,20 @@ export const useFabric = () => {
     );
   };
 
-  const addText = () => {
-    const text = new window.fabric.Textbox("내용을 입력해주세요", {
+  const addText = (
+    placeholder: string = "내용을 입력해주세요",
+    options: ITextboxOptions = {
       width: 100,
       left: 100,
       top: 50,
       fontSize: 16,
+    }
+  ) => {
+    const text = new window.fabric.Textbox(placeholder, {
+      width: options.width,
+      left: options.left,
+      top: options.top,
+      fontSize: options.fontSize,
     });
     canvas.current.add(text);
     canvas.current.setActiveObject(text);
@@ -185,11 +232,12 @@ export const useFabric = () => {
   };
 
   const getCanvasImageFile = async (
-    canvas: MutableRefObject<fabric.Canvas>
+    canvas: MutableRefObject<fabric.Canvas>,
+    maximumSizeInMb: number = 1
   ) => {
     const format = "png";
     let multiplier = 1;
-    let sizeInMb = 1;
+    let sizeInMb = maximumSizeInMb;
     let canvasUrl;
     while (sizeInMb >= 1) {
       canvasUrl = convertToUrl(format, canvas, multiplier);
@@ -231,15 +279,12 @@ export const useFabric = () => {
     });
   };
 
-  const changeBackgroundColor = useCallback(
-    (backgroundColor: string | Gradient) => {
-      canvas.current.setBackgroundColor(backgroundColor, () => {
-        addHistory(JSON.stringify(canvas.current), currentIndex);
-        canvas.current.requestRenderAll();
-      });
-    },
-    [currentIndex]
-  );
+  const changeBackgroundColor = (backgroundColor: string | Gradient) => {
+    canvas.current.setBackgroundColor(backgroundColor, () => {
+      addHistory(JSON.stringify(canvas.current), currentIndex);
+      canvas.current.requestRenderAll();
+    });
+  };
 
   const setBackgroundColor = (backgroundColor: string | Gradient) => {
     changeBackgroundColor(backgroundColor);
