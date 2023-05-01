@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CacheProvider } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";

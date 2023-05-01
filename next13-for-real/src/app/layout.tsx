@@ -1,5 +1,5 @@
 import "./globals.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, useBoolean } from "@chakra-ui/react";
 import { Providers } from "@/app/providers";
 
 export const metadata = {
@@ -12,6 +12,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [s, t] = useBoolean();
   return (
     <html lang="en">
       <body>
