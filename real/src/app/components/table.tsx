@@ -6,7 +6,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Player = {
   id: number;
@@ -59,13 +59,17 @@ const Table = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  useEffect(() => {
+    console.log(table);
+  }, [table]);
   return (
-    <table className={"border-2"}>
-      <thead>
+    <table className={"border-2 border-amber-500"}>
+      <thead className={"border-2 border-amber-500"}>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th key={header.id}>
+              <th key={header.id} className={"border-2 border-amber-500 px-4"}>
                 {header.isPlaceholder
                   ? null
                   : flexRender(
@@ -81,7 +85,10 @@ const Table = () => {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id}>
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>
+              <td
+                key={cell.id}
+                className={"border-2 border-amber-500 text-center"}
+              >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </td>
             ))}
