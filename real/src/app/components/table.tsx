@@ -60,7 +60,7 @@ const Table = () => {
     getCoreRowModel: getCoreRowModel(),
   });
   return (
-    <table>
+    <table className={"border-2"}>
       <thead>
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
