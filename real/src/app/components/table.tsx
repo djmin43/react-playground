@@ -2,6 +2,7 @@
 
 import {
   createColumnHelper,
+  flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -36,17 +37,17 @@ const columnHelper = createColumnHelper<Player>();
 const columns = [
   columnHelper.accessor("id", {
     cell: (info) => info.getValue(),
-    header: (info) => <span>Id</span>,
+    header: (info) => <span>id</span>,
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor("name", {
     cell: (info) => info.getValue(),
-    header: () => <span>Id</span>,
+    header: () => <span>name</span>,
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor("position", {
     cell: (info) => info.getValue(),
-    header: () => <span>Id</span>,
+    header: () => <span>position</span>,
     footer: (info) => info.column.id,
   }),
 ];
@@ -58,7 +59,37 @@ const Table = () => {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-  return <div></div>;
+  return (
+    <table>
+      <thead>
+        {table.getHeaderGroups().map((headerGroup) => (
+          <tr key={headerGroup.id}>
+            {headerGroup.headers.map((header) => (
+              <th key={header.id}>
+                {header.isPlaceholder
+                  ? null
+                  : flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody>
+        {table.getRowModel().rows.map((row) => (
+          <tr key={row.id}>
+            {row.getVisibleCells().map((cell) => (
+              <td key={cell.id}>
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 };
 
 export default Table;
