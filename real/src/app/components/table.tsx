@@ -41,13 +41,19 @@ const columns = [
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor("name", {
-    cell: (info) => info.getValue(),
+    cell: (info) => (
+      <div className={"p-4"}>
+        <button onClick={() => alert(info.renderValue())}>
+          {info.renderValue()}
+        </button>
+      </div>
+    ),
     header: () => <span>name</span>,
     footer: (info) => info.column.id,
   }),
   columnHelper.accessor("position", {
     cell: (info) => info.getValue(),
-    header: () => <span>position</span>,
+    header: () => <span className={"text-red-700"}>position</span>,
     footer: (info) => info.column.id,
   }),
 ];
