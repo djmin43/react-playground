@@ -1,18 +1,17 @@
-import React from "react";
-import Image from "next/image";
+import { ReactNode } from "react";
+import { Iphone14Pro } from "@/components/icons/iphone-14-pro";
+import { Iphone14 } from "@/components/icons/iphone-14";
+import { Iphone13 } from "@/components/icons/iphone-13";
+import { IphoneSe } from "@/components/icons/iphone-se";
+import { Iphone12 } from "@/components/icons/iphone-12";
 
 export const Menu = () => {
   return (
     <nav className={"bg-gray-50 flex justify-center items-center"}>
       {iphoneList.map((iphone) => (
         <div key={iphone.modelName}>
+          {iphone.icon}
           <span>{iphone.modelName}</span>
-          <Image
-            src={iphone.src}
-            alt={iphone.modelName}
-            width={12}
-            height={12}
-          />
         </div>
       ))}
     </nav>
@@ -22,33 +21,33 @@ export const Menu = () => {
 export const iphoneList: IPhone[] = [
   {
     modelName: "iPhone 14 Pro",
-    src: "/iphones/iphone-14-pro.svg",
+    icon: <Iphone14Pro />,
     isNew: true,
   },
   {
     modelName: "iPhone 14",
-    src: "/iphones/iphone-14.svg",
+    icon: <Iphone14 />,
     isNew: true,
   },
   {
     modelName: "iPhone 13",
-    src: "/iphones/iphone-13.svg",
+    icon: <Iphone13 />,
     isNew: false,
   },
   {
     modelName: "iPhone SE",
-    src: "/iphones/iphone-se.svg",
+    icon: <IphoneSe />,
     isNew: false,
   },
   {
     modelName: "iPhone 12",
-    src: "/iphones/iphone-12.svg",
+    icon: <Iphone12 />,
     isNew: false,
   },
 ];
 
 type IPhone = {
   modelName: string;
-  src: string;
+  icon: ReactNode;
   isNew: boolean;
 };
