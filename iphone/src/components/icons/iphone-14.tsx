@@ -5,7 +5,7 @@ export const Iphone14 = () => {
     <svg
       height="54"
       viewBox="0 0 38 54"
-      width="54"
+      width="38"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="m0 0h38v54h-38z" fill="none" />

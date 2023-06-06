@@ -9,7 +9,10 @@ export const Menu = () => {
   return (
     <nav className={"bg-gray-50 flex justify-center items-center"}>
       {iphoneList.map((iphone) => (
-        <div key={iphone.modelName}>
+        <div
+          key={iphone.modelName}
+          className={"flex flex-col justify-center items-center p-4"}
+        >
           {iphone.icon}
           <span>{iphone.modelName}</span>
         </div>
