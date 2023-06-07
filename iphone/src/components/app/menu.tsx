@@ -7,14 +7,15 @@ import { Iphone12 } from "@/components/icons/iphone-12";
 
 export const Menu = () => {
   return (
-    <nav className={"bg-gray-50 flex justify-center items-center"}>
+    <nav className={"bg-gray-50 flex justify-center items-start p-2"}>
       {iphoneList.map((iphone) => (
         <div
           key={iphone.modelName}
-          className={"flex flex-col justify-center items-center p-4"}
+          className={"flex flex-col justify-start items-center px-2"}
         >
           {iphone.icon}
-          <span>{iphone.modelName}</span>
+          <span className={"text-xs"}>{iphone.modelName}</span>
+          {iphone.isNew && <span className={"text-xs text-red-700"}>NEW</span>}
         </div>
       ))}
     </nav>

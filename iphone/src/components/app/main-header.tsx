@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const MainHeader = () => {
   return (
-    <div className={"w-full flex justify-center bg-gray-100"}>
+    <div className={"w-full flex justify-between bg-gray-100"}>
       <Image
         src={"/logos/apple-logo.svg"}
         alt={"apple logo"}
