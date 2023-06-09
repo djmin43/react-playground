@@ -1,12 +1,10 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
 import { mainFont } from "@/fonts";
-
-const inter = Inter({ subsets: ["latin"] });
+import { MainHeader } from "@/components/app/main-header";
 
 export const metadata = {
   title: "아이폰 중고가 검색기",
-  description: "아이폰 중고가를 찾아드립니다.",
+  description: "가장 최신 아이폰 중고가를 찾아드립니다.",
 };
 
 export default function RootLayout({
@@ -16,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={mainFont.className}>{children}</body>
+      <body className={mainFont.className}>
+        <MainHeader />
+        {children}
+      </body>
     </html>
   );
 }
