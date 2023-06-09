@@ -15,7 +15,7 @@ export const Menu = () => {
         >
           {iphone.icon}
           <span className={"text-xs"}>{iphone.modelName}</span>
-          {iphone.isNew && <span className={"text-xs text-red-700"}>NEW</span>}
+          {iphone.isNew && <span className={"text-xs text-red-700"}>New</span>}
         </div>
       ))}
     </nav>
