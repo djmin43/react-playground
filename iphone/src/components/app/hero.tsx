@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className={"flex flex-col items-center py-20 gap-5 text-center"}>
+    <div className={"flex flex-col items-center py-12 gap-5 text-center"}>
       <p className={"text-4xl font-semibold"}>비싸게 사지 말자.</p>
       <p className={"text-lg text-gray-700"}>
         가장 최신 당근마켓, 중고나라 중고가 시세를 한번에
