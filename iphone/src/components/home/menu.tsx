@@ -28,42 +28,50 @@ export const Menu = () => {
   );
 };
 
-export const iphoneList: IPhone[] = [
-  {
-    modelName: "iPhone 14 Pro",
-    icon: <Iphone14Pro />,
-    isNew: true,
-    param: "iphone14-pro",
-  },
-  {
-    modelName: "iPhone 14",
-    icon: <Iphone14 />,
-    isNew: true,
-    param: "iphone14",
-  },
-  {
-    modelName: "iPhone 13",
-    icon: <Iphone13 />,
-    isNew: false,
-    param: "iphone13",
-  },
-  {
-    modelName: "iPhone SE",
-    icon: <IphoneSe />,
-    isNew: false,
-    param: "iphone-se",
-  },
-  {
-    modelName: "iPhone 12",
-    icon: <Iphone12 />,
-    isNew: false,
-    param: "iphone12",
-  },
-];
-
 type IPhone = {
   modelName: string;
   icon: ReactNode;
   isNew: boolean;
   param: IphoneModel;
 };
+
+export const iphoneModel = {
+  "14pro": "iphone14-pro",
+  "14": "iphone14",
+  "13": "iphone13",
+  se: "iphone-se",
+  "12": "iphone12",
+} as const;
+
+export const iphoneList: IPhone[] = [
+  {
+    modelName: "iPhone 14 Pro",
+    icon: <Iphone14Pro />,
+    isNew: true,
+    param: iphoneModel["14pro"],
+  },
+  {
+    modelName: "iPhone 14",
+    icon: <Iphone14 />,
+    isNew: true,
+    param: iphoneModel["14"],
+  },
+  {
+    modelName: "iPhone 13",
+    icon: <Iphone13 />,
+    isNew: false,
+    param: iphoneModel["13"],
+  },
+  {
+    modelName: "iPhone SE",
+    icon: <IphoneSe />,
+    isNew: false,
+    param: iphoneModel.se,
+  },
+  {
+    modelName: "iPhone 12",
+    icon: <Iphone12 />,
+    isNew: false,
+    param: iphoneModel["12"],
+  },
+];
