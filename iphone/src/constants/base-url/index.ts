@@ -1,1 +1,1 @@
-export const iphoneBasePath = "/iphone";
+export const modelBasePath = "/model";
