@@ -1,6 +1,7 @@
 import "./globals.css";
 import { mainFont } from "@/fonts";
 import { MainHeader } from "@/components/app/main-header";
+import Footer from "@/components/app/footer";
 
 export const metadata = {
   title: "아이폰 중고가 검색기",
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className={mainFont.className}>
         <MainHeader />
         {children}
+        <Footer />
       </body>
     </html>
   );
