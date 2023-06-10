@@ -1,5 +1,5 @@
 import { IphoneModel } from "@/types/iphone";
-import { ProductHeader } from "@/model/iphone/productHeader";
+import { ProductHeader } from "@/model/iphone/product-header";
 import { iphoneModel } from "@/components/home/menu";
 
 export class Iphone {
