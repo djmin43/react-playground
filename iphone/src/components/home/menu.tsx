@@ -15,7 +15,9 @@ export const Menu = () => {
         <Link href={`${modelBasePath}/${iphone.param}`} key={iphone.modelName}>
           <div className={"flex flex-col justify-start items-center px-2"}>
             {iphone.icon}
-            <span className={"text-xs"}>{iphone.modelName}</span>
+            <span className={"text-xs hover:text-blue-600"}>
+              {iphone.modelName}
+            </span>
             {iphone.isNew && (
               <span className={"text-xs text-red-700"}>New</span>
             )}

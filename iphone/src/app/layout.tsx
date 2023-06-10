@@ -1,7 +1,7 @@
 import "./globals.css";
 import { mainFont } from "@/fonts";
-import { MainHeader } from "@/components/app/main-header";
-import Footer from "@/components/app/footer";
+import { MainHeader } from "@/components/layout/main-header";
+import Footer from "@/components/layout/footer";
 
 export const metadata = {
   title: "아이폰 중고가 검색기",

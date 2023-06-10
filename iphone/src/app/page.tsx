@@ -1,6 +1,6 @@
-import { Menu } from "@/components/app/menu";
-import SubHeader from "@/components/app/sub-header";
-import Hero from "@/components/app/hero";
+import { Menu } from "@/components/home/menu";
+import SubHeader from "@/components/home/sub-header";
+import Hero from "@/components/home/hero";
 
 export default function Home() {
   return (
