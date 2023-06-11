@@ -1,7 +1,6 @@
 import React from "react";
 import { IphoneModel } from "@/types/iphone";
-import Header from "@/components/model/header";
-import { Iphone } from "@/model/iphone";
+import ProductHeader from "@/components/model/product-header";
 
 type Params = {
   params: {
@@ -10,10 +9,9 @@ type Params = {
 };
 
 const Page = ({ params }: Params) => {
-  const iphone = new Iphone(params.model);
   return (
     <div>
-      <Header header={iphone.header} />
+      <ProductHeader />
     </div>
   );
 };

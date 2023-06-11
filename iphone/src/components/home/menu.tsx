@@ -5,14 +5,17 @@ import { Iphone13 } from "@/components/icons/iphone-13";
 import { IphoneSe } from "@/components/icons/iphone-se";
 import { Iphone12 } from "@/components/icons/iphone-12";
 import Link from "next/link";
-import { modelBasePath } from "@/constants/base-url";
+import { routes } from "../../constants/routes";
 import { IphoneModel } from "@/types/iphone";
 
 export const Menu = () => {
   return (
     <nav className={"bg-gray-50 flex justify-center items-start p-2"}>
       {iphoneList.map((iphone) => (
-        <Link href={`${modelBasePath}/${iphone.param}`} key={iphone.modelName}>
+        <Link
+          href={`${routes.model.root}/${iphone.param}`}
+          key={iphone.modelName}
+        >
           <div className={"flex flex-col justify-start items-center px-2"}>
             {iphone.icon}
             <span className={"text-xs hover:text-blue-600"}>
