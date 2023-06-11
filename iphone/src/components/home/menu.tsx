@@ -6,7 +6,7 @@ import { IphoneSe } from "@/components/icons/iphone-se";
 import { Iphone12 } from "@/components/icons/iphone-12";
 import Link from "next/link";
 import { routes } from "../../constants/routes";
-import { IphoneModel } from "@/types/iphone";
+import { IphoneModel } from "../../types/model/iphone";
 
 export const Menu = () => {
   return (

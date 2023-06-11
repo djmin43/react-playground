@@ -1,6 +1,7 @@
 import { iphoneModel } from "@/components/home/menu";
+import { IphoneDataModel } from "@/types/model/iphone";
 
-const iphoneColor = {
+export const iphoneColor = {
   deepPurple: "#635A6C",
   gold: "#F4E7CE",
   silver: "#F0F3F2",
@@ -11,9 +12,10 @@ export const modelName = {
   "14pro": "14-pro",
   "14proMax": "14-pro-max",
 };
-const iphone14ProDataModel = {
+
+const iphone14ProDataModel: IphoneDataModel = {
   isNew: true,
-  title: "iPhone 14",
+  title: "iPhone 14 Pro",
   models: [
     {
       name: modelName["14pro"],
@@ -56,6 +58,6 @@ const iphone14ProDataModel = {
   ],
 };
 
-export const iphoneDataModel = {
+export const iphoneDataModel: Record<string, IphoneDataModel> = {
   [iphoneModel["14pro"]]: iphone14ProDataModel,
 };
