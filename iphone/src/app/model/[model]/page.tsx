@@ -13,7 +13,7 @@ const Page = ({ params }: Params) => {
   const iphone = new Iphone(params.model);
   return (
     <div>
-      <Header header={iphone.getHeader()} />
+      <Header header={iphone.header} />
     </div>
   );
 };

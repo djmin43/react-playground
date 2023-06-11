@@ -8,12 +8,7 @@ export class Iphone {
     this.model = model;
   }
 
-  public getHeader() {
-    if (this.model === iphoneModel["14pro"]) {
-      return new ProductHeader({
-        isNew: true,
-        title: "iPhone 14 Pro 구입하기",
-      });
-    }
+  get header() {
+    return new ProductHeader(this.model);
   }
 }

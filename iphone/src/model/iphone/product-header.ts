@@ -1,14 +1,9 @@
-export class ProductHeader {
-  public readonly isNew: boolean;
-  public readonly title: string;
+import { IphoneModel } from "@/types/iphone";
 
-  constructor({ isNew, title }: ProductHeaderType) {
-    this.isNew = isNew;
-    this.title = title;
+export class ProductHeader {
+  private readonly model;
+
+  constructor(model: IphoneModel) {
+    this.model = model;
   }
 }
-
-type ProductHeaderType = {
-  isNew: boolean;
-  title: string;
-};
