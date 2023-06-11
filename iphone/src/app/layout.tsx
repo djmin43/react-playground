@@ -4,7 +4,7 @@ import { MainHeader } from "@/components/layout/main-header";
 import Footer from "@/components/layout/footer";
 
 export const metadata = {
-  title: "아이폰 중고가 검색기",
+  name: "아이폰 중고가 검색기",
   description: "가장 최신 아이폰 중고가를 찾아드립니다.",
 };
 

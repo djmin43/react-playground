@@ -13,7 +13,7 @@ export const Menu = () => {
     <nav className={"bg-gray-50 flex justify-center items-start p-2"}>
       {iphoneList.map((iphone) => (
         <Link
-          href={`${routes.model.root}/${iphone.param}`}
+          href={`${routes.product.root}/${iphone.targetUrl}?${iphone.params}`}
           key={iphone.modelName}
         >
           <div className={"flex flex-col justify-start items-center px-2"}>
@@ -35,46 +35,48 @@ type IPhone = {
   modelName: string;
   icon: ReactNode;
   isNew: boolean;
-  param: IphoneModel;
+  targetUrl: IphoneModel;
+  params?: string;
 };
 
-export const iphoneModel = {
+export const iphoneModel: Record<string, IphoneModel> = {
   "14pro": "iphone14-pro",
   "14": "iphone14",
   "13": "iphone13",
   se: "iphone-se",
   "12": "iphone12",
-} as const;
+};
 
 export const iphoneList: IPhone[] = [
   {
     modelName: "iPhone 14 Pro",
     icon: <Iphone14Pro />,
     isNew: true,
-    param: iphoneModel["14pro"],
+    targetUrl: iphoneModel["14pro"],
+    params: `model=14-pro`,
   },
   {
     modelName: "iPhone 14",
     icon: <Iphone14 />,
     isNew: true,
-    param: iphoneModel["14"],
+    targetUrl: iphoneModel["14"],
   },
   {
     modelName: "iPhone 13",
     icon: <Iphone13 />,
     isNew: false,
-    param: iphoneModel["13"],
+    targetUrl: iphoneModel["13"],
   },
   {
     modelName: "iPhone SE",
     icon: <IphoneSe />,
     isNew: false,
-    param: iphoneModel.se,
+    targetUrl: iphoneModel.se,
   },
   {
     modelName: "iPhone 12",
     icon: <Iphone12 />,
     isNew: false,
-    param: iphoneModel["12"],
+    targetUrl: iphoneModel["12"],
   },
 ];

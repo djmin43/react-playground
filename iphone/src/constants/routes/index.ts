@@ -1,6 +1,6 @@
 export const routes = {
   root: "/",
-  model: {
-    root: "/model",
+  product: {
+    root: "/product",
   },
 } as const;
