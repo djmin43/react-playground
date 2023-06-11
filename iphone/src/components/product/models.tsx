@@ -17,7 +17,13 @@ const modelTitle = {
 
 const Models = ({ models, product, modelName }: ModelsProps) => {
   return (
-    <>
+    <div className={"flex flex-col gap-2"}>
+      <div className={"flex gap-2"}>
+        <span className={"text-xl font-bold"}>모델.</span>
+        <span className={"text-xl font-bold text-gray-500"}>
+          당신에게 딱 맞는 모델은?
+        </span>
+      </div>
       {models.map((model) => (
         <div key={model.name}>
           <Link href={`${routes.product.root}/${product}?model=${model.name}`}>
@@ -31,7 +37,7 @@ const Models = ({ models, product, modelName }: ModelsProps) => {
           </Link>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
