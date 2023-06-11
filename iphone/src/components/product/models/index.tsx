@@ -3,6 +3,8 @@ import Link from "next/link";
 import { routes } from "@/constants/routes";
 import { modelName } from "@/data-model/iphone";
 import { IphoneModel, IphoneModelType } from "@/types/model/iphone";
+import Image from "next/image";
+import { modelImage } from "@/components/product/models/model-image";
 
 type ModelsProps = {
   models: IphoneModelType[];
@@ -24,6 +26,13 @@ const Models = ({ models, product, modelName }: ModelsProps) => {
           당신에게 딱 맞는 모델은?
         </span>
       </div>
+      <Image
+        src={modelImage.iphone["14pro"].silver}
+        alt={"iphone"}
+        style={{ objectFit: "contain", borderRadius: "16px" }}
+        width={350}
+        height={246}
+      />
       {models.map((model) => (
         <div key={model.name}>
           <Link href={`${routes.product.root}/${product}?model=${model.name}`}>

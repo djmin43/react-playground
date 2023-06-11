@@ -1,8 +1,6 @@
 import React from "react";
 import { IphoneModel } from "../../../types/model/iphone";
 import { iphoneDataModel, modelName } from "@/data-model/iphone";
-import Link from "next/link";
-import { routes } from "@/constants/routes";
 import Header from "@/components/product/header";
 import Models from "@/components/product/models";
 
