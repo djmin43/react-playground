@@ -3,6 +3,7 @@ import { IphoneModel } from "@/types/iphone";
 import { iphoneDataModel, modelName } from "@/data-model/iphone";
 import Link from "next/link";
 import { routes } from "@/constants/routes";
+import Header from "@/components/product/header";
 
 type Props = {
   params: {
@@ -22,13 +23,7 @@ const Page = ({ params, searchParams }: Props) => {
   const product = iphoneDataModel[params.product];
   return (
     <div className={"px-4 py-12"}>
-      <div className={"flex flex-col gap-2 py-2"}>
-        {/*{product.isNew && <span className={"text-sm text-red-700 "}>New</span>}*/}
-        <span className={"text-4xl font-extrabold"}>
-          {modelTitle[searchParams.model]}
-        </span>
-        <span className={"text-4xl font-extrabold"}>구입하기</span>
-      </div>
+      <Header isNew={product.isNew} title={product.title} />
       {product.models.map((model) => (
         <div key={model.name}>
           <Link

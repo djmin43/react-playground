@@ -13,7 +13,7 @@ export const modelName = {
 };
 const iphone14ProDataModel = {
   isNew: true,
-  title: "iPhone 14 구입하기",
+  title: "iPhone 14",
   models: [
     {
       name: modelName["14pro"],
