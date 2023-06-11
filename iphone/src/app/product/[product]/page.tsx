@@ -6,7 +6,7 @@ import { routes } from "@/constants/routes";
 
 type Props = {
   params: {
-    model: IphoneModel;
+    product: IphoneModel;
   };
   searchParams: {
     model: (typeof modelName)[keyof typeof modelName];
@@ -23,9 +23,9 @@ const Page = ({ params, searchParams }: Props) => {
   return (
     <div className={"px-4 py-12"}>
       <div className={"flex flex-col gap-2 py-2"}>
-        {product.isNew && <span className={"text-sm text-red-700 "}>New</span>}
+        {/*{product.isNew && <span className={"text-sm text-red-700 "}>New</span>}*/}
         <span className={"text-4xl font-extrabold"}>
-          {modelTitle[searchParams.product]}
+          {modelTitle[searchParams.model]}
         </span>
         <span className={"text-4xl font-extrabold"}>구입하기</span>
       </div>
@@ -36,7 +36,7 @@ const Page = ({ params, searchParams }: Props) => {
           >
             <span
               className={
-                searchParams.product === model.name
+                searchParams.model === model.name
                   ? "text-blue-600"
                   : "text-black"
               }
