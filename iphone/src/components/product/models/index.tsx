@@ -27,7 +27,7 @@ const Models = ({ models, product, modelName }: ModelsProps) => {
         </span>
       </div>
       <Image
-        src={modelImage.iphone["14pro"].silver}
+        src={modelImage.iphone["14proMax"].silver}
         alt={"iphone"}
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}
