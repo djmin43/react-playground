@@ -1,5 +1,4 @@
-import { iphoneModel } from "@/components/home/menu";
-import { IphoneDataModel } from "@/types/model/iphone";
+import { IphoneDataModel, IphoneModel } from "@/types/model/iphone";
 
 export const iphoneColor = {
   deepPurple: "#635A6C",
@@ -11,6 +10,14 @@ export const iphoneColor = {
 export const modelName = {
   "14pro": "14-pro",
   "14proMax": "14-pro-max",
+};
+
+export const product = {
+  "14pro": "iphone14-pro",
+  "14": "iphone14",
+  "13": "iphone13",
+  se: "iphone-se",
+  "12": "iphone12",
 };
 
 const iphone14ProDataModel: IphoneDataModel = {
@@ -59,5 +66,5 @@ const iphone14ProDataModel: IphoneDataModel = {
 };
 
 export const iphoneDataModel: Record<string, IphoneDataModel> = {
-  [iphoneModel["14pro"]]: iphone14ProDataModel,
+  [product["14pro"]]: iphone14ProDataModel,
 };

@@ -4,10 +4,7 @@ import { routes } from "@/constants/routes";
 import { modelName } from "@/data-model/iphone";
 import { IphoneModel, IphoneModelType } from "@/types/model/iphone";
 import Image from "next/image";
-import {
-  modelImage,
-  productImage,
-} from "@/components/product/models/model-image";
+import { modelImage } from "@/components/product/models/model-image";
 
 type ModelsProps = {
   models: IphoneModelType[];
@@ -29,26 +26,34 @@ const Models = ({ models, product, modelName }: ModelsProps) => {
           당신에게 딱 맞는 모델은?
         </span>
       </div>
-      model name: {modelName}
-      {/*<Image*/}
-      {/*  src={productImage[modelName].silver}*/}
-      {/*  alt={"iphone"}*/}
-      {/*  style={{ objectFit: "contain", borderRadius: "16px" }}*/}
-      {/*  width={350}*/}
-      {/*  height={246}*/}
-      {/*/>*/}
+      <Image
+        src={modelImage[product][modelName].silver}
+        alt={"iphone"}
+        style={{ objectFit: "contain", borderRadius: "16px" }}
+        width={350}
+        height={246}
+      />
       {models.map((model) => (
-        <div key={model.name}>
-          <Link href={`${routes.product.root}/${product}?model=${model.name}`}>
-            <span
-              className={
-                modelName === model.name ? "text-blue-600" : "text-black"
-              }
-            >
-              {modelTitle[model.name]}
+        <Link
+          key={model.name}
+          href={`${routes.product.root}/${product}?model=${model.name}`}
+        >
+          <div
+            className={`p-3.5 border rounded-md flex justify-between items-center ${
+              modelName === model.name ? "border-blue-600" : "border-gray-600"
+            }`}
+          >
+            <div className={"flex flex-col"}>
+              <span className={"text-base font-extrabold"}>
+                {modelTitle[model.name]}
+              </span>
+              <span className={"text-xs font-light"}>{model.description}</span>
+            </div>
+            <span className={"text-xs font-light"}>
+              ₩{model.price.toLocaleString()}부터
             </span>
-          </Link>
-        </div>
+          </div>
+        </Link>
       ))}
     </div>
   );

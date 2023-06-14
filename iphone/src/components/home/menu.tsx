@@ -7,6 +7,7 @@ import { Iphone12 } from "@/components/icons/iphone-12";
 import Link from "next/link";
 import { routes } from "../../constants/routes";
 import { IphoneModel } from "../../types/model/iphone";
+import { product } from "@/data-model/iphone";
 
 export const Menu = () => {
   return (
@@ -35,16 +36,8 @@ type IPhone = {
   modelName: string;
   icon: ReactNode;
   isNew: boolean;
-  targetUrl: IphoneModel;
+  targetUrl: string;
   params?: string;
-};
-
-export const iphoneModel: Record<string, IphoneModel> = {
-  "14pro": "iphone14-pro",
-  "14": "iphone14",
-  "13": "iphone13",
-  se: "iphone-se",
-  "12": "iphone12",
 };
 
 export const iphoneList: IPhone[] = [
@@ -52,31 +45,31 @@ export const iphoneList: IPhone[] = [
     modelName: "iPhone 14 Pro",
     icon: <Iphone14Pro />,
     isNew: true,
-    targetUrl: iphoneModel["14pro"],
+    targetUrl: product["14pro"],
     params: `model=14-pro`,
   },
   {
     modelName: "iPhone 14",
     icon: <Iphone14 />,
     isNew: true,
-    targetUrl: iphoneModel["14"],
+    targetUrl: product["14"],
   },
   {
     modelName: "iPhone 13",
     icon: <Iphone13 />,
     isNew: false,
-    targetUrl: iphoneModel["13"],
+    targetUrl: product["13"],
   },
   {
     modelName: "iPhone SE",
     icon: <IphoneSe />,
     isNew: false,
-    targetUrl: iphoneModel.se,
+    targetUrl: product.se,
   },
   {
     modelName: "iPhone 12",
     icon: <Iphone12 />,
     isNew: false,
-    targetUrl: iphoneModel["12"],
+    targetUrl: product["12"],
   },
 ];
