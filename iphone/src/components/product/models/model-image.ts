@@ -16,4 +16,7 @@ export const productImage = {
   [iphoneModel["14pro"]]: {
     silver: modelImage.iphone["14pro"].silver,
   },
+  [iphoneModel["14ProMax"]]: {
+    silver: modelImage.iphone["14proMax"].silver,
+  },
 };
