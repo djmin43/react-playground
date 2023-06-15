@@ -11,7 +11,11 @@ type FormInput = {
   gender: GenderEnum;
 };
 export const RegisterFields = () => {
-  const { register, handleSubmit } = useForm<FormInput>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormInput>({
     defaultValues: {
       gender: GenderEnum.other,
     },
@@ -20,7 +24,8 @@ export const RegisterFields = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label>First Name</label>
-      <input {...register("firstName")} />
+      <input {...register("firstName", { maxLength: 5 })} />
+      {errors.firstName && "please write first name"}
       <label>Gender Selection</label>
       <select {...register("gender")}>
         <option value="female">female</option>
