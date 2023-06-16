@@ -12,7 +12,7 @@ type InputProps = {
   required: boolean;
 };
 
-const Input = ({ label, required, register }: InputProps) => {
+export const Input = ({ label, required, register }: InputProps) => {
   return (
     <>
       <label>{label}</label>
@@ -21,7 +21,7 @@ const Input = ({ label, required, register }: InputProps) => {
   );
 };
 
-const Select = React.forwardRef<
+export const Select = React.forwardRef<
   HTMLSelectElement,
   { label: string } & ReturnType<UseFormRegister<FormValues>>
 >(({ onChange, onBlur, name, label }, ref) => (
