@@ -37,6 +37,7 @@ const Models = ({ models, product, modelName }: ModelsProps) => {
         <Link
           key={model.name}
           href={`${routes.product.root}/${product}?model=${model.name}`}
+          replace
         >
           <div
             className={`p-3.5 border rounded-md flex justify-between items-center ${
