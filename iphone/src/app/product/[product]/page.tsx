@@ -1,8 +1,9 @@
 import React from "react";
 import { IphoneModel } from "../../../types/model/iphone";
-import { iphoneDataModel, modelName } from "@/data-model/iphone";
+import { iphoneColor, iphoneDataModel, modelName } from "@/data-model/iphone";
 import Header from "@/components/product/header";
-import Models from "@/components/product/models";
+import { Colors } from "@/components/product/colors";
+import { Models } from "@/components/product/models";
 
 type Props = {
   params: {
@@ -10,6 +11,7 @@ type Props = {
   };
   searchParams: {
     model: (typeof modelName)[keyof typeof modelName];
+    color: keyof typeof iphoneColor;
   };
 };
 
@@ -22,6 +24,14 @@ const Page = ({ params, searchParams }: Props) => {
         models={product.models}
         modelName={searchParams.model}
         product={params.product}
+        color={searchParams.color}
+      />
+      <Colors
+        models={product.models}
+        modelName={searchParams.model}
+        product={params.product}
+        colors={product.colors}
+        color={searchParams.color}
       />
     </div>
   );

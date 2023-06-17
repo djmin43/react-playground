@@ -6,8 +6,7 @@ import { IphoneSe } from "@/components/icons/iphone-se";
 import { Iphone12 } from "@/components/icons/iphone-12";
 import Link from "next/link";
 import { routes } from "../../constants/routes";
-import { IphoneModel } from "../../types/model/iphone";
-import { product } from "@/data-model/iphone";
+import { iphoneColor, modelName, product } from "@/data-model/iphone";
 
 export const Menu = () => {
   return (
@@ -46,30 +45,34 @@ export const iphoneList: IPhone[] = [
     icon: <Iphone14Pro />,
     isNew: true,
     targetUrl: product["14pro"],
-    params: `model=14-pro`,
+    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone 14",
     icon: <Iphone14 />,
     isNew: true,
     targetUrl: product["14"],
+    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone 13",
     icon: <Iphone13 />,
     isNew: false,
     targetUrl: product["13"],
+    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone SE",
     icon: <IphoneSe />,
     isNew: false,
     targetUrl: product.se,
+    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone 12",
     icon: <Iphone12 />,
     isNew: false,
     targetUrl: product["12"],
+    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
 ];

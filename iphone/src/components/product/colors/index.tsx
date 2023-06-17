@@ -10,23 +10,26 @@ type ModelsProps = {
   models: IphoneModelType[];
   product: IphoneModel;
   modelName: (typeof modelName)[keyof typeof modelName];
+  colors: (typeof iphoneColor)[keyof typeof iphoneColor][];
   color: keyof typeof iphoneColor;
 };
 
-const modelTitle = {
-  [modelName["14pro"]]: "iPhone 14 Pro",
-  [modelName["14proMax"]]: "iPhone 14 Pro Max",
-};
-
-export const Models = ({ models, product, modelName, color }: ModelsProps) => {
+export const Colors = ({
+  models,
+  product,
+  modelName,
+  color,
+  colors,
+}: ModelsProps) => {
   return (
-    <div className={"flex flex-col gap-2 my-4"}>
+    <div className={"flex flex-col gap-2 my-2"}>
       <div className={"flex gap-2"}>
-        <span className={"text-xl font-bold"}>모델.</span>
+        <span className={"text-xl font-bold"}>색상.</span>
         <span className={"text-xl font-bold text-gray-500"}>
-          당신에게 딱 맞는 모델은?
+          맘에 드는 색상을 선택하세요.
         </span>
       </div>
+      {modelImage[product][modelName][color]}
       <Image
         src={modelImage[product][modelName][color]}
         alt={"iphone"}
@@ -34,26 +37,20 @@ export const Models = ({ models, product, modelName, color }: ModelsProps) => {
         width={350}
         height={246}
       />
-      {models.map((model) => (
+      {colors.map((color) => (
         <Link
-          key={model.name}
-          href={`${routes.product.root}/${product}?model=${model.name}`}
+          key={color}
+          href={`${routes.product.root}/${product}?model=${modelName}&color=${color}`}
           replace
         >
           <div
             className={`p-3.5 border rounded-md flex justify-between items-center ${
-              modelName === model.name ? "border-blue-600" : "border-gray-600"
+              color === color ? "border-blue-600" : "border-gray-600"
             }`}
           >
             <div className={"flex flex-col"}>
-              <span className={"text-base font-extrabold"}>
-                {modelTitle[model.name]}
-              </span>
-              <span className={"text-xs font-light"}>{model.description}</span>
+              <span className={"text-base font-extrabold"}>{color}</span>
             </div>
-            <span className={"text-xs font-light"}>
-              ₩{model.price.toLocaleString()}부터
-            </span>
           </div>
         </Link>
       ))}
