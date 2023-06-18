@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { iphoneColor } from "@/data-model/iphone";
 import {
@@ -11,7 +10,7 @@ import { modelImage } from "@/components/product/models/model-image";
 
 type ModelsProps = {
   product: IphoneProduct;
-  model: IphoneModelType;
+  selectedModel: IphoneModelType;
   colors: (typeof iphoneColor)[keyof typeof iphoneColor][];
   selectedColor: IphoneColor;
   selectColor: (color: IphoneColor) => void;
@@ -19,7 +18,7 @@ type ModelsProps = {
 
 export const Colors = ({
   product,
-  model,
+  selectedModel,
   selectedColor,
   colors,
   selectColor,
@@ -33,7 +32,7 @@ export const Colors = ({
         </span>
       </div>
       <Image
-        src={modelImage[product][model.name][selectedColor]}
+        src={modelImage[product][selectedModel.name][selectedColor]}
         alt={"iphone"}
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}

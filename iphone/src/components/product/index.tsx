@@ -22,13 +22,13 @@ export const Product = ({ params, productDataModal }: Props) => {
     <div>
       <Models
         models={productDataModal.models}
-        model={product.model}
+        selectedModel={product.model}
         product={params.product}
-        color={product.color}
+        selectedColor={product.color}
         selectModel={product.selectModel}
       />
       <Colors
-        model={product.model}
+        selectedModel={product.model}
         product={params.product}
         colors={productDataModal.colors}
         selectedColor={product.color}

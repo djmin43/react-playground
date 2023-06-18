@@ -13,8 +13,8 @@ import { modelImage } from "@/components/product/models/model-image";
 type ModelsProps = {
   models: IphoneModelType[];
   product: IphoneProduct;
-  model: IphoneModelType;
-  color: IphoneColor;
+  selectedModel: IphoneModelType;
+  selectedColor: IphoneColor;
   selectModel: (model: IphoneModelType) => void;
 };
 
@@ -26,8 +26,8 @@ const modelTitle = {
 export const Models = ({
   models,
   product,
-  model,
-  color,
+  selectedModel,
+  selectedColor,
   selectModel,
 }: ModelsProps) => {
   return (
@@ -39,35 +39,32 @@ export const Models = ({
         </span>
       </div>
       <Image
-        src={modelImage[product][model.name][color]}
+        src={modelImage[product][selectedModel.name][selectedColor]}
         alt={"iphone"}
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}
         height={246}
       />
       {models.map((model) => (
-        <Link
+        <button
           key={model.name}
-          href={`${routes.product.root}/${product}?model=${model.name}&color=${color}#models`}
-          replace
-          scroll={false}
+          className={`p-3.5 border rounded-md flex justify-between items-center ${
+            selectedModel.name === model.name
+              ? "border-blue-600"
+              : "border-gray-600"
+          }`}
+          onClick={() => selectModel(model)}
         >
-          <div
-            className={`p-3.5 border rounded-md flex justify-between items-center ${
-              model.name === model.name ? "border-blue-600" : "border-gray-600"
-            }`}
-          >
-            <div className={"flex flex-col"}>
-              <span className={"text-base font-extrabold"}>
-                {modelTitle[model.name]}
-              </span>
-              <span className={"text-xs font-light"}>{model.description}</span>
-            </div>
-            <span className={"text-xs font-light"}>
-              ₩{model.price.toLocaleString()}부터
+          <div className={"flex flex-col"}>
+            <span className={"text-base font-extrabold"}>
+              {modelTitle[model.name]}
             </span>
+            <span className={"text-xs font-light"}>{model.description}</span>
           </div>
-        </Link>
+          <span className={"text-xs font-light"}>
+            ₩{model.price.toLocaleString()}부터
+          </span>
+        </button>
       ))}
     </div>
   );
