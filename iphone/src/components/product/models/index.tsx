@@ -20,7 +20,7 @@ const modelTitle = {
 
 export const Models = ({ models, product, modelName, color }: ModelsProps) => {
   return (
-    <div className={"flex flex-col gap-2 my-4"}>
+    <div className={"flex flex-col gap-2 my-4"} id={"models"}>
       <div className={"flex gap-2"}>
         <span className={"text-xl font-bold"}>모델.</span>
         <span className={"text-xl font-bold text-gray-500"}>
@@ -37,8 +37,9 @@ export const Models = ({ models, product, modelName, color }: ModelsProps) => {
       {models.map((model) => (
         <Link
           key={model.name}
-          href={`${routes.product.root}/${product}?model=${model.name}`}
+          href={`${routes.product.root}/${product}?model=${model.name}&color=${color}`}
           replace
+          scroll={false}
         >
           <div
             className={`p-3.5 border rounded-md flex justify-between items-center ${

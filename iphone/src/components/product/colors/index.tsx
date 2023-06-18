@@ -22,7 +22,7 @@ export const Colors = ({
   colors,
 }: ModelsProps) => {
   return (
-    <div className={"flex flex-col gap-2 my-2"}>
+    <div className={"flex flex-col gap-2 my-2"} id={"colors"}>
       <div className={"flex gap-2"}>
         <span className={"text-xl font-bold"}>색상.</span>
         <span className={"text-xl font-bold text-gray-500"}>
@@ -42,6 +42,7 @@ export const Colors = ({
           key={color}
           href={`${routes.product.root}/${product}?model=${modelName}&color=${color}`}
           replace
+          scroll={false}
         >
           <div
             className={`p-3.5 border rounded-md flex justify-between items-center ${
