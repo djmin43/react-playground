@@ -7,6 +7,7 @@ import {
 } from "@/types/model/iphone";
 import Image from "next/image";
 import { modelImage } from "@/components/product/models/model-image";
+import { iphoneColorPalette } from "@/components/product/colors/color-palette";
 
 type ModelsProps = {
   product: IphoneProduct;
@@ -38,19 +39,21 @@ export const Colors = ({
         width={350}
         height={246}
       />
-      {colors.map((color) => (
-        <button
-          key={color}
-          className={`p-3.5 border rounded-md flex justify-between items-center ${
-            selectedColor === color ? "border-blue-600" : "border-gray-600"
-          }`}
-          onClick={() => selectColor(color)}
-        >
-          <div className={"flex flex-col"}>
-            <span className={"text-base font-extrabold"}>{color}</span>
-          </div>
-        </button>
-      ))}
+      <div className={"flex gap-4"}>
+        {colors.map((color) => (
+          <div
+            key={color}
+            style={{
+              backgroundColor: iphoneColorPalette[color],
+              boxShadow: "0 0 0 1px black",
+            }}
+            className={`p-3.5 rounded-full flex border-2 border-amber-500 ${
+              selectedColor === color ? "border-blue-600" : "border-gray-600"
+            }`}
+            onClick={() => selectColor(color)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

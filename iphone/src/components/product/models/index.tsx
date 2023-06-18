@@ -1,11 +1,9 @@
 import React from "react";
-import Link from "next/link";
-import { routes } from "@/constants/routes";
 import { modelName } from "@/data-model/iphone";
 import {
-  IphoneProduct,
-  IphoneModelType,
   IphoneColor,
+  IphoneModelType,
+  IphoneProduct,
 } from "@/types/model/iphone";
 import Image from "next/image";
 import { modelImage } from "@/components/product/models/model-image";
