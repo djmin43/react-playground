@@ -27,7 +27,6 @@ const Page = ({ params, searchParams }: Props) => {
         color={searchParams.color}
       />
       <Colors
-        models={product.models}
         modelName={searchParams.model}
         product={params.product}
         colors={product.colors}

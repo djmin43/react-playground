@@ -37,7 +37,7 @@ export const Models = ({ models, product, modelName, color }: ModelsProps) => {
       {models.map((model) => (
         <Link
           key={model.name}
-          href={`${routes.product.root}/${product}?model=${model.name}&color=${color}`}
+          href={`${routes.product.root}/${product}?model=${model.name}&color=${color}#models`}
           replace
           scroll={false}
         >

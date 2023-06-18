@@ -1,26 +1,18 @@
 import React from "react";
-import Link from "next/link";
-import { routes } from "@/constants/routes";
 import { iphoneColor, modelName } from "@/data-model/iphone";
 import { IphoneModel, IphoneModelType } from "@/types/model/iphone";
 import Image from "next/image";
 import { modelImage } from "@/components/product/models/model-image";
+import { ColorButton } from "@/components/product/colors/color-button";
 
 type ModelsProps = {
-  models: IphoneModelType[];
   product: IphoneModel;
   modelName: (typeof modelName)[keyof typeof modelName];
   colors: (typeof iphoneColor)[keyof typeof iphoneColor][];
   color: keyof typeof iphoneColor;
 };
 
-export const Colors = ({
-  models,
-  product,
-  modelName,
-  color,
-  colors,
-}: ModelsProps) => {
+export const Colors = ({ product, modelName, color, colors }: ModelsProps) => {
   return (
     <div className={"flex flex-col gap-2 my-2"} id={"colors"}>
       <div className={"flex gap-2"}>
@@ -38,22 +30,12 @@ export const Colors = ({
         height={246}
       />
       {colors.map((color) => (
-        <Link
+        <ColorButton
           key={color}
-          href={`${routes.product.root}/${product}?model=${modelName}&color=${color}`}
-          replace
-          scroll={false}
-        >
-          <div
-            className={`p-3.5 border rounded-md flex justify-between items-center ${
-              color === color ? "border-blue-600" : "border-gray-600"
-            }`}
-          >
-            <div className={"flex flex-col"}>
-              <span className={"text-base font-extrabold"}>{color}</span>
-            </div>
-          </div>
-        </Link>
+          color={color}
+          product={product}
+          modelName={modelName}
+        />
       ))}
     </div>
   );
