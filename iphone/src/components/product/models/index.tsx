@@ -1,4 +1,5 @@
 import React from "react";
+import "server-only";
 import Link from "next/link";
 import { routes } from "@/constants/routes";
 import { iphoneColor, modelName } from "@/data-model/iphone";

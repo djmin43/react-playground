@@ -4,6 +4,7 @@ import { iphoneColor, iphoneDataModel, modelName } from "@/data-model/iphone";
 import Header from "@/components/product/header";
 import { Colors } from "@/components/product/colors";
 import { Models } from "@/components/product/models";
+import { Product } from "@/components/product";
 
 type Props = {
   params: {
