@@ -1,10 +1,10 @@
 import { IphoneDataModel } from "@/types/model/iphone";
 
 export const iphoneColor = {
-  deepPurple: "deep-purple",
+  deepPurple: "deepPurple",
   gold: "gold",
   silver: "silver",
-  spaceBlack: "space-black",
+  spaceBlack: "spaceBlack",
 };
 export const modelName = {
   "14pro": "14-pro",

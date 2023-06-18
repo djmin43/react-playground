@@ -2,16 +2,16 @@ import React from "react";
 import "server-only";
 import Link from "next/link";
 import { routes } from "@/constants/routes";
-import { iphoneColor, modelName } from "@/data-model/iphone";
-import { IphoneModel, IphoneModelType } from "@/types/model/iphone";
+import { modelName } from "@/data-model/iphone";
+import { IphoneProduct, IphoneModelType } from "@/types/model/iphone";
 import Image from "next/image";
 import { modelImage } from "@/components/product/models/model-image";
 
 type ModelsProps = {
   models: IphoneModelType[];
-  product: IphoneModel;
-  modelName: (typeof modelName)[keyof typeof modelName];
-  color: keyof typeof iphoneColor;
+  product: IphoneProduct;
+  model: IphoneModelType;
+  color: string;
 };
 
 const modelTitle = {
@@ -19,7 +19,7 @@ const modelTitle = {
   [modelName["14proMax"]]: "iPhone 14 Pro Max",
 };
 
-export const Models = ({ models, product, modelName, color }: ModelsProps) => {
+export const Models = ({ models, product, model, color }: ModelsProps) => {
   return (
     <div className={"flex flex-col gap-2 my-4"} id={"models"}>
       <div className={"flex gap-2"}>
@@ -29,7 +29,7 @@ export const Models = ({ models, product, modelName, color }: ModelsProps) => {
         </span>
       </div>
       <Image
-        src={modelImage[product][modelName][color]}
+        src={modelImage[product][model.name][color]}
         alt={"iphone"}
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}
@@ -44,7 +44,7 @@ export const Models = ({ models, product, modelName, color }: ModelsProps) => {
         >
           <div
             className={`p-3.5 border rounded-md flex justify-between items-center ${
-              modelName === model.name ? "border-blue-600" : "border-gray-600"
+              model.name === model.name ? "border-blue-600" : "border-gray-600"
             }`}
           >
             <div className={"flex flex-col"}>

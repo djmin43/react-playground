@@ -1,19 +1,19 @@
 "use client";
 import React from "react";
-import { iphoneColor, modelName } from "@/data-model/iphone";
-import { IphoneModel, IphoneModelType } from "@/types/model/iphone";
+import { iphoneColor } from "@/data-model/iphone";
+import { IphoneModelType, IphoneProduct } from "@/types/model/iphone";
 import Image from "next/image";
 import { modelImage } from "@/components/product/models/model-image";
 import { ColorButton } from "@/components/product/colors/color-button";
 
 type ModelsProps = {
-  product: IphoneModel;
-  modelName: (typeof modelName)[keyof typeof modelName];
+  product: IphoneProduct;
+  model: IphoneModelType;
   colors: (typeof iphoneColor)[keyof typeof iphoneColor][];
-  color: keyof typeof iphoneColor;
+  color: string;
 };
 
-export const Colors = ({ product, modelName, color, colors }: ModelsProps) => {
+export const Colors = ({ product, model, color, colors }: ModelsProps) => {
   return (
     <div className={"flex flex-col gap-2 my-2"} id={"colors"}>
       <div className={"flex gap-2"}>
@@ -22,9 +22,8 @@ export const Colors = ({ product, modelName, color, colors }: ModelsProps) => {
           맘에 드는 색상을 선택하세요.
         </span>
       </div>
-      {modelImage[product][modelName][color]}
       <Image
-        src={modelImage[product][modelName][color]}
+        src={modelImage[product][model.name][color]}
         alt={"iphone"}
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}
@@ -35,7 +34,7 @@ export const Colors = ({ product, modelName, color, colors }: ModelsProps) => {
           key={color}
           color={color}
           product={product}
-          modelName={modelName}
+          modelName={model.name}
         />
       ))}
     </div>

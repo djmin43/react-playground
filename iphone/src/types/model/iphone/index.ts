@@ -1,6 +1,6 @@
 import { iphoneColor, modelName } from "@/data-model/iphone";
 
-export type IphoneModel =
+export type IphoneProduct =
   | "iphone14-pro"
   | "iphone14"
   | "iphone13"

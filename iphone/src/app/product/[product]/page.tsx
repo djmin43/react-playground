@@ -1,12 +1,12 @@
 import React from "react";
-import { IphoneModel } from "../../../types/model/iphone";
+import { IphoneProduct } from "../../../types/model/iphone";
 import { iphoneColor, iphoneDataModel, modelName } from "@/data-model/iphone";
 import Header from "@/components/product/header";
 import { Product } from "@/components/product";
 
 type Props = {
   params: {
-    product: IphoneModel;
+    product: IphoneProduct;
   };
   searchParams: {
     model: (typeof modelName)[keyof typeof modelName];

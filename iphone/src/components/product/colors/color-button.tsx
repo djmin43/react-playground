@@ -1,11 +1,11 @@
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import React from "react";
-import { IphoneModel } from "@/types/model/iphone";
+import { IphoneProduct } from "@/types/model/iphone";
 import { modelName } from "@/data-model/iphone";
 
 type Props = {
-  product: IphoneModel;
+  product: IphoneProduct;
   modelName: (typeof modelName)[keyof typeof modelName];
   color: string;
 };

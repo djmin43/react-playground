@@ -13,7 +13,7 @@ export const Menu = () => {
     <nav className={"bg-gray-50 flex justify-center items-start p-2"}>
       {iphoneList.map((iphone) => (
         <Link
-          href={`${routes.product.root}/${iphone.targetUrl}?${iphone.params}`}
+          href={`${routes.product.root}/${iphone.targetUrl}`}
           key={iphone.modelName}
         >
           <div className={"flex flex-col justify-start items-center px-2"}>
@@ -36,7 +36,6 @@ type IPhone = {
   icon: ReactNode;
   isNew: boolean;
   targetUrl: string;
-  params?: string;
 };
 
 export const iphoneList: IPhone[] = [
@@ -45,34 +44,29 @@ export const iphoneList: IPhone[] = [
     icon: <Iphone14Pro />,
     isNew: true,
     targetUrl: product["14pro"],
-    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone 14",
     icon: <Iphone14 />,
     isNew: true,
     targetUrl: product["14"],
-    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone 13",
     icon: <Iphone13 />,
     isNew: false,
     targetUrl: product["13"],
-    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone SE",
     icon: <IphoneSe />,
     isNew: false,
     targetUrl: product.se,
-    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
   {
     modelName: "iPhone 12",
     icon: <Iphone12 />,
     isNew: false,
     targetUrl: product["12"],
-    params: `model=${modelName["14pro"]}&color=${iphoneColor.silver}`,
   },
 ];
