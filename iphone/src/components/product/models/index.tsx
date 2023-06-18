@@ -53,7 +53,7 @@ export const Models = ({
           }`}
           onClick={() => selectModel(model)}
         >
-          <div className={"flex flex-col"}>
+          <div className={"flex flex-col items-start"}>
             <span className={"text-base font-extrabold"}>
               {modelTitle[model.name]}
             </span>

@@ -45,9 +45,8 @@ export const Colors = ({
             key={color}
             style={{
               backgroundColor: iphoneColorPalette[color],
-              boxShadow: "0 0 0 1px black",
             }}
-            className={`p-3.5 rounded-full flex border-2 border-amber-500 ${
+            className={`p-3.5 rounded-full flex border-2 border-amber-500 shadow-[0_0_0_1px_black] ${
               selectedColor === color ? "border-blue-600" : "border-gray-600"
             }`}
             onClick={() => selectColor(color)}
