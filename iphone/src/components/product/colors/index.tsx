@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { iphoneColor, modelName } from "@/data-model/iphone";
 import { IphoneModel, IphoneModelType } from "@/types/model/iphone";

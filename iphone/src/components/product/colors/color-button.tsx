@@ -13,8 +13,9 @@ export const ColorButton = ({ product, color, modelName }: Props) => {
   return (
     <Link
       key={color}
-      href={`${routes.product.root}/${product}?model=${modelName}&color=${color}#colors`}
+      href={`${routes.product.root}/${product}?model=${modelName}&color=${color}`}
       replace
+      scroll={false}
     >
       <div
         className={`p-3.5 border rounded-md flex justify-between items-center ${
