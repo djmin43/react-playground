@@ -1,6 +1,6 @@
-import { IphoneDataModel } from "@/types/model/iphone";
+import { IphoneColor, IphoneDataModel } from "@/types/model/iphone";
 
-export const iphoneColor = {
+export const iphoneColor: Record<IphoneColor, IphoneColor> = {
   deepPurple: "deepPurple",
   gold: "gold",
   silver: "silver",

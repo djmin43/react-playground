@@ -9,6 +9,8 @@ export type IphoneProduct =
 
 type IphoneTitle = "iPhone 14 Pro" | "iPhone 14";
 
+export type IphoneColor = "spaceBlack" | "deepPurple" | "gold" | "silver";
+
 export type IphoneModelType = {
   name: (typeof modelName)[keyof typeof modelName];
   description: string;

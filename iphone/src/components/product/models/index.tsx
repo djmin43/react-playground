@@ -1,9 +1,12 @@
 import React from "react";
-import "server-only";
 import Link from "next/link";
 import { routes } from "@/constants/routes";
 import { modelName } from "@/data-model/iphone";
-import { IphoneProduct, IphoneModelType } from "@/types/model/iphone";
+import {
+  IphoneProduct,
+  IphoneModelType,
+  IphoneColor,
+} from "@/types/model/iphone";
 import Image from "next/image";
 import { modelImage } from "@/components/product/models/model-image";
 
@@ -11,7 +14,8 @@ type ModelsProps = {
   models: IphoneModelType[];
   product: IphoneProduct;
   model: IphoneModelType;
-  color: string;
+  color: IphoneColor;
+  selectModel: (model: IphoneModelType) => void;
 };
 
 const modelTitle = {
@@ -19,7 +23,13 @@ const modelTitle = {
   [modelName["14proMax"]]: "iPhone 14 Pro Max",
 };
 
-export const Models = ({ models, product, model, color }: ModelsProps) => {
+export const Models = ({
+  models,
+  product,
+  model,
+  color,
+  selectModel,
+}: ModelsProps) => {
   return (
     <div className={"flex flex-col gap-2 my-4"} id={"models"}>
       <div className={"flex gap-2"}>
