@@ -38,7 +38,7 @@ export const PlayGround = () => {
               onChange: (e) => setValue(e.target.value),
             })}
           />
-          {errors.name?.message}
+          {errors.name?.type}
         </div>
         <div>
           <label>age: </label>
