@@ -12,8 +12,8 @@ export const memberSchema = z.object({
     .max(5, "대기자 이름은 6자 이하로 해주세요."),
   phoneNumber: z
     .string()
-    .length(11, "전화번호를 아래와 같이 입력해주세요(ex: 01012341234")
-    .regex(/^\d+$/, "전화번호를 아래와 같이 입력해주세요(ex: 01012341234"),
+    .length(11, "전화번호를 아래와 같이 입력해주세요(ex: 01012341234)")
+    .regex(/^\d+$/, "전화번호를 아래와 같이 입력해주세요(ex: 01012341234)"),
   terms: z.literal(true, {
     errorMap: () => ({
       message: "도망가지 않는다고 약속해주세요.",

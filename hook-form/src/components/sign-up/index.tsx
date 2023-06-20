@@ -1,6 +1,8 @@
 import { Member, memberSchema } from "../../App.tsx";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { DevTool } from "@hookform/devtools";
+import { useEffect } from "react";
 
 type SignUpProps = {
   addMember: (newMember: Member) => void;
@@ -9,13 +11,27 @@ export const SignUp = ({ addMember }: SignUpProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    control,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<Member>({
+    defaultValues: {
+      name: "",
+      phoneNumber: "",
+    },
     resolver: zodResolver(memberSchema),
   });
 
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful]);
+
+  const onSubmit = (newMember: Member) => {
+    addMember(newMember);
+  };
+
   return (
-    <form onSubmit={handleSubmit(addMember)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <h2>대기자 추가하기</h2>
       <div>
         <label>이름:</label>
@@ -33,6 +49,7 @@ export const SignUp = ({ addMember }: SignUpProps) => {
         <ErrorMessage errorMessage={errors.terms?.message} />
       </div>
       <input type="submit" value={"대기자 추가"} />
+      <DevTool control={control} />
     </form>
   );
 };
