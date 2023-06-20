@@ -1,11 +1,20 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 
 const schema = z.object({
-  name: z.number(),
-  age: z.number(),
+  name: z
+    .string({
+      required_error: "name is required",
+      invalid_type_error: "your name is invalid!",
+    })
+    .max(5, "your name is too long!"),
+  phoneNumber: z.string({
+    required_error: "phone number is required",
+    description: "this is phone number",
+    invalid_type_error: "your phone number is invalid!",
+  }),
+  menu: z.string(),
 });
 
 type Schema = z.infer<typeof schema>;
@@ -19,33 +28,27 @@ export const PlayGround = () => {
     resolver: zodResolver(schema),
   });
 
-  const [value, setValue] = useState(0);
-
   const onSubmit = (data: Schema) => {
     console.log(data);
   };
 
   return (
-    <div>
-      <h1>value: {value}</h1>
+    <div style={{ fontSize: 18 }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label>amount: </label>
-          <input
-            {...register("name", {
-              value,
-              setValueAs: (f) => +f,
-              onChange: (e) => setValue(e.target.value),
-            })}
-          />
-          {errors.name?.type}
+          <label>name:</label>
+          <input {...register("name")} />
+          {errors.name && errors.name?.message}
         </div>
         <div>
-          <label>age: </label>
-          <input
-            {...register("age", { valueAsNumber: true, disabled: true })}
-          />
-          {errors.age && "error"}
+          <label>phone number:</label>
+          <input {...register("phoneNumber")} />
+          {errors.phoneNumber && errors.phoneNumber?.message}
+        </div>
+        <div>
+          <label>menu:</label>
+          <input {...register("menu")} />
+          {errors.menu && errors.menu?.message}
         </div>
         <input type="submit" />
       </form>
