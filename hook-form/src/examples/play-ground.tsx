@@ -2,20 +2,17 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-const schema = z
-  .object({
-    name: z
-      .string()
-      .min(1, "please write user name")
-      .max(5, "your name is too long!"),
-    phoneNumber: z.string(),
-    email: z.string().email(),
-    menu: z.string(),
-    terms: z.literal(true, {
-      errorMap: () => ({ message: "please check the terms" }),
-    }),
-  })
-  .required();
+const schema = z.object({
+  name: z
+    .string()
+    .min(1, "please write user name")
+    .max(5, "your name is too long!"),
+  phoneNumber: z.string(),
+  menu: z.string().optional(),
+  terms: z.literal(true, {
+    errorMap: () => ({ message: "please check the terms" }),
+  }),
+});
 
 type Schema = z.infer<typeof schema>;
 
@@ -43,7 +40,7 @@ export const PlayGround = () => {
         <div>
           <label>phone number:</label>
           <input {...register("phoneNumber")} />
-          {errors.phoneNumber?.message}
+          {errors.phoneNumber && "error!"}
         </div>
         <div>
           <label>menu:</label>
