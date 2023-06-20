@@ -29,7 +29,7 @@ export const Models = ({
   selectModel,
 }: ModelsProps) => {
   return (
-    <div className={"flex flex-col gap-2 my-4"} id={"models"}>
+    <div className={"flex flex-col gap-2 my-4"}>
       <div className={"flex gap-2"}>
         <span className={"text-xl font-bold"}>모델.</span>
         <span className={"text-xl font-bold text-gray-500"}>

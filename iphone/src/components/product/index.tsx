@@ -4,6 +4,7 @@ import { IphoneDataModel, IphoneProduct } from "@/types/model/iphone";
 import { Models } from "@/components/product/models";
 import { Colors } from "@/components/product/colors";
 import { useProductSelect } from "@/hooks/use-product-select";
+import { Storage } from "@/components/product/storage";
 
 type Props = {
   params: {
@@ -19,7 +20,7 @@ export const Product = ({ params, productDataModal }: Props) => {
   });
 
   return (
-    <div>
+    <div className={"flex flex-col gap-4"}>
       <Models
         models={productDataModal.models}
         selectedModel={product.model}
@@ -34,6 +35,7 @@ export const Product = ({ params, productDataModal }: Props) => {
         selectedColor={product.color}
         selectColor={product.selectColor}
       />
+      <Storage />
     </div>
   );
 };
