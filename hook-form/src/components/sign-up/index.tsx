@@ -16,7 +16,7 @@ export const SignUp = ({ addMember }: SignUpProps) => {
 
   return (
     <form onSubmit={handleSubmit(addMember)}>
-      <h2>대기자 추가</h2>
+      <h2>대기자 추가하기</h2>
       <div>
         <label>이름:</label>
         <input {...register("name")} />
