@@ -35,7 +35,7 @@ export const SignUp = ({ addMember }: SignUpProps) => {
       <h2>대기자 추가하기</h2>
       <div>
         <label>이름:</label>
-        <input {...register("name")} />
+        <input {...register("name", {})} />
         <ErrorMessage errorMessage={errors.name?.message} />
       </div>
       <div>
