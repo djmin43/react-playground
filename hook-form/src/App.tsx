@@ -1,9 +1,8 @@
 import "./App.css";
 import { z } from "zod";
-import { useState } from "react";
-import { MemberList } from "./components/member-list";
-import { SignUp } from "./components/sign-up";
-import { Header } from "./components/header";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { MainApp } from "./components/main-app";
 
 export const memberSchema = z.object({
   name: z
@@ -23,18 +22,15 @@ export const memberSchema = z.object({
 
 export type Member = z.infer<typeof memberSchema>;
 
+const queryClient = new QueryClient();
+
 function App() {
-  const [memberList, setMemberList] = useState<Member[]>([]);
-
-  const addMember = (newMember: Member) => {
-    setMemberList((prevState) => prevState.concat(newMember));
-  };
-
   return (
     <main>
-      <Header />
-      <SignUp addMember={addMember} />
-      <MemberList memberList={memberList} />
+      <QueryClientProvider client={queryClient}>
+        <MainApp />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </main>
   );
 }

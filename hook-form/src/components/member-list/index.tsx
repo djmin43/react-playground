@@ -8,8 +8,8 @@ export const MemberList = ({ memberList }: MemberListProps) => {
     <div>
       <h1>대기자 명단</h1>
       <div>
-        {memberList.map((member) => (
-          <div key={member.phoneNumber}>
+        {memberList.map((member, index) => (
+          <div key={index}>
             <span>{member.name}</span>
             <span>{member.phoneNumber}</span>
           </div>
