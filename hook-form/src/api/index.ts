@@ -1,10 +1,11 @@
 import axios from "axios";
 import { baseUrl } from "../constants/end-point.ts";
 import { Member } from "../App.tsx";
+import { Reservation } from "../types";
 
 export const getList = () => {
   return axios
-    .get<Member[]>(`${baseUrl}/reservation/list`)
+    .get<Reservation[]>(`${baseUrl}/reservation/list`)
     .then((res) => res.data);
 };
 

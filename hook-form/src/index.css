@@ -3,4 +3,28 @@
 
 }
 
+th, td {
+  padding: 5px 10px;
+  border: 1px solid black;
+}
 
+table {
+  border: 1px solid black;
+}
+
+
+
+.strike {
+  position: relative;
+}
+
+.strike:after {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  background: #000;
+  content: "";
+  width: 100%;
+  display: block;
+}

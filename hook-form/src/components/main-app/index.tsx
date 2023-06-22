@@ -4,6 +4,7 @@ import { createNewMember, getList } from "../../api";
 import { SignUp } from "../sign-up";
 import { Header } from "../header";
 import { MemberList } from "../member-list";
+import { Member } from "../../types";
 
 export const memberSchema = z.object({
   name: z
@@ -20,8 +21,6 @@ export const memberSchema = z.object({
     }),
   }),
 });
-
-export type Member = z.infer<typeof memberSchema>;
 
 export function MainApp() {
   const queryClient = useQueryClient();
