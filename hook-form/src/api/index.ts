@@ -14,3 +14,9 @@ export const createNewMember = (member: Member) => {
     .post<string>(`${baseUrl}/reservation`, member)
     .then((res) => res.data);
 };
+
+export const toggleReservation = (id: string) => {
+  return axios
+    .put(`${baseUrl}/reservation/toggle/${id}`)
+    .then((res) => res.data);
+};

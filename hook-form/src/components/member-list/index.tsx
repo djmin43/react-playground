@@ -2,8 +2,9 @@ import { Reservation } from "../../types";
 
 type MemberListProps = {
   memberList: Reservation[];
+  toggle: (id: string) => void;
 };
-export const MemberList = ({ memberList }: MemberListProps) => {
+export const MemberList = ({ memberList, toggle }: MemberListProps) => {
   return (
     <div>
       <h1>대기자 명단</h1>
@@ -20,7 +21,7 @@ export const MemberList = ({ memberList }: MemberListProps) => {
             <tr
               key={member.id}
               className={member.isResolved ? "strike" : ""}
-              onClick={() => console.log(member.id)}
+              onClick={() => toggle(member.id)}
             >
               <td>{member.createdAt.toLocaleString()}</td>
               <td>{member.name}</td>

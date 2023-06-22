@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createNewMember, getList } from "../../api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { createNewMember, getList, toggleReservation } from "../../api";
 import { SignUp } from "../sign-up";
 import { Header } from "../header";
 import { MemberList } from "../member-list";
@@ -23,15 +23,25 @@ export const memberSchema = z.object({
 });
 
 export function MainApp() {
-  const queryClient = useQueryClient();
-
   const membersQuery = useQuery(["get-list"], getList);
   const addMemberMutation = useMutation(["add-member"], createNewMember, {
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["get-list"] }),
+    onSuccess: () => membersQuery.refetch(),
   });
+
+  const toggleReservationMutation = useMutation(
+    ["toggle-reservation"],
+    toggleReservation,
+    {
+      onSuccess: () => membersQuery.refetch(),
+    }
+  );
 
   const addMember = (newMember: Member) => {
     addMemberMutation.mutate(newMember);
+  };
+
+  const toggle = (id: string) => {
+    toggleReservationMutation.mutate(id);
   };
 
   if (!membersQuery.isSuccess) {
@@ -42,7 +52,7 @@ export function MainApp() {
     <main>
       <Header />
       <SignUp addMember={addMember} />
-      <MemberList memberList={membersQuery.data} />
+      <MemberList memberList={membersQuery.data} toggle={toggle} />
     </main>
   );
 }
