@@ -6,8 +6,8 @@ import {
   IphoneProduct,
 } from "@/types/model/iphone";
 import Image from "next/image";
-import { modelImage } from "@/components/product/models/model-image";
-import { iphoneColorPalette } from "@/components/product/colors/color-palette";
+import { modelImage } from "@/components/product/model-image";
+import { iphoneColorPalette } from "@/components/product/color-palette";
 
 type ModelsProps = {
   product: IphoneProduct;

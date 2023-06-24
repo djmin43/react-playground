@@ -6,7 +6,7 @@ import {
   IphoneProduct,
 } from "@/types/model/iphone";
 import Image from "next/image";
-import { modelImage } from "@/components/product/models/model-image";
+import { modelImage } from "@/components/product/model-image";
 
 type ModelsProps = {
   models: IphoneModelType[];

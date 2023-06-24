@@ -5,6 +5,7 @@ import { Models } from "@/components/product/models";
 import { Colors } from "@/components/product/colors";
 import { useProductSelect } from "@/hooks/use-product-select";
 import { Storage } from "@/components/product/storage";
+import { useInView } from "react-intersection-observer";
 
 type Props = {
   params: {
@@ -14,6 +15,8 @@ type Props = {
 };
 
 export const Product = ({ params, productDataModal }: Props) => {
+  const { ref: topDrawerRef, inView, entry } = useInView();
+
   const product = useProductSelect({
     initialModel: productDataModal.models[0],
     initialColor: "silver",
@@ -22,7 +25,13 @@ export const Product = ({ params, productDataModal }: Props) => {
 
   return (
     <div className={"flex flex-col gap-4"}>
-      <div className={"top-0 fixed"}>top sticky</div>
+      <div
+        className={`top-0 fixed bg-white h-20 w-full border-2 border-amber-500 ${
+          inView ? "animate-slide-down" : "animate-slide-up"
+        }`}
+      >
+        디테일 페이지로 가기
+      </div>
       <Models
         models={productDataModal.models}
         selectedModel={product.model}
@@ -37,6 +46,7 @@ export const Product = ({ params, productDataModal }: Props) => {
         selectedColor={product.color}
         selectColor={product.selectColor}
       />
+      <div ref={topDrawerRef} />
       <Storage
         selectedModel={product.model}
         storages={productDataModal.storage}
