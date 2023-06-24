@@ -5,8 +5,6 @@ import { Models } from "@/components/product/models";
 import { Colors } from "@/components/product/colors";
 import { useProductSelect } from "@/hooks/use-product-select";
 import { Storage } from "@/components/product/storage";
-import Link from "next/link";
-import { routes } from "@/constants/routes";
 
 type Props = {
   params: {
@@ -24,6 +22,7 @@ export const Product = ({ params, productDataModal }: Props) => {
 
   return (
     <div className={"flex flex-col gap-4"}>
+      <div className={"top-0 fixed"}>top sticky</div>
       <Models
         models={productDataModal.models}
         selectedModel={product.model}

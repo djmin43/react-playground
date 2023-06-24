@@ -15,7 +15,7 @@ export const Storage = ({
   selectedStorage,
 }: StorageProps) => {
   return (
-    <div className={"flex flex-col gap-2 my-4"}>
+    <div className={"flex flex-col gap-2 my-4 px-6"}>
       <div className={"flex gap-2"}>
         <span className={"text-xl font-bold"}>저장 용량.</span>
         <span className={"text-xl font-bold text-gray-500"}>
@@ -36,9 +36,11 @@ export const Storage = ({
             {storage.amount}
             {storage.unit}
           </span>
-          <span className={"text-xs font-light"}>
-            ₩ {(selectedModel.price + storage.price).toLocaleString()}
-          </span>
+          <div className={"flex flex-col"}>
+            <span className={"text-xs font-light"}>
+              ₩{(selectedModel.price + storage.price).toLocaleString()}
+            </span>
+          </div>
         </button>
       ))}
     </div>

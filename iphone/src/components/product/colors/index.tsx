@@ -25,7 +25,7 @@ export const Colors = ({
   selectColor,
 }: ModelsProps) => {
   return (
-    <div className={"flex flex-col gap-2 my-2"} id={"colors"}>
+    <div className={"flex flex-col gap-2 my-2 px-6"}>
       <div className={"flex gap-2"}>
         <span className={"text-xl font-bold"}>색상.</span>
         <span className={"text-xl font-bold text-gray-500"}>

@@ -6,7 +6,7 @@ type HeaderProps = {
 };
 const Header = ({ isNew, title }: HeaderProps) => {
   return (
-    <div className={"flex flex-col py-2"}>
+    <div className={"flex flex-col py-2 px-6"}>
       {isNew && <span className={"text-sm text-red-700 "}>New</span>}
       <span className={"text-4xl font-extrabold"}>{title}</span>
       <span className={"text-4xl font-extrabold"}>구입하기</span>
