@@ -42,6 +42,7 @@ export const Models = ({
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}
         height={246}
+        priority
       />
       {models.map((model) => (
         <button

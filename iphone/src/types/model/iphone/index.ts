@@ -17,7 +17,7 @@ export type IphoneModelType = {
   price: number;
 };
 
-type StorageType = {
+export type IphoneStorageType = {
   amount: number;
   unit: "GB" | "TB";
   price: number;
@@ -28,5 +28,5 @@ export type IphoneDataModel = {
   title: IphoneTitle;
   models: IphoneModelType[];
   colors: (typeof iphoneColor)[keyof typeof iphoneColor][];
-  storage: StorageType[];
+  storage: IphoneStorageType[];
 };

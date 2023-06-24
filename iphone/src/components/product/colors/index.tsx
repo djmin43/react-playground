@@ -38,6 +38,7 @@ export const Colors = ({
         style={{ objectFit: "contain", borderRadius: "16px" }}
         width={350}
         height={246}
+        priority
       />
       <div className={"flex gap-4"}>
         {colors.map((color) => (

@@ -17,6 +17,7 @@ export const Product = ({ params, productDataModal }: Props) => {
   const product = useProductSelect({
     initialModel: productDataModal.models[0],
     initialColor: "silver",
+    initialStorage: productDataModal.storage[0],
   });
 
   return (
@@ -35,7 +36,12 @@ export const Product = ({ params, productDataModal }: Props) => {
         selectedColor={product.color}
         selectColor={product.selectColor}
       />
-      <Storage />
+      <Storage
+        selectedModel={product.model}
+        storages={productDataModal.storage}
+        selectStorage={product.selectStorage}
+        selectedStorage={product.storage}
+      />
     </div>
   );
 };

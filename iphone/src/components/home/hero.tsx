@@ -20,6 +20,7 @@ const Hero = () => {
         alt={"iphone"}
         width={675}
         height={342}
+        priority
       />
     </div>
   );
