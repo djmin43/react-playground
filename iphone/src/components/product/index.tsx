@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { IphoneDataModel, IphoneProduct } from "@/types/model/iphone";
 import { Models } from "@/components/product/models";
 import { Colors } from "@/components/product/colors";
@@ -25,13 +25,15 @@ export const Product = ({ params, productDataModal }: Props) => {
 
   return (
     <div className={"flex flex-col gap-4"}>
-      <div
-        className={`top-0 fixed bg-white h-20 w-full border-2 border-amber-500 ${
-          inView ? "animate-slide-down" : "animate-slide-up"
-        }`}
-      >
-        디테일 페이지로 가기
-      </div>
+      {window.scrollY !== 0 && (
+        <div
+          className={`top-0 fixed bg-white h-20 w-full border-2 border-amber-500 ${
+            inView ? "animate-slide-down" : "animate-slide-up"
+          }`}
+        >
+          디테일 페이지로 가기
+        </div>
+      )}
       <Models
         models={productDataModal.models}
         selectedModel={product.model}
