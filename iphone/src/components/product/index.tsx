@@ -25,7 +25,11 @@ export const Product = ({ params, productDataModal }: Props) => {
 
   return (
     <div className={"flex flex-col gap-4"}>
-      <TopDrawer inView={inView} />
+      <TopDrawer
+        inView={inView}
+        usedPrice={1_000_000}
+        newPrice={product.storage.price + product.model.price}
+      />
       <Models
         models={productDataModal.models}
         selectedModel={product.model}
