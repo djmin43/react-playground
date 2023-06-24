@@ -13,7 +13,7 @@ type Props = {
 const Page = ({ params }: Props) => {
   const productDataModel = iphoneDataModel[params.product];
   return (
-    <div className={"px-4 py-12"}>
+    <div className={"py-12 px-6"}>
       <Header isNew={productDataModel.isNew} title={productDataModel.title} />
       <Product params={params} productDataModal={productDataModel} />
     </div>

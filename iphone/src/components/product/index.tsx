@@ -5,6 +5,8 @@ import { Models } from "@/components/product/models";
 import { Colors } from "@/components/product/colors";
 import { useProductSelect } from "@/hooks/use-product-select";
 import { Storage } from "@/components/product/storage";
+import Link from "next/link";
+import { routes } from "@/constants/routes";
 
 type Props = {
   params: {

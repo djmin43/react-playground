@@ -25,19 +25,19 @@ export const Storage = ({
       {storages.map((storage) => (
         <button
           key={storage.amount}
-          className={`p-3.5 border rounded-md flex justify-between items-center ${
+          className={`px-3.5 h-20 rounded-lg flex justify-between items-center ${
             selectedStorage.amount === storage.amount
-              ? "border-blue-600"
-              : "border-gray-600"
+              ? "border-blue-600 border-2"
+              : "border-gray-600 border"
           }`}
           onClick={() => selectStorage(storage)}
         >
-          <span className={"text-base font-extrabold"}>
+          <span className={"text-lg font-extrabold"}>
             {storage.amount}
             {storage.unit}
           </span>
           <span className={"text-xs font-light"}>
-            ₩{selectedModel.price + storage.price}
+            ₩ {(selectedModel.price + storage.price).toLocaleString()}
           </span>
         </button>
       ))}

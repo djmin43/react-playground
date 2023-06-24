@@ -47,21 +47,21 @@ export const Models = ({
       {models.map((model) => (
         <button
           key={model.name}
-          className={`p-3.5 border rounded-md flex justify-between items-center ${
+          className={`px-3.5 h-20 rounded-md flex justify-between items-center ${
             selectedModel.name === model.name
-              ? "border-blue-600"
-              : "border-gray-600"
+              ? "border-blue-600 border-2"
+              : "border-gray-600 border"
           }`}
           onClick={() => selectModel(model)}
         >
           <div className={"flex flex-col items-start"}>
-            <span className={"text-base font-extrabold"}>
+            <span className={"text-lg font-extrabold"}>
               {modelTitle[model.name]}
             </span>
             <span className={"text-xs font-light"}>{model.description}</span>
           </div>
           <span className={"text-xs font-light"}>
-            ₩{model.price.toLocaleString()}부터
+            ₩ {model.price.toLocaleString()}부터
           </span>
         </button>
       ))}
