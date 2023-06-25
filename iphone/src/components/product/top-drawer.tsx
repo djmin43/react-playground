@@ -2,13 +2,34 @@ import React, { useEffect, useState } from "react";
 import { useDrawerTriggered } from "@/hooks/use-drawer-triggered";
 import Link from "next/link";
 import { routes } from "@/constants/routes";
-import { IphoneProduct } from "@/types/model/iphone";
+import {
+  IphoneColor,
+  IphoneModelType,
+  IphoneProduct,
+  IphoneStorageType,
+} from "@/types/model/iphone";
+import { iphoneColor, modelName } from "@/data-model/iphone";
 
 type TopDrawerProps = {
   inView: boolean;
   newPrice: number;
   usedPrice: number;
   product: IphoneProduct;
+  selectedModel: IphoneModelType;
+  selectedColor: IphoneColor;
+  selectedStorage: IphoneStorageType;
+};
+
+const color = {
+  [iphoneColor.silver]: "실버",
+  [iphoneColor.spaceBlack]: "스페이스블랙",
+  [iphoneColor.gold]: "골드",
+  [iphoneColor.deepPurple]: "딥퍼플",
+};
+
+const model = {
+  [modelName["14pro"]]: "아이폰 14 프로",
+  [modelName["14proMax"]]: "아이폰 14 프로맥스",
 };
 
 export const TopDrawer = ({
@@ -16,6 +37,9 @@ export const TopDrawer = ({
   newPrice,
   usedPrice,
   product,
+  selectedStorage,
+  selectedModel,
+  selectedColor,
 }: TopDrawerProps) => {
   const isDrawerTriggered = useDrawerTriggered(inView);
 
@@ -27,8 +51,10 @@ export const TopDrawer = ({
         }`}
       >
         <div className={"px-2"}>
-          <span className={"text-lg font-extrabold"}>
-            아이폰 14 Pro 실버 128GB
+          <span className={"text-xl font-extrabold"}>
+            {model[selectedModel.name]} {color[selectedColor]}{" "}
+            {selectedStorage.amount}
+            {selectedStorage.unit}
           </span>
           <div className={"flex flex-col"}>
             <span className={"text-xs"}>
@@ -37,7 +63,7 @@ export const TopDrawer = ({
             <span className={"text-xs"}>
               중고평균: ₩{usedPrice.toLocaleString()}
             </span>
-            <span className={"text-xs font-extrabold"}>
+            <span className={"text-sm font-extrabold"}>
               차이: ₩{(newPrice - usedPrice).toLocaleString()}
             </span>
           </div>

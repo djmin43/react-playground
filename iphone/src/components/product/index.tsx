@@ -26,24 +26,27 @@ export const Product = ({ params, productDataModal }: ProductProps) => {
   return (
     <div className={"flex flex-col gap-4 relative"}>
       <TopDrawer
-        product={params.product}
         inView={inView}
         usedPrice={1_000_000}
         newPrice={product.storage.price + product.model.price}
+        product={params.product}
+        selectedColor={product.color}
+        selectedModel={product.model}
+        selectedStorage={product.storage}
       />
       <Models
-        models={productDataModal.models}
-        selectedModel={product.model}
         product={params.product}
-        selectedColor={product.color}
+        models={productDataModal.models}
         selectModel={product.selectModel}
+        selectedModel={product.model}
+        selectedColor={product.color}
       />
       <Colors
-        selectedModel={product.model}
         product={params.product}
         colors={productDataModal.colors}
-        selectedColor={product.color}
         selectColor={product.selectColor}
+        selectedColor={product.color}
+        selectedModel={product.model}
       />
       <div className={"absolute top-2/4"} ref={topDrawerRef} />
       <Storage
