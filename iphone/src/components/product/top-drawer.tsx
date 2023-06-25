@@ -63,7 +63,7 @@ export const TopDrawer = ({
             <span className={"text-xs"}>
               중고평균: ₩{usedPrice.toLocaleString()}
             </span>
-            <span className={"text-sm font-extrabold"}>
+            <span className={"text-xs font-extrabold"}>
               차이: ₩{(newPrice - usedPrice).toLocaleString()}
             </span>
           </div>
