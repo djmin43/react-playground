@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 type TopDrawerProps = {
   inView: boolean;
@@ -7,16 +7,22 @@ type TopDrawerProps = {
 };
 
 export const TopDrawer = ({ inView, newPrice, usedPrice }: TopDrawerProps) => {
-  if (window.scrollY == 0) return null;
-  return (
-    <div
-      className={`flex flex-col top-0 fixed bg-white h-20 w-full border-2 ${
-        inView ? "animate-slide-down" : "animate-slide-up"
-      }`}
-    >
-      <span>새 모델 가격: ₩{newPrice.toLocaleString()}</span>
-      <span>중고 평균 가격: ₩{usedPrice.toLocaleString()}</span>
-      <span>가격차이: ₩{(newPrice - usedPrice).toLocaleString()} </span>
-    </div>
-  );
+  const [isDrawerTriggered, setIsDrawerTriggered] = useState(false);
+  useEffect(() => {
+    if (inView === true) {
+      setIsDrawerTriggered(true);
+    }
+  }, [inView]);
+  if (isDrawerTriggered)
+    return (
+      <div
+        className={`flex flex-col top-0 fixed bg-white h-20 w-full border-2 ${
+          inView ? "animate-slide-down" : "animate-slide-up"
+        }`}
+      >
+        <span>새 모델 가격: ₩{newPrice.toLocaleString()}</span>
+        <span>중고 평균 가격: ₩{usedPrice.toLocaleString()}</span>
+        <span>가격차이: ₩{(newPrice - usedPrice).toLocaleString()} </span>
+      </div>
+    );
 };
