@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { IphoneDataModel, IphoneProduct } from "@/types/model/iphone";
 import { Models } from "@/components/product/models";
 import { Colors } from "@/components/product/colors";
@@ -8,14 +8,14 @@ import { Storage } from "@/components/product/storage";
 import { useInView } from "react-intersection-observer";
 import { TopDrawer } from "@/components/product/top-drawer";
 
-type Props = {
+type ProductProps = {
   params: {
     product: IphoneProduct;
   };
   productDataModal: IphoneDataModel;
 };
 
-export const Product = ({ params, productDataModal }: Props) => {
+export const Product = ({ params, productDataModal }: ProductProps) => {
   const { ref: topDrawerRef, inView, entry } = useInView();
   const product = useProductSelect({
     initialModel: productDataModal.models[0],
@@ -24,8 +24,9 @@ export const Product = ({ params, productDataModal }: Props) => {
   });
 
   return (
-    <div className={"flex flex-col gap-4"}>
+    <div className={"flex flex-col gap-4 relative"}>
       <TopDrawer
+        product={params.product}
         inView={inView}
         usedPrice={1_000_000}
         newPrice={product.storage.price + product.model.price}
@@ -44,7 +45,7 @@ export const Product = ({ params, productDataModal }: Props) => {
         selectedColor={product.color}
         selectColor={product.selectColor}
       />
-      <div ref={topDrawerRef} />
+      <div className={"absolute top-2/4"} ref={topDrawerRef} />
       <Storage
         selectedModel={product.model}
         storages={productDataModal.storage}

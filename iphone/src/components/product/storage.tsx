@@ -25,7 +25,7 @@ export const Storage = ({
       {storages.map((storage) => (
         <button
           key={storage.amount}
-          className={`px-3.5 h-20 rounded-lg flex justify-between items-center ${
+          className={`px-3.5 h-20 rounded-2xl flex justify-between items-center ${
             selectedStorage.amount === storage.amount
               ? "border-blue-600 border-2"
               : "border-gray-600 border"

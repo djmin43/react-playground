@@ -47,7 +47,7 @@ export const Models = ({
       {models.map((model) => (
         <button
           key={model.name}
-          className={`px-3.5 h-20 rounded-md flex justify-between items-center ${
+          className={`px-3.5 h-20 rounded-2xl flex justify-between items-center ${
             selectedModel.name === model.name
               ? "border-blue-600 border-2"
               : "border-gray-600 border"
