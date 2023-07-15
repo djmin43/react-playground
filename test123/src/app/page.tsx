@@ -1,3 +1,9 @@
+import BookForm from "@/app/book-form";
+
 export default function Home() {
-  return <main>hello world</main>;
+  return (
+    <main>
+      <BookForm />
+    </main>
+  );
 }
