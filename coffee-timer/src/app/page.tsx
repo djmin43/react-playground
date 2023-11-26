@@ -1,5 +1,5 @@
 import "@/styles/home.scss";
-import { Timer } from "@/component/timer";
+import { Timer } from "@/components/timer";
 export default function Home() {
   return (
     <main className={"home-container"}>

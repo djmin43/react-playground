@@ -20,22 +20,23 @@ export const useTimer = ({
     isRunning ? 1000 : null,
   );
 
-  const startTimer = () => {
+  const start = () => {
     setIsRunning(true);
   };
 
-  const stopTimer = () => {
+  const stop = () => {
     setIsRunning(false);
   };
 
-  const resetTimer = () => {
+  const reset = () => {
+    stop();
     setCount(0);
   };
 
   return {
     count,
-    startTimer,
-    stopTimer,
-    resetTimer,
+    start,
+    stop,
+    reset,
   };
 };
