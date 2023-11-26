@@ -1,0 +1,12 @@
+@use '@/styles/mixins';
+
+.home-container {
+  @include mixins.center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+}
