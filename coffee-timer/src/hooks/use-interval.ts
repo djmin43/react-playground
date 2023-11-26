@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { MutableRefObject, useEffect, useRef } from "react";
 
 export const useInterval = (callback: () => void, delay: number | null) => {
-  const savedCallback = useRef<any>();
+  const savedCallback = useRef<() => void>();
 
   // Remember the latest callback.
   useEffect(() => {
@@ -11,7 +11,9 @@ export const useInterval = (callback: () => void, delay: number | null) => {
   // Set up the interval
   useEffect(() => {
     function tick() {
-      savedCallback.current();
+      if (savedCallback.current) {
+        savedCallback.current();
+      }
     }
 
     if (delay !== null) {

@@ -1,30 +1,13 @@
 "use client";
-import React, { useState } from "react";
-import { useInterval } from "@/hooks/use-interval";
+import React from "react";
+import { useTimer } from "@/hooks/use-timer";
 
 export const Timer = () => {
-  const [count, setcount] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-
-  useInterval(
-    () => {
-      setcount(count + 1);
-    },
-    isRunning ? 1000 : null,
-  );
-
-  const toggleTimer = () => {
-    if (isRunning) {
-      setIsRunning(false);
-      return;
-    }
-    setIsRunning(true);
-  };
-
+  const timer = useTimer({ initialCount: 0, isIncreasing: true });
   return (
     <div>
-      <button onClick={toggleTimer}>toggle timer</button>
-      {count}
+      <button onClick={timer.startTimer}>start timer</button>
+      {timer.count}
       {/*  let's start with a pre-made recipe */}
       {/*  use nosleep for keep this awake */}
       {/*  total time: 2:30 */}
