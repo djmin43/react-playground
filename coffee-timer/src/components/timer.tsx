@@ -16,9 +16,20 @@ export const Timer = () => {
   }, [coffeeTimer.count, countDownTimer.count]);
 
   return (
-    <div>
-      <button>start countdown timer</button>
-      {TimeFormatterUtils.secondsToMMSS(coffeeTimer.count)}
+    <div className={"timer-container"}>
+      <div className={"timer"}>
+        {!countDownTimer.isRunning && !coffeeTimer.isRunning ? (
+          <button onClick={countDownTimer.start} className={"start-button"}>
+            click to start
+          </button>
+        ) : (
+          <p>
+            {coffeeTimer.isRunning
+              ? TimeFormatterUtils.secondsToMMSS(coffeeTimer.count)
+              : countDownTimer.count}
+          </p>
+        )}
+      </div>
       {/*  let's start with a pre-made recipe */}
       {/*  use nosleep for keep this awake */}
       {/*  total time: 2:30 */}

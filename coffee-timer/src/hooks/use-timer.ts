@@ -38,5 +38,6 @@ export const useTimer = ({
     start,
     stop,
     reset,
+    isRunning,
   };
 };
