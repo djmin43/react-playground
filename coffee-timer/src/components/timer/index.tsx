@@ -27,15 +27,13 @@ export const Timer = () => {
             click to start
           </button>
         ) : (
-          <p>
+          <>
             {coffeeTimer.isRunning ? (
-              <CoffeeTimer
-                count={TimeFormatterUtils.secondsToMMSS(coffeeTimer.count)}
-              />
+              <CoffeeTimer count={coffeeTimer.count} />
             ) : (
               <CountDownTimer count={countDownTimer.count} />
             )}
-          </p>
+          </>
         )}
       </div>
       {/*  let's start with a pre-made recipe */}
