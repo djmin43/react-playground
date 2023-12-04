@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import { useTimer } from "@/hooks/use-timer";
 import { TimeFormatterUtils } from "@/utils/time-formatter.utils";
+import { CoffeeTimer } from "@/components/timer/coffee-timer";
+import { CountDownTimer } from "@/components/timer/count-down-timer";
 
 export const Timer = () => {
   const coffeeTimer = useTimer({ initialCount: 0, isIncreasing: true });
@@ -15,18 +17,24 @@ export const Timer = () => {
     }
   }, [coffeeTimer.count, countDownTimer.count]);
 
+  const isTimerIdle = !countDownTimer.isRunning && !coffeeTimer.isRunning;
+
   return (
     <div className={"timer-container"}>
       <div className={"timer"}>
-        {!countDownTimer.isRunning && !coffeeTimer.isRunning ? (
+        {isTimerIdle ? (
           <button onClick={countDownTimer.start} className={"start-button"}>
             click to start
           </button>
         ) : (
           <p>
-            {coffeeTimer.isRunning
-              ? TimeFormatterUtils.secondsToMMSS(coffeeTimer.count)
-              : countDownTimer.count}
+            {coffeeTimer.isRunning ? (
+              <CoffeeTimer
+                count={TimeFormatterUtils.secondsToMMSS(coffeeTimer.count)}
+              />
+            ) : (
+              <CountDownTimer count={countDownTimer.count} />
+            )}
           </p>
         )}
       </div>

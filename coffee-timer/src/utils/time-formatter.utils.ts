@@ -2,8 +2,6 @@ import { intervalToDuration } from "date-fns/fp";
 
 export class TimeFormatterUtils {
   /**
-   *
-   * @param seconds in seconds
    * ex: 60 -> 01:00; 5 -> 00:05
    */
   public static secondsToMMSS(seconds: number) {
@@ -16,7 +14,6 @@ export class TimeFormatterUtils {
   }
 
   /**
-   * @private
    * "0" -> "00"; "00" -> "00"
    */
   private static formatTimeDigit(time: string) {
