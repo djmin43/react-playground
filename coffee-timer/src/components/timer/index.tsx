@@ -1,12 +1,19 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTimer } from "@/hooks/use-timer";
 import { CoffeeTimer } from "@/components/timer/coffee-timer";
 import { CountDownTimer } from "@/components/timer/count-down-timer";
 
+type Recipe = {
+  type: string;
+  count: number;
+  duration: number;
+};
+
 export const Timer = () => {
   const coffeeTimer = useTimer({ initialCount: 0, isIncreasing: true });
   const countDownTimer = useTimer({ initialCount: 3, isIncreasing: false });
+  const recipeList = useState<Recipe[]>([]);
 
   useEffect(() => {
     if (countDownTimer.count === 0) {
