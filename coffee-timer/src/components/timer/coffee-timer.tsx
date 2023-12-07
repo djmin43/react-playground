@@ -16,7 +16,12 @@ export const CoffeeTimer = ({ count }: CoffeeTimerProps) => {
 
   return (
     <div>
-      {count === 0 ? <p>start!</p> : TimeFormatterUtils.secondsToMMSS(count)}
+      <p>{coffeeTimerController(count).get()}</p>
     </div>
   );
 };
+
+// 계산 helper 함수
+const coffeeTimerController = (count: number) => ({
+  get: () => TimeFormatterUtils.secondsToMMSS(count),
+});

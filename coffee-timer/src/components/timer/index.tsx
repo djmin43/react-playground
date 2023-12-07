@@ -42,14 +42,6 @@ export const Timer = () => {
           </>
         )}
       </div>
-      {/*  let's start with a pre-made recipe */}
-      {/*  use nosleep for keep this awake */}
-      {/*  total time: 2:30 */}
-      {/*  customer */}
-      {/*  0:00 ~ 0:30 bloom */}
-      {/*  0:45 ~ 1:00 first pour */}
-      {/*  1:30 ~ 1:45 second pour */}
-      {/*    2:30 done */}
     </div>
   );
 };
