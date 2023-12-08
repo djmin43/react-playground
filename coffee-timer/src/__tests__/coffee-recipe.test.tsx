@@ -30,18 +30,18 @@ test("coffee recipe test #2: first pour index", () => {
   expect(atFirstPourStep).toBe(expected);
 });
 
-// test("coffee recipe test #3: second pour index", () => {
-//   // given
-//   const overSecondPourCount = 70;
-//   const atSecondPourCount = 60;
-//   const recipeList = defaultRecipe;
-//
-//   // when
-//   const overSecondPourStep = getCurrentStep(overSecondPourCount, recipeList);
-//   const atSecondPourStep = getCurrentStep(atSecondPourCount, recipeList);
-//   const expected = 2;
-//
-//   // then
-//   expect(overSecondPourStep).toBe(expected);
-//   expect(atSecondPourStep).toBe(expected);
-// });
+test("coffee recipe test #3: second pour index", () => {
+  // given
+  const overSecondPourCount = 70;
+  const atSecondPourCount = 60;
+  const recipeList = defaultRecipe;
+
+  // when
+  const overSecondPourStep = getCurrentStep(overSecondPourCount, recipeList);
+  const atSecondPourStep = getCurrentStep(atSecondPourCount, recipeList);
+  const expected = 2;
+
+  // then
+  expect(overSecondPourStep).toBe(expected);
+  expect(atSecondPourStep).toBe(expected);
+});

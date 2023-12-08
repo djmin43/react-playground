@@ -76,6 +76,9 @@ export const getCurrentStep = (
       index = recipeIndex;
       return;
     }
+    if (currentCount >= recipeTimes[recipeIndex]) {
+      index = recipeIndex;
+    }
   });
   return index;
 };
