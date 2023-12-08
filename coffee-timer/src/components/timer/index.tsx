@@ -6,6 +6,7 @@ import { CountDownTimer } from "@/components/timer/count-down-timer";
 
 type RecipeStep = {
   type: RecipeType;
+  label?: string;
   duration: number;
   startAt: number;
   waterVolume: number;
@@ -13,14 +14,15 @@ type RecipeStep = {
 
 enum RecipeType {
   Bloom = "bloom",
-  pour = "pour",
-  pulse = "pulse",
+  Pour = "pour",
+  Pulse = "pulse",
 }
 
 export const Timer = () => {
   const coffeeTimer = useTimer({ initialCount: 0, isIncreasing: true });
   const countDownTimer = useTimer({ initialCount: 3, isIncreasing: false });
-  const recipeSteps = useState<RecipeStep[]>([]);
+  const recipeSteps = useState(defaultRecipe);
+  const currentStepIndex = useState(0);
 
   useEffect(() => {
     if (countDownTimer.count === 0) {
@@ -38,7 +40,7 @@ export const Timer = () => {
 
   return (
     <div className={"timer-container"}>
-      <div className={"timer"}>
+      <div className="timer">
         {isTimerIdle ? (
           <button onClick={countDownTimer.start} className={"start-button"}>
             click to start
@@ -56,3 +58,27 @@ export const Timer = () => {
     </div>
   );
 };
+
+const defaultRecipe: RecipeStep[] = [
+  {
+    type: RecipeType.Bloom,
+    label: "bloom",
+    startAt: 0,
+    duration: 5,
+    waterVolume: 40,
+  },
+  {
+    type: RecipeType.Pour,
+    label: "first pour",
+    startAt: 0,
+    duration: 30,
+    waterVolume: 150,
+  },
+  {
+    type: RecipeType.Pour,
+    label: "second pour",
+    startAt: 0,
+    duration: 60,
+    waterVolume: 60,
+  },
+];
