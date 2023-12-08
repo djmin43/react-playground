@@ -65,12 +65,16 @@ export const getCurrentStep = (
 ) => {
   let index = 0;
   const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
-  if (currentCount <= recipeTimes[1]) {
+  if (currentCount < recipeTimes[1]) {
     return 0;
   }
   recipeTimes.forEach((time, recipeIndex) => {
-    if (currentCount <= time && time <= recipeTimes[recipeIndex + 1]) {
+    if (
+      currentCount >= recipeTimes[recipeIndex] &&
+      currentCount < recipeTimes[recipeIndex + 1]
+    ) {
       index = recipeIndex;
+      return;
     }
   });
   return index;

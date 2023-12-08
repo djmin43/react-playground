@@ -14,21 +14,21 @@ test("coffee recipe test #1: get bloom index", () => {
   expect(currentStep).toBe(expected);
 });
 
-// test("coffee recipe test #2: first pour index", () => {
-//   // given
-//   const overFirstPourCount = 40;
-//   const atFirstPourCount = 30;
-//   const recipeList = defaultRecipe;
-//
-//   // when
-//   const overFirstPourStep = getCurrentStep(overFirstPourCount, recipeList);
-//   const atFirstPourStep = getCurrentStep(atFirstPourCount, recipeList);
-//   const expected = 1;
-//
-//   // then
-//   expect(overFirstPourStep).toBe(expected);
-//   expect(atFirstPourStep).toBe(expected);
-// });
+test("coffee recipe test #2: first pour index", () => {
+  // given
+  const overFirstPourCount = 40;
+  const atFirstPourCount = 30;
+  const recipeList = defaultRecipe;
+
+  // when
+  const overFirstPourStep = getCurrentStep(overFirstPourCount, recipeList);
+  const atFirstPourStep = getCurrentStep(atFirstPourCount, recipeList);
+  const expected = 1;
+
+  // then
+  expect(overFirstPourStep).toBe(expected);
+  expect(atFirstPourStep).toBe(expected);
+});
 
 // test("coffee recipe test #3: second pour index", () => {
 //   // given
