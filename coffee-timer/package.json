@@ -1,6 +1,7 @@
 {
   "name": "coffee-timer",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,9 +22,12 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
+    "jsdom": "^23.0.1",
     "prettier": "^3.1.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.0.2"
   }
 }
