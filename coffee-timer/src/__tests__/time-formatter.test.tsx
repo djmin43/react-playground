@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { TimeFormatterUtils } from "../utils/time-formatter.utils";
+import { TimeFormatterUtils } from "@/utils/time-formatter.utils";
 
 test("test time formatter utils", () => {
   // given

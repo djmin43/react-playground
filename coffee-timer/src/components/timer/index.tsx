@@ -59,7 +59,19 @@ export const Timer = () => {
   );
 };
 
-const defaultRecipe: RecipeStep[] = [
+export const getCurrentStep = (
+  currentCount: number,
+  recipeSteps: RecipeStep[],
+) => {
+  let index = 0;
+  const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
+  if (currentCount <= recipeTimes[0]) {
+    return 0;
+  }
+  return index;
+};
+
+export const defaultRecipe: RecipeStep[] = [
   {
     type: RecipeType.Bloom,
     label: "bloom",
@@ -70,15 +82,15 @@ const defaultRecipe: RecipeStep[] = [
   {
     type: RecipeType.Pour,
     label: "first pour",
-    startAt: 0,
-    duration: 30,
+    startAt: 30,
+    duration: 10,
     waterVolume: 150,
   },
   {
     type: RecipeType.Pour,
     label: "second pour",
-    startAt: 0,
-    duration: 60,
+    startAt: 60,
+    duration: 10,
     waterVolume: 60,
   },
 ];
