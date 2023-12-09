@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "vitest";
-import { coffeeTimerController, defaultRecipe } from "@/components/timer";
+import { getCurrentStep, defaultRecipe } from "@/components/timer";
 
 describe("coffee recipe test", () => {
   it.concurrent("#1: get bloom index", () => {
@@ -8,8 +8,11 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const currentStep = coffeeTimerController(count, recipeList).currentStep();
-    const expected = 0;
+    const currentStep = getCurrentStep({
+      count,
+      recipeSteps: recipeList,
+    });
+    const expected = recipeList[0];
 
     // then
     expect(currentStep).toBe(expected);
@@ -22,15 +25,15 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const overFirstPourStep = coffeeTimerController(
-      overFirstPourCount,
-      recipeList,
-    ).currentStep();
-    const atFirstPourStep = coffeeTimerController(
-      atFirstPourCount,
-      recipeList,
-    ).currentStep();
-    const expected = 1;
+    const overFirstPourStep = getCurrentStep({
+      count: overFirstPourCount,
+      recipeSteps: recipeList,
+    });
+    const atFirstPourStep = getCurrentStep({
+      count: atFirstPourCount,
+      recipeSteps: recipeList,
+    });
+    const expected = recipeList[1];
 
     // then
     expect(overFirstPourStep).toBe(expected);
@@ -44,15 +47,15 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const overSecondPourStep = coffeeTimerController(
-      atSecondPourCount,
-      recipeList,
-    ).currentStep();
-    const atSecondPourStep = coffeeTimerController(
-      overSecondPourCount,
-      recipeList,
-    ).currentStep();
-    const expected = 2;
+    const overSecondPourStep = getCurrentStep({
+      count: atSecondPourCount,
+      recipeSteps: recipeList,
+    });
+    const atSecondPourStep = getCurrentStep({
+      count: overSecondPourCount,
+      recipeSteps: recipeList,
+    });
+    const expected = recipeList[2];
 
     // then
     expect(overSecondPourStep).toBe(expected);
