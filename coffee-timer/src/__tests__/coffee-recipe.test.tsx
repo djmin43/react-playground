@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "vitest";
-import { defaultRecipe, getCurrentStep } from "@/components/timer";
+import { coffeeTimerController, defaultRecipe } from "@/components/timer";
 
 describe("coffee recipe test", () => {
   it.concurrent("#1: get bloom index", () => {
@@ -8,7 +8,7 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const currentStep = getCurrentStep(count, recipeList);
+    const currentStep = coffeeTimerController(count, recipeList).currentStep();
     const expected = 0;
 
     // then
@@ -22,8 +22,14 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const overFirstPourStep = getCurrentStep(overFirstPourCount, recipeList);
-    const atFirstPourStep = getCurrentStep(atFirstPourCount, recipeList);
+    const overFirstPourStep = coffeeTimerController(
+      overFirstPourCount,
+      recipeList,
+    ).currentStep();
+    const atFirstPourStep = coffeeTimerController(
+      atFirstPourCount,
+      recipeList,
+    ).currentStep();
     const expected = 1;
 
     // then
@@ -38,8 +44,14 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const overSecondPourStep = getCurrentStep(overSecondPourCount, recipeList);
-    const atSecondPourStep = getCurrentStep(atSecondPourCount, recipeList);
+    const overSecondPourStep = coffeeTimerController(
+      atSecondPourCount,
+      recipeList,
+    ).currentStep();
+    const atSecondPourStep = coffeeTimerController(
+      overSecondPourCount,
+      recipeList,
+    ).currentStep();
     const expected = 2;
 
     // then

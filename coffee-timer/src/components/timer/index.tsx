@@ -59,29 +59,33 @@ export const Timer = () => {
   );
 };
 
-export const getCurrentStep = (
-  currentCount: number,
+export const coffeeTimerController = (
+  count: number,
   recipeSteps: RecipeStep[],
-) => {
-  let index = 0;
-  const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
-  if (currentCount < recipeTimes[1]) {
-    return 0;
-  }
-  recipeTimes.forEach((time, recipeIndex) => {
-    if (
-      currentCount >= recipeTimes[recipeIndex] &&
-      currentCount < recipeTimes[recipeIndex + 1]
-    ) {
-      index = recipeIndex;
-      return;
+) => ({
+  currentStep: () => {
+    let index = 0;
+    const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
+    if (count < recipeTimes[1]) {
+      return 0;
     }
-    if (currentCount >= recipeTimes[recipeIndex]) {
-      index = recipeIndex;
-    }
-  });
-  return index;
-};
+    recipeTimes.forEach((time, recipeIndex) => {
+      if (
+        count >= recipeTimes[recipeIndex] &&
+        count < recipeTimes[recipeIndex + 1]
+      ) {
+        index = recipeIndex;
+        return;
+      }
+      if (count >= recipeTimes[recipeIndex]) {
+        index = recipeIndex;
+      }
+    });
+    return index;
+  },
+});
+
+// 계산
 
 export const defaultRecipe: RecipeStep[] = [
   {
