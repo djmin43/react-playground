@@ -94,34 +94,6 @@ export const coffeeTimerController = (
   getAll: () => recipeSteps,
 });
 
-// 계산
-// export const getCurrentStep = ({
-//   count,
-//   recipeSteps,
-// }: {
-//   recipeSteps: RecipeStep[];
-//   count: number;
-// }) => {
-//   let index = 0;
-//   const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
-//   if (count < recipeTimes[1]) {
-//     return recipeSteps[0];
-//   }
-//   recipeTimes.forEach((time, recipeIndex) => {
-//     if (
-//       count >= recipeTimes[recipeIndex] &&
-//       count < recipeTimes[recipeIndex + 1]
-//     ) {
-//       index = recipeIndex;
-//       return;
-//     }
-//     if (count >= recipeTimes[recipeIndex]) {
-//       index = recipeIndex;
-//     }
-//   });
-//   return recipeSteps[index];
-// };
-
 export const defaultRecipe: RecipeStep[] = [
   {
     type: RecipeType.Bloom,
