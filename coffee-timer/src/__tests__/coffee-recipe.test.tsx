@@ -1,5 +1,5 @@
-import { describe, expect, it, test } from "vitest";
-import { getCurrentStep, defaultRecipe } from "@/components/timer";
+import { describe, expect, it } from "vitest";
+import { coffeeTimerController, defaultRecipe } from "@/components/timer";
 
 describe("coffee recipe test", () => {
   it.concurrent("#1: get bloom index", () => {
@@ -8,10 +8,9 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const currentStep = getCurrentStep({
-      count,
-      recipeSteps: recipeList,
-    });
+    const currentStep = coffeeTimerController(recipeList, count)
+      .currentStep()
+      .get();
     const expected = recipeList[0];
 
     // then
@@ -25,14 +24,15 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const overFirstPourStep = getCurrentStep({
-      count: overFirstPourCount,
-      recipeSteps: recipeList,
-    });
-    const atFirstPourStep = getCurrentStep({
-      count: atFirstPourCount,
-      recipeSteps: recipeList,
-    });
+    const overFirstPourStep = coffeeTimerController(
+      recipeList,
+      overFirstPourCount,
+    )
+      .currentStep()
+      .get();
+    const atFirstPourStep = coffeeTimerController(recipeList, atFirstPourCount)
+      .currentStep()
+      .get();
     const expected = recipeList[1];
 
     // then
@@ -47,14 +47,18 @@ describe("coffee recipe test", () => {
     const recipeList = defaultRecipe;
 
     // when
-    const overSecondPourStep = getCurrentStep({
-      count: atSecondPourCount,
-      recipeSteps: recipeList,
-    });
-    const atSecondPourStep = getCurrentStep({
-      count: overSecondPourCount,
-      recipeSteps: recipeList,
-    });
+    const overSecondPourStep = coffeeTimerController(
+      recipeList,
+      overSecondPourCount,
+    )
+      .currentStep()
+      .get();
+    const atSecondPourStep = coffeeTimerController(
+      recipeList,
+      atSecondPourCount,
+    )
+      .currentStep()
+      .get();
     const expected = recipeList[2];
 
     // then

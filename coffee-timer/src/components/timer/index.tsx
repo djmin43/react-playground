@@ -21,8 +21,8 @@ enum RecipeType {
 export const Timer = () => {
   const coffeeTimer = useTimer({ initialCount: 0, isIncreasing: true });
   const countDownTimer = useTimer({ initialCount: 3, isIncreasing: false });
-  const recipeSteps = useState(defaultRecipe);
-  const currentStepIndex = useState(0);
+  const [recipeSteps, setRecipeSteps] = useState(defaultRecipe);
+  const [currentStep, setCurrentStep] = useState<RecipeStep>();
 
   useEffect(() => {
     if (countDownTimer.count === 0) {
@@ -31,6 +31,8 @@ export const Timer = () => {
       return;
     }
   }, [coffeeTimer.count, countDownTimer.count]);
+
+  useEffect(() => {}, [coffeeTimer.count, recipeSteps]);
 
   const isTimerIdle = !countDownTimer.isRunning && !coffeeTimer.isRunning;
   // bloom start at 0
@@ -59,33 +61,66 @@ export const Timer = () => {
   );
 };
 
+export const coffeeTimerController = (
+  recipeSteps: RecipeStep[],
+  count: number,
+) => ({
+  currentStep: () => {
+    let index = 0;
+    const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
+    if (count < recipeTimes[1]) {
+      return coffeeTimerController([recipeSteps[0]], count);
+    }
+    recipeTimes.forEach((time, recipeIndex) => {
+      if (
+        count >= recipeTimes[recipeIndex] &&
+        count < recipeTimes[recipeIndex + 1]
+      ) {
+        index = recipeIndex;
+        return;
+      }
+      if (count >= recipeTimes[recipeIndex]) {
+        index = recipeIndex;
+      }
+    });
+    return coffeeTimerController([recipeSteps[index]], count);
+  },
+  get: () => {
+    if (recipeSteps.length === 1) {
+      return recipeSteps[0];
+    }
+    return undefined;
+  },
+  getAll: () => recipeSteps,
+});
+
 // 계산
-export const getCurrentStep = ({
-  count,
-  recipeSteps,
-}: {
-  recipeSteps: RecipeStep[];
-  count: number;
-}) => {
-  let index = 0;
-  const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
-  if (count < recipeTimes[1]) {
-    return recipeSteps[0];
-  }
-  recipeTimes.forEach((time, recipeIndex) => {
-    if (
-      count >= recipeTimes[recipeIndex] &&
-      count < recipeTimes[recipeIndex + 1]
-    ) {
-      index = recipeIndex;
-      return;
-    }
-    if (count >= recipeTimes[recipeIndex]) {
-      index = recipeIndex;
-    }
-  });
-  return recipeSteps[index];
-};
+// export const getCurrentStep = ({
+//   count,
+//   recipeSteps,
+// }: {
+//   recipeSteps: RecipeStep[];
+//   count: number;
+// }) => {
+//   let index = 0;
+//   const recipeTimes = recipeSteps.map((recipe) => recipe.startAt);
+//   if (count < recipeTimes[1]) {
+//     return recipeSteps[0];
+//   }
+//   recipeTimes.forEach((time, recipeIndex) => {
+//     if (
+//       count >= recipeTimes[recipeIndex] &&
+//       count < recipeTimes[recipeIndex + 1]
+//     ) {
+//       index = recipeIndex;
+//       return;
+//     }
+//     if (count >= recipeTimes[recipeIndex]) {
+//       index = recipeIndex;
+//     }
+//   });
+//   return recipeSteps[index];
+// };
 
 export const defaultRecipe: RecipeStep[] = [
   {
