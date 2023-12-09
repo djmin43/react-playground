@@ -32,13 +32,13 @@ export const Timer = () => {
     }
   }, [coffeeTimer.count, countDownTimer.count]);
 
-  useEffect(() => {}, [coffeeTimer.count, recipeSteps]);
+  useEffect(() => {
+    setCurrentStep(
+      coffeeTimerController(recipeSteps, coffeeTimer.count).currentStep().get(),
+    );
+  }, [coffeeTimer.count, recipeSteps]);
 
   const isTimerIdle = !countDownTimer.isRunning && !coffeeTimer.isRunning;
-  // bloom start at 0
-  // first pour starts at 30
-  // second pour at 1:00(60)
-  // brew finishes at 2:30
 
   return (
     <div className={"timer-container"}>
@@ -86,7 +86,7 @@ export const coffeeTimerController = (
     return coffeeTimerController([recipeSteps[index]], count);
   },
   get: () => {
-    if (recipeSteps.length === 1) {
+    if (recipeSteps.length === 0) {
       return recipeSteps[0];
     }
     return undefined;
