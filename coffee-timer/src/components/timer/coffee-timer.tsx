@@ -16,7 +16,7 @@ export const CoffeeTimer = ({ count }: CoffeeTimerProps) => {
 
   return (
     <div>
-      <p>{count}</p>
+      <p>{TimeFormatterUtils.secondsToMMSS(count)}</p>
     </div>
   );
 };
