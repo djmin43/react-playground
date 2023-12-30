@@ -6,6 +6,7 @@ let counterName = "One";
 root.render(React.createElement(App));
 
 function App() {
+    console.log("Calling the App!")
     return React.createElement("section", null,
         React.createElement("h1", null, "Counters"),
         React.createElement("section", null,
