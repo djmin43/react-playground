@@ -11063,9 +11063,12 @@
         setTextContent(domElement, '');
     }
     function commitTextUpdate(textInstance, oldText, newText) {
+        console.log(`Update text ${newText}`);
         textInstance.nodeValue = newText;
     }
     function appendChild(parentInstance, child) {
+        console.log(`Append child...`);
+        console.log(child);
         parentInstance.appendChild(child);
     }
     function appendChildToContainer(container, child) {
@@ -11073,10 +11076,17 @@
 
         if (container.nodeType === COMMENT_NODE) {
             parentNode = container.parentNode;
+            console.log('Inserting child in container...');
+            console.log(child);
             parentNode.insertBefore(child, container);
         } else {
             parentNode = container;
+            console.log("Appending child to container...")
+            console.log(child);
+            console.log("...the container is...")
+            console.log(parentNode);
             parentNode.appendChild(child);
+
         } // This container might be used for a portal.
         // If something inside a portal is clicked, that click should bubble
         // through the React tree. However, on Mobile Safari the click would
