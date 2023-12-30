@@ -1,3 +1,4 @@
+// This is just a DOM object. variable is pointing to the object's reference.
 const rootNode = document.getElementById("app");
 
 // Where it should start
@@ -15,3 +16,8 @@ function App() {
 }
 
 console.log(App());
+
+let articleElements = document.getElementsByTagName("article");
+let articleElement = document.getElementsByTagName("article").item(0);
+console.log(articleElements);
+console.log(articleElement);
