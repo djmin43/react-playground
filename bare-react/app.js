@@ -17,7 +17,17 @@ function App() {
 
 console.log(App());
 
+// before React does its work
 let articleElements = document.getElementsByTagName("article");
 let articleElement = document.getElementsByTagName("article").item(0);
 console.log(articleElements);
 console.log(articleElement);
+
+
+// after React does its work
+setTimeout(function () {
+    let articleElements = document.getElementsByTagName("article");
+    let articleElement = document.getElementsByTagName("article").item(0);
+    console.log(articleElements);
+    console.log(articleElement);
+}, 1000);
