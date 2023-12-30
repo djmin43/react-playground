@@ -14,10 +14,10 @@ function App() {
     );
 }
 
-function Counter({ name }) {
+function Counter(props) {
     return (
         React.createElement("article", null,
-            React.createElement("h2", null, "Counter ", name),
+            React.createElement("h2", null, "Counter ", props.name),
             React.createElement("p", null, "You clicked 1 times"),
             React.createElement("button", null, "Click me"))
     );
