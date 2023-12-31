@@ -2,21 +2,36 @@
 const rootNode = document.getElementById("app");
 // Where it should start
 const root = ReactDOM.createRoot(rootNode);
-root.render(React.createElement(App));
+root.render(<App />);
+let counterName = "One"
 
 function App() {
+    const counterOne = <Counter name={counterName} />
+    const counterTwo = <Counter2 name={counterName} />
     return <section>
         <h1>Counters</h1>
         <section>
-            <Counter />
+            {counterName === "One" ? counterOne : counterTwo}
         </section>
     </section>;
 }
 
-function Counter() {
+function Counter({name}) {
     return (
         <article>
-            <h2>Counter</h2>
+            <h2>Counter {name}</h2>
+            <p>You clicked 1 times</p>
+            <button className="button" onClick={rerender}>
+                Click me
+            </button>
+        </article>
+    );
+}
+
+function Counter2({name}) {
+    return (
+        <article>
+            <h2>Counter {name}</h2>
             <p>You clicked 1 times</p>
             <button className="button">
                 Click me
@@ -24,3 +39,11 @@ function Counter() {
         </article>
     );
 }
+
+function rerender() {
+    console.log("Rerender...");
+    counterName = "Two";
+    root.render(React.createElement(App));
+}
+
+

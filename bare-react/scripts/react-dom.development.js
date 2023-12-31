@@ -28256,6 +28256,7 @@
             }
         }
 
+        console.log(workInProgress);
         return workInProgress;
     } // Used to reuse a Fiber for a second pass.
 
