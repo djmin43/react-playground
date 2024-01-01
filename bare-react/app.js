@@ -1,39 +1,68 @@
-const globalState = {
-    NorthSouth: "Green",
-    CarWaiting: false,
-    WaitTime: 30,
+// This is just a DOM object. variable is pointing to the object's reference.
+const rootNode = document.getElementById("app");
+// Where it should start
+const root = ReactDOM.createRoot(rootNode);
+root.render(<App />);
+let counterName = "One"
+
+function App() {
+    const counterOne = <Counter name={counterName} />
+    const counterTwo = <Counter2 name={counterName} />
+    return <section>
+        <h1>Counters</h1>
+        <section>
+            {counterName === "One" ? counterOne : counterTwo}
+        </section>
+    </section>;
 }
 
-function reducer(state, action) {
-    switch (action.type) {
-        case ('Car Waiting'):
-            return {
-                ...state,
-                CarWaiting: true,
-                WaitTime: action.payload.WaitTime
-            };
-        case ('Finish Waiting'):
-            return {
-                ...state,
-                NorthSouth: "Yellow",
-            }
-        default:
-            return state;
+function Counter({name}) {
+
+    // Synthetic event
+    const clickHandler = (event) => {
+        console.log("React handled click");
+        console.log(event);
     }
+
+    const parentClickHandler = (event) => {
+        console.log("Parent was clicked too");
+    }
+
+    const linkClickHandler = (event) => {
+        console.log("Going to site");
+    }
+
+    return (
+        <article onClick={parentClickHandler}>
+            <h2>Counter {name}</h2>
+            <p>You clicked 1 times</p>
+            <button className="button" onClick={clickHandler}>
+                Click me
+            </button>
+            <p>
+                <a href="http://understandingreact.com" target="_blank" onClick={linkClickHandler}>Understanding React</a>
+            </p>
+        </article>
+    );
 }
 
-console.log(globalState);
-const newState1 = reducer(globalState, {
-    type: "Car Waiting",
-    payload: {
-        WaitTime: 5,
-    }
-})
+function Counter2({name}) {
+    return (
+        <article>
+            <h2>Counter {name}</h2>
+            <p>You clicked 1 times</p>
+            <button className="button">
+                Click me
+            </button>
+        </article>
+    );
+}
 
-console.log(newState1);
+function rerender() {
+    console.log("Rerender...");
+    counterName = "Two";
+    root.render(React.createElement(App));
+}
 
-const newState2 = reducer(newState1, {
-    type: "Finish Waiting"
-})
 
-console.log(newState2);
+
