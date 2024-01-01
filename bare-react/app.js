@@ -46,4 +46,11 @@ function rerender() {
     root.render(React.createElement(App));
 }
 
+rootNode.addEventListener("click", function(event) {
+    if (event.target.tagName === "BUTTON") {
+        console.log("Clicked button");
+    } else {
+        console.log("Didn't click button");
+    }
+})
 

@@ -24304,6 +24304,7 @@
     }
 
     function commitMutationEffectsOnFiber(finishedWork, root, lanes) {
+        console.log("Committing Update");
         var current = finishedWork.alternate;
         var flags = finishedWork.flags; // The effect flag should be checked *after* we refine the type of fiber,
         // because the fiber tag is more specific. An exception is any flag related
