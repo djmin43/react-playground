@@ -17,13 +17,31 @@ function App() {
 }
 
 function Counter({name}) {
+
+    // Synthetic event
+    const clickHandler = (event) => {
+        console.log("React handled click");
+        console.log(event);
+    }
+
+    const parentClickHandler = (event) => {
+        console.log("Parent was clicked too");
+    }
+
+    const linkClickHandler = (event) => {
+        console.log("Going to site");
+    }
+
     return (
-        <article>
+        <article onClick={parentClickHandler}>
             <h2>Counter {name}</h2>
             <p>You clicked 1 times</p>
-            <button className="button" onClick={rerender}>
+            <button className="button" onClick={clickHandler}>
                 Click me
             </button>
+            <p>
+                <a href="http://understandingreact.com" target="_blank" onClick={linkClickHandler}>Understanding React</a>
+            </p>
         </article>
     );
 }
@@ -46,11 +64,5 @@ function rerender() {
     root.render(React.createElement(App));
 }
 
-rootNode.addEventListener("click", function(event) {
-    if (event.target.tagName === "BUTTON") {
-        console.log("Clicked button");
-    } else {
-        console.log("Didn't click button");
-    }
-})
+
 
