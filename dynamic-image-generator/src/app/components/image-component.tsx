@@ -1,16 +1,25 @@
 import React from "react";
 
-const ImageComponent = () => {
+interface ImageComponentProps {
+	description: string;
+	color: string;
+}
+
+const ImageComponent = ({ description, color }: ImageComponentProps) => {
 	return (
 		<div
 			style={{
-				width: "100px",
-				height: "100px",
-				background: "red",
-				color: "blue",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				fontSize: "120px",
+				width: "1200px",
+				height: "630px",
+				background: "white",
+				color,
 			}}
 		>
-			hello world
+			<p>{description}</p>
 		</div>
 	);
 };
