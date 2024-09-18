@@ -23,7 +23,7 @@ async function loadFont() {
 	}
 }
 
-export const uploadFile = async (file: File, folder: string) => {
+const uploadFile = async (file: File, folder: string) => {
 	try {
 		const filename = crypto.randomUUID();
 		const storageRef = ref(
