@@ -1,6 +1,7 @@
 import ImageComponent from "@/app/components/image-component";
 import { storage } from "@/app/firebase/core";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { NextResponse } from "next/server";
 import satori, { type SatoriOptions } from "satori";
 import sharp from "sharp";
 
@@ -39,7 +40,7 @@ export const uploadFile = async (file: File, folder: string) => {
 	}
 };
 
-export async function GET() {
+export async function POST(request: Request) {
 	const fontData = (await loadFont()) as ArrayBuffer;
 
 	const satoriOptions: SatoriOptions = {
@@ -55,8 +56,11 @@ export async function GET() {
 		],
 	};
 
+	const body = await request.formData();
+	const description = body.get("description") as string;
+
 	const svg = await satori(
-		<ImageComponent description="hello world" color="blue" />,
+		<ImageComponent description={description ?? ""} />,
 		satoriOptions,
 	);
 	const svgBuffer = Buffer.from(svg);
@@ -69,9 +73,9 @@ export async function GET() {
 
 	const downloadURL = await uploadFile(pngFile, "test/");
 
-	return new Response(JSON.stringify({ downloadURL }), {
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+	const url = new URL(
+		`/?ogImage=${encodeURIComponent(downloadURL)}`,
+		request.url,
+	);
+	return NextResponse.redirect(url);
 }

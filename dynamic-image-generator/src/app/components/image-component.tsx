@@ -2,10 +2,9 @@ import React from "react";
 
 interface ImageComponentProps {
 	description: string;
-	color: string;
 }
 
-const ImageComponent = ({ description, color }: ImageComponentProps) => {
+const ImageComponent = ({ description }: ImageComponentProps) => {
 	return (
 		<div
 			style={{
@@ -16,7 +15,6 @@ const ImageComponent = ({ description, color }: ImageComponentProps) => {
 				width: "1200px",
 				height: "630px",
 				background: "white",
-				color,
 			}}
 		>
 			<p>{description}</p>
