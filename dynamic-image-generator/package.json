@@ -1,0 +1,33 @@
+{
+  "name": "dynamic-image-generator",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.11",
+    "html2canvas": "^1.4.1",
+    "jsdom": "^25.0.0",
+    "next": "14.2.11",
+    "puppeteer": "^23.3.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "satori": "^0.11.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.11",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
