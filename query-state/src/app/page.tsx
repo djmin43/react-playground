@@ -4,12 +4,7 @@ import {useEffect, useState} from "react";
 export default function Home() {
     const [query, setQuery] = useQueryState("test")
 
-    const [inputValue, setInputValue] = useState("")
-
-    useEffect(() => {
-        console.log(query)
-
-    }, [query])
+    const [inputValue, setInputValue] = useState(query as string)
 
     return (
         <div>
@@ -28,11 +23,6 @@ export default function Home() {
 
 const useQueryState = (key: string): [string | null, (value: string) => void] => {
 
-    const getQueryParamsValue = (key: string) => {
-        const queryParams = new URLSearchParams(window.location.search)
-        return queryParams.get(key)
-    }
-
     const [queryValue, setQueryValue] = useState<string>(getQueryParamsValue(key) ?? "")
 
     const handleSetQueryValue = (value: string) => {
@@ -47,4 +37,9 @@ const useQueryState = (key: string): [string | null, (value: string) => void] =>
 
     return [queryValue, handleSetQueryValue]
 
+}
+
+const getQueryParamsValue = (key: string) => {
+    const queryParams = new URLSearchParams(window.location.search)
+    return queryParams.get(key)
 }
