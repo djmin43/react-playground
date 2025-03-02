@@ -1,9 +1,21 @@
-import React from 'react';
+'use client'
+import React, {useActionState} from 'react';
+
+async function increment(previousState: number, formData: FormData) {
+    return previousState + 1;
+}
 
 const ActionStatePage = () => {
+    const [state, formAction] = useActionState(increment, 0);
+
     return (
         <div>
-            action state
+            <form>
+                {state}
+                <button formAction={formAction}>Increment</button>
+
+            </form>
+
         </div>
     );
 };
